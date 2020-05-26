@@ -28,6 +28,7 @@ export const GlobalStyle = createGlobalStyle`
     over-flow: hidden;
   }
   body {
+    font-family: 'Arrival';
     margin: 0;
     overflow: hidden;
   }
