@@ -57,7 +57,7 @@ const Img = styled.img`
   height: 100%;
 `;
 
-const Card = ({ src }) => {
+const Card = ({ src, srcSet }) => {
   return (
     <>
       <CardContainer>
@@ -66,7 +66,7 @@ const Card = ({ src }) => {
           <Tag>15 min ago</Tag>
         </TagContainer>
         <Frame>
-          <Img src={src} />
+          <Img src={src} srcSet={srcSet} />
         </Frame>
         <Title>
           Blurred image for uploading blurred image Hello from the outside At

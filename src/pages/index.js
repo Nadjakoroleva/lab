@@ -52,6 +52,10 @@ const CardContainer = styled.div`
 `;
 
 const IndexPage = () => {
+  const handleClick = () => {
+    console.log('click');
+  };
+
   return (
     <>
       <GlobalStyle />
@@ -64,10 +68,10 @@ const IndexPage = () => {
           <Tag name={'arrival.com'} />
           <Tag name={'brand'} />
           <Tag name={'connectivity'} />
-          <Tag name={'ARTEM TARADASH'} />
+          <Tag name={'ARTEM&nbsp;TARADASH'} />
           <Tag name={'brand'} />
-          <Tag name={'nadja koroleva'} />
-          <Tag name={'lena shesterova'} />
+          <Tag name={'nadja&nbsp;koroleva'} />
+          <Tag name={'lena&nbsp;shesterova'} />
           <Tag name={'connectivity'} />
         </TagContainer>
         <Divider />
@@ -86,40 +90,61 @@ const IndexPage = () => {
           src={
             'https://images.ctfassets.net/r0lccig03c53/W4fdiBa5wG9IZh1H30mYM/3e5f83b93049061dcf3671ff1ab0bd4e/__________________________2020-05-18____12.26_1.jpg'
           }
-        />
-        <HorizontalCard
-          src={
-            'https://images.ctfassets.net/r0lccig03c53/4K3fi7jYXuAwtLgbUX5A3E/8bac474b7f6d601431d6725ce5a90425/Apple_iPad_Pro_11__Silver_-_Landscape_2.jpg'
+          srcSet={
+            'https://images.ctfassets.net/r0lccig03c53/57CZhkXTxJGtrw5zbIK3a/501f0767616ed77c03f507279f096b4a/1x2x_1.jpg 2x'
           }
         />
         <HorizontalCard
           src={
-            'https://images.ctfassets.net/r0lccig03c53/Yz4LqJsPozpkvhAP0ABky/bae6291ac9a0f39d1f84fcb8ed6deeed/Apple_iPad_Pro_11__Silver_-_Landscape_3.jpg'
+            'https://images.ctfassets.net/r0lccig03c53/6WacoMsTi8ggCOVuUq6W5w/70483a7d57f6d3303039b2ec114b90c0/2-1x.png'
+          }
+          srcSet={
+            'https://images.ctfassets.net/r0lccig03c53/1GfuJRaGy6BqZiuMORhgtb/0a16be7c7152dfd2fc85ce6b8b084c19/2-2x.png 2x'
           }
         />
         <HorizontalCard
           src={
-            'https://images.ctfassets.net/r0lccig03c53/5T9jsxBYHX8k4rBF02WG8a/cda88a7d7c121c4b84a2b2116a7d2212/__________________________2020-05-18____11.36_1.jpg'
+            'https://images.ctfassets.net/r0lccig03c53/5iTbnYeuCnDWhZAjOl4RBL/6f3a01e1e4bfcd36882b454f36cc36ae/3x1x.png'
+          }
+          srcSet={
+            'https://images.ctfassets.net/r0lccig03c53/45oyLMjtKjRueGm0kVS6YN/e115e1de25de8693de53a1ddc19e1b76/3x2x.png 2x'
+          }
+        />
+        <HorizontalCard
+          src={
+            'https://images.ctfassets.net/r0lccig03c53/6JGYDfr4uVgoqa5p3Wdfvd/4df7326398669bd3de7b8119bbe27a38/__________________________2020-05-26____17.31_1.svg'
           }
         />
         <FullWidthCard
           src={
-            'https://images.ctfassets.net/r0lccig03c53/2dnacQi4IIOtlJAyIUxVrA/fbcb1c588cdf52917b0dcbe9ed5021d3/__________________________2020-05-20____12.13_1.jpg'
+            'https://images.ctfassets.net/r0lccig03c53/21MO0tZlDPebyNDfSFeFeP/306b60ab02f0c0e360273ad4f7d75298/4x1x.jpg'
+          }
+          srcSet={
+            'https://images.ctfassets.net/r0lccig03c53/3htYRjgQqCHI62sL0EX0no/cb78249f3eea66b19c370cae2e97720f/4x2x.jpg 2x'
           }
         />
         <HorizontalCard
           src={
-            'https://images.ctfassets.net/r0lccig03c53/74VHuj4XMToKQI9wigNDhF/284b8c01e944c25016c956e2decc9c7f/__________________________2020-05-20____17.46_1.jpg'
+            'https://images.ctfassets.net/r0lccig03c53/1VdUWGLywceAMoqGnRwyr2/dac93f22766294259ea7090a6b15b4dd/5x2x.jpg'
+          }
+          srcSet={
+            'https://images.ctfassets.net/r0lccig03c53/baqlIiqdELBWOVnn73Gwh/6838b289970ee318e2387c290ccfdb01/6x2x.png 2x'
           }
         />
         <HorizontalCard
           src={
-            'https://images.ctfassets.net/r0lccig03c53/4SD90iq0AfUVzv06lrKDcu/23e0a3796ea4a8fb1f077e39fd96f33b/Apple_iPad_Pro_11__Silver_-_Landscape_4.jpg'
+            'https://images.ctfassets.net/r0lccig03c53/2NN29KhY190ZeZ83ZtYjwh/c4a6195c57a15608b83c37b564a6e6ec/6x1x.png'
+          }
+          srcSet={
+            'https://images.ctfassets.net/r0lccig03c53/baqlIiqdELBWOVnn73Gwh/6838b289970ee318e2387c290ccfdb01/6x2x.png 2x'
           }
         />
         <FullWidthCard
           src={
-            'https://images.ctfassets.net/r0lccig03c53/4uM9HHoljSFYMQxbhnLU11/c4fa376034e426656ab105b4bb0b1d86/Apple_iPad_Pro_11__Silver_-_Landscape_5.jpg'
+            'https://images.ctfassets.net/r0lccig03c53/4KxRFvBRHK2e2mE88GnvIK/3dfb184915288de1858e91681daecb60/7x1x.png'
+          }
+          srcSet={
+            'https://images.ctfassets.net/r0lccig03c53/40prqUyZTKFwRKePezv2AN/663f17b99fe487e5dc12523ddddbda98/7x2x.png 2x'
           }
         />
       </CardContainer>
