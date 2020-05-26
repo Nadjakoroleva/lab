@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Arrival';
+  src: url(../static/fonts/ArrivalApercuPro-Light.woff2) format('woff2'),
+  url(../static/fonts/ArrivalApercuPro-Light.woff) format('woff');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Arrival Mono';
+  src: url(../static/fonts/ArrivalApercuMonoPro-Regular.woff2) format('woff2'),
+  url(../static/fonts/ArrivalApercuMonoPro-Regular.woff) format('woff');
+}
