@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const CardContainer = styled.div`
-  width: 642px;
+  width: 100%;
   height: 720px;
   background-color: #000000;
   padding: 28px 32px;
@@ -28,8 +28,8 @@ const TagContainer = styled.div`
 `;
 
 const Frame = styled.div`
-  width: 514px;
-  height: 528px;
+  width: 1060px;
+  height: 448px;
   background-color: red;
   margin: 0 auto;
   display: flex;
@@ -40,7 +40,11 @@ const Frame = styled.div`
 const Title = styled.p`
   font-size: 18px;
   line-height: 24px;
-  width: 70%;
+  width: 28%;
+`;
+const Img = styled.img`
+  object-fit: contain;
+  height: 100%;
 `;
 
 const Card = ({ src }) => {
@@ -52,7 +56,7 @@ const Card = ({ src }) => {
           <Tag>15 min ago</Tag>
         </TagContainer>
         <Frame>
-          <img src={src} />
+          <Img src={src} />
         </Frame>
         <Title>
           Blurred image for uploading blurred image Hello from the outside At

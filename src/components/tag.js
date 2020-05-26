@@ -7,6 +7,7 @@ const Container = styled.div`
   padding: 4px 12px 3px 12px;
   margin-left: 4px;
   margin-top: 4px;
+  cursor: pointer;
 `;
 
 const Text = styled.div`
