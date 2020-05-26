@@ -20,6 +20,11 @@ const Tag = styled.p`
   line-height: 18px;
   text-transform: uppercase;
   color: #f3f3f3;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  ${CardContainer}:hover & {
+    opacity: 1;
+  }
 `;
 
 const TagContainer = styled.div`
@@ -30,7 +35,7 @@ const TagContainer = styled.div`
 const Frame = styled.div`
   width: 514px;
   height: 528px;
-  background-color: red;
+  background-color: #00000;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -41,6 +46,16 @@ const Title = styled.p`
   font-size: 18px;
   line-height: 24px;
   width: 70%;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  ${CardContainer}:hover & {
+    opacity: 1;
+  }
+`;
+
+const Img = styled.img`
+  object-fit: contain;
+  height: 100%;
 `;
 
 const Card = ({ src }) => {
@@ -52,7 +67,7 @@ const Card = ({ src }) => {
           <Tag>15 min ago</Tag>
         </TagContainer>
         <Frame>
-          <img src={src} />
+          <Img src={src} />
         </Frame>
         <Title>
           Blurred image for uploading blurred image Hello from the outside At

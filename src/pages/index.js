@@ -92,9 +92,34 @@ const IndexPage = () => {
             'https://images.ctfassets.net/r0lccig03c53/4K3fi7jYXuAwtLgbUX5A3E/8bac474b7f6d601431d6725ce5a90425/Apple_iPad_Pro_11__Silver_-_Landscape_2.jpg'
           }
         />
+        <HorizontalCard
+          src={
+            'https://images.ctfassets.net/r0lccig03c53/Yz4LqJsPozpkvhAP0ABky/bae6291ac9a0f39d1f84fcb8ed6deeed/Apple_iPad_Pro_11__Silver_-_Landscape_3.jpg'
+          }
+        />
+        <HorizontalCard
+          src={
+            'https://images.ctfassets.net/r0lccig03c53/5T9jsxBYHX8k4rBF02WG8a/cda88a7d7c121c4b84a2b2116a7d2212/__________________________2020-05-18____11.36_1.jpg'
+          }
+        />
         <FullWidthCard
           src={
-            'https://images.ctfassets.net/r0lccig03c53/4K3fi7jYXuAwtLgbUX5A3E/8bac474b7f6d601431d6725ce5a90425/Apple_iPad_Pro_11__Silver_-_Landscape_2.jpg'
+            'https://images.ctfassets.net/r0lccig03c53/2dnacQi4IIOtlJAyIUxVrA/fbcb1c588cdf52917b0dcbe9ed5021d3/__________________________2020-05-20____12.13_1.jpg'
+          }
+        />
+        <HorizontalCard
+          src={
+            'https://images.ctfassets.net/r0lccig03c53/74VHuj4XMToKQI9wigNDhF/284b8c01e944c25016c956e2decc9c7f/__________________________2020-05-20____17.46_1.jpg'
+          }
+        />
+        <HorizontalCard
+          src={
+            'https://images.ctfassets.net/r0lccig03c53/4SD90iq0AfUVzv06lrKDcu/23e0a3796ea4a8fb1f077e39fd96f33b/Apple_iPad_Pro_11__Silver_-_Landscape_4.jpg'
+          }
+        />
+        <FullWidthCard
+          src={
+            'https://images.ctfassets.net/r0lccig03c53/4uM9HHoljSFYMQxbhnLU11/c4fa376034e426656ab105b4bb0b1d86/Apple_iPad_Pro_11__Silver_-_Landscape_5.jpg'
           }
         />
       </CardContainer>
