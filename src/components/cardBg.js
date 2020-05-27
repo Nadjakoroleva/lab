@@ -149,6 +149,7 @@ const Card = ({ src, srcSet }) => {
             <Video
               ref={videoPlayer}
               playsinline
+              loop
               autoPlay={false}
               muted={true}
               src={VideoSrc}
