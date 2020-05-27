@@ -44,7 +44,6 @@ const Tag = ({ name }) => {
     }
   };
 
-  console.log(isClicked);
   return (
     <>
       <Container isClicked={isClicked} onClick={handleClick}>

@@ -4,6 +4,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { GlobalStyle } from '../components/globalStyle';
 import Tag from '../components/tag';
 import HorizontalCard from '../components/card';
+import CardBg from '../components/cardBg';
 import FullWidthCard from '../components/fullWidthCard';
 import '../components/fonts.css';
 
@@ -148,14 +149,7 @@ const IndexPage = () => {
             'https://images.ctfassets.net/r0lccig03c53/1GfuJRaGy6BqZiuMORhgtb/0a16be7c7152dfd2fc85ce6b8b084c19/2-2x.png 2x'
           }
         />
-        <HorizontalCard
-          src={
-            'https://images.ctfassets.net/r0lccig03c53/5iTbnYeuCnDWhZAjOl4RBL/6f3a01e1e4bfcd36882b454f36cc36ae/3x1x.png'
-          }
-          srcSet={
-            'https://images.ctfassets.net/r0lccig03c53/45oyLMjtKjRueGm0kVS6YN/e115e1de25de8693de53a1ddc19e1b76/3x2x.png 2x'
-          }
-        />
+        <CardBg />
         <HorizontalCard
           src={
             'https://images.ctfassets.net/r0lccig03c53/6JGYDfr4uVgoqa5p3Wdfvd/4df7326398669bd3de7b8119bbe27a38/__________________________2020-05-26____17.31_1.svg'
