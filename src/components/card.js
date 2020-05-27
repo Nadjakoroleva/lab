@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const CardContainer = styled.div`
-  height: 570px;
+  height: 580px;
   background-color: #000000;
   padding: 28px 32px;
   display: flex;
@@ -52,7 +52,7 @@ const TagContainer = styled.div`
 
 const Frame = styled.div`
   width: 514px;
-  height: 528px;
+  height: 340px;
   background-color: #00000;
   margin: 0 auto;
   display: flex;
