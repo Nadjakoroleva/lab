@@ -19,6 +19,7 @@ const Container = styled.div`
 const Text = styled.div`
   font-family: 'Arrival Mono';
   width: max-content;
+  letter-spacing: 0.06em;
   font-size: 11px;
   line-height: 18px;
   text-transform: uppercase;

@@ -12,6 +12,8 @@ const Container = styled.div`
   padding-left: 64px;
   padding-right: 64px;
   padding-top: 64px;
+  max-width: 1680px;
+  margin: 0 auto;
 `;
 const Nav = styled.div`
   display: flex;
@@ -34,28 +36,37 @@ const Divider = styled.div`
 `;
 
 const Desc = styled.div`
-  display: flex;
-  justify-content: space-between;
   padding-bottom: 128px;
+  @media (min-width: 1024px) {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 const H2 = styled.h2`
   font-size: 24px;
   line-height: 32px;
-  width: 50%;
+  padding-bottom: 32px;
+  @media (min-width: 1024px) {
+    padding-bottom: 0;
+    width: 50%;
+  }
 `;
 
 const CardContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(642px, 1fr));
   padding-left: 32px;
+  margin-right: 32px;
+  margin-bottom: 32px;
+  max-width: 1680px;
+  margin: 0 auto;
+  @media (max-width: 1320px) {
+    grid-template-columns: repeat(auto-fit, minmax(476px, 1fr));
+  }
 `;
 
 const IndexPage = () => {
-  const handleClick = () => {
-    console.log('click');
-  };
-
   return (
     <>
       <GlobalStyle />
@@ -115,14 +126,16 @@ const IndexPage = () => {
             'https://images.ctfassets.net/r0lccig03c53/6JGYDfr4uVgoqa5p3Wdfvd/4df7326398669bd3de7b8119bbe27a38/__________________________2020-05-26____17.31_1.svg'
           }
         />
-        <FullWidthCard
-          src={
-            'https://images.ctfassets.net/r0lccig03c53/21MO0tZlDPebyNDfSFeFeP/306b60ab02f0c0e360273ad4f7d75298/4x1x.jpg'
-          }
-          srcSet={
-            'https://images.ctfassets.net/r0lccig03c53/3htYRjgQqCHI62sL0EX0no/cb78249f3eea66b19c370cae2e97720f/4x2x.jpg 2x'
-          }
-        />
+      </CardContainer>
+      {/* <FullWidthCard
+        src={
+          'https://images.ctfassets.net/r0lccig03c53/21MO0tZlDPebyNDfSFeFeP/306b60ab02f0c0e360273ad4f7d75298/4x1x.jpg'
+        }
+        srcSet={
+          'https://images.ctfassets.net/r0lccig03c53/3htYRjgQqCHI62sL0EX0no/cb78249f3eea66b19c370cae2e97720f/4x2x.jpg 2x'
+        }
+      /> */}
+      <CardContainer>
         <HorizontalCard
           src={
             'https://images.ctfassets.net/r0lccig03c53/1VdUWGLywceAMoqGnRwyr2/dac93f22766294259ea7090a6b15b4dd/5x2x.jpg'
@@ -139,15 +152,15 @@ const IndexPage = () => {
             'https://images.ctfassets.net/r0lccig03c53/baqlIiqdELBWOVnn73Gwh/6838b289970ee318e2387c290ccfdb01/6x2x.png 2x'
           }
         />
-        <FullWidthCard
-          src={
-            'https://images.ctfassets.net/r0lccig03c53/4KxRFvBRHK2e2mE88GnvIK/3dfb184915288de1858e91681daecb60/7x1x.png'
-          }
-          srcSet={
-            'https://images.ctfassets.net/r0lccig03c53/40prqUyZTKFwRKePezv2AN/663f17b99fe487e5dc12523ddddbda98/7x2x.png 2x'
-          }
-        />
       </CardContainer>
+      <FullWidthCard
+        src={
+          'https://images.ctfassets.net/r0lccig03c53/4KxRFvBRHK2e2mE88GnvIK/3dfb184915288de1858e91681daecb60/7x1x.png'
+        }
+        srcSet={
+          'https://images.ctfassets.net/r0lccig03c53/40prqUyZTKFwRKePezv2AN/663f17b99fe487e5dc12523ddddbda98/7x2x.png 2x'
+        }
+      />
     </>
   );
 };

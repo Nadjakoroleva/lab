@@ -2,24 +2,27 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const CardContainer = styled.div`
-  width: 100%;
   height: 720px;
   background-color: #000000;
   padding: 28px 32px;
-  margin-bottom: 32px;
-  margin-right: 32px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
+  margin: 32px;
+  @media (min-width: 1620px) {
+    max-width: 1616px;
+    margin: 32px auto;
+  }
 `;
 
 const Tag = styled.p`
   font-family: 'Arrival Mono';
+  letter-spacing: 0.06em;
   font-size: 11px;
   line-height: 18px;
   text-transform: uppercase;
-  color: #f3f3f3;
+  color: rgba(255, 255, 255, 0.59);
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   ${CardContainer}:hover & {
@@ -33,18 +36,27 @@ const TagContainer = styled.div`
 `;
 
 const Frame = styled.div`
-  width: 1060px;
-  height: 448px;
   background-color: #00000;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-itens: center;
+  width: 380px;
+  height: 437px;
+}
+@media (min-width: 768px) {
+  width: 528px;
+}
+@media (min-width: 1366px) {
+  width: 1060px;
+}
 `;
+
 const Title = styled.p`
   font-size: 18px;
   line-height: 24px;
+  color: #f8f8f8;
   width: 28%;
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
