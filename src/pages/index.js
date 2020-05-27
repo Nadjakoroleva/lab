@@ -9,11 +9,19 @@ import '../components/fonts.css';
 
 const Container = styled.div`
   color: #f3f3f3;
-  padding-left: 64px;
-  padding-right: 64px;
-  padding-top: 64px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
   max-width: 1680px;
   margin: 0 auto;
+  @media (min-width: 1024px) {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+  @media (min-width: 1280px) {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
 `;
 const Nav = styled.div`
   display: flex;
@@ -24,8 +32,13 @@ const TagContainer = styled.div`
   padding-top: 64px;
   display: flex;
   flex-wrap: wrap;
-  width: 45%;
   padding-bottom: 48px;
+  @media (min-width: 768px) {
+    width: 65%;
+  }
+  @media (min-width: 1024px) {
+    width: 45%;
+  }
 `;
 
 const Divider = styled.div`
@@ -36,10 +49,14 @@ const Divider = styled.div`
 `;
 
 const Desc = styled.div`
-  padding-bottom: 128px;
+  padding-bottom: 48px;
+  @media (min-width: 768px) {
+    padding-bottom: 96px;
+  }
   @media (min-width: 1024px) {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 128px;
   }
 `;
 
@@ -55,15 +72,33 @@ const H2 = styled.h2`
 
 const CardContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(642px, 1fr));
-  padding-left: 32px;
-  margin-right: 32px;
-  margin-bottom: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  padding-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
   max-width: 1680px;
   margin: 0 auto;
-  @media (max-width: 1320px) {
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+  }
+  @media (min-width: 768px) {
+    padding-left: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(642px, 1fr));
+  }
+  @media (min-width: 1024px) {
+    padding-left: 24px;
     grid-template-columns: repeat(auto-fit, minmax(476px, 1fr));
   }
+  @media (min-width: 1280px) {
+    padding-left: 32px;
+  }
+  @media (min-width: 1320px) {
+    grid-template-columns: repeat(auto-fit, minmax(642px, 1fr));
+  }
+`;
+
+const Footer = styled.div`
+  height: 150px;
 `;
 
 const IndexPage = () => {
@@ -127,21 +162,21 @@ const IndexPage = () => {
           }
         />
       </CardContainer>
-      {/* <FullWidthCard
+      <FullWidthCard
         src={
           'https://images.ctfassets.net/r0lccig03c53/21MO0tZlDPebyNDfSFeFeP/306b60ab02f0c0e360273ad4f7d75298/4x1x.jpg'
         }
         srcSet={
           'https://images.ctfassets.net/r0lccig03c53/3htYRjgQqCHI62sL0EX0no/cb78249f3eea66b19c370cae2e97720f/4x2x.jpg 2x'
         }
-      /> */}
+      />
       <CardContainer>
         <HorizontalCard
           src={
             'https://images.ctfassets.net/r0lccig03c53/1VdUWGLywceAMoqGnRwyr2/dac93f22766294259ea7090a6b15b4dd/5x2x.jpg'
           }
           srcSet={
-            'https://images.ctfassets.net/r0lccig03c53/baqlIiqdELBWOVnn73Gwh/6838b289970ee318e2387c290ccfdb01/6x2x.png 2x'
+            'https://images.ctfassets.net/r0lccig03c53/baqlIiqdELBWOVnn73Gwh/6838b289970ee318e2387c290ccfdb01/5x2x.png 2x'
           }
         />
         <HorizontalCard
@@ -161,6 +196,7 @@ const IndexPage = () => {
           'https://images.ctfassets.net/r0lccig03c53/40prqUyZTKFwRKePezv2AN/663f17b99fe487e5dc12523ddddbda98/7x2x.png 2x'
         }
       />
+      <Footer />
     </>
   );
 };

@@ -2,16 +2,26 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const CardContainer = styled.div`
-  // width: 642px;
-  height: 720px;
+  height: 550px;
   background-color: #000000;
   padding: 28px 32px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-  margin-top: 32px;
-  margin-right: 32px;
+  margin-top: 20px;
+  margin-right: 20px;
+  @media (min-width: 768px) {
+    height: 629px;
+    margin-right: 24px;
+    margin-top: 24px;
+  }
+  @media (min-width: 1280px) {
+    height: 720px;
+    margin-right: 32px;
+    margin-bottom: 32px;
+    margin-top: 0;
+  }
 `;
 
 const Tag = styled.p`
@@ -21,11 +31,18 @@ const Tag = styled.p`
   line-height: 18px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.59);
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  @media (min-width: 1280px) {
+    opacity: 0;
+  }
   ${CardContainer}:hover & {
     opacity: 1;
   }
+`;
+
+const Date = styled(Tag)`
+  padding-left: 28px;
 `;
 
 const TagContainer = styled.div`
@@ -58,9 +75,18 @@ const Title = styled.p`
   font-size: 18px;
   line-height: 24px;
   color: #f8f8f8;
-  width: 70%;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+  @media (min-width: 1024px) {
+    width: 80%;
+  }
+  @media (min-width: 1280px) {
+    opacity: 0;
+    width: 70%;
+  }
   ${CardContainer}:hover & {
     opacity: 1;
   }
@@ -77,7 +103,7 @@ const Card = ({ src, srcSet }) => {
       <CardContainer>
         <TagContainer>
           <Tag>Ui motion - sales master - by LENA SHESTEROVA</Tag>
-          <Tag>15 min ago</Tag>
+          <Date>15&nbsp;min&nbsp;ago</Date>
         </TagContainer>
         <Frame>
           <Img src={src} srcSet={srcSet} />
