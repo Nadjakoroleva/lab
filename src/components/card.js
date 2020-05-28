@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import Mute from './mute';
 
 const CardContainer = styled.div`
-  height: 580px;
+  min-height: 580px;
   background-color: #000000;
   padding: 28px 32px;
   display: flex;
@@ -13,12 +13,12 @@ const CardContainer = styled.div`
   margin-top: 20px;
   margin-right: 20px;
   @media (min-width: 768px) {
-    height: 629px;
+    min-height: 629px;
     margin-right: 24px;
     margin-top: 24px;
   }
   @media (min-width: 1280px) {
-    height: 720px;
+    min-height: 720px;
     margin-right: 32px;
     margin-bottom: 32px;
     margin-top: 0;

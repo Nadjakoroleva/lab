@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const CardContainer = styled.div`
-  height: 580px;
+  min-height: 580px;
   background-color: #000000;
   padding: 28px 32px;
   display: flex;
@@ -11,13 +11,13 @@ const CardContainer = styled.div`
   cursor: pointer;
   margin: 20px 20px 0 20px;
   @media (min-width: 768px) {
-    height: 629px;
+    min-height: 629px;
     margin: 24px 24px 0 24px;
   }
   @media (min-width: 1280px) {
     margin: 0 32px 32px 32px;
     max-width: 1616px;
-    height: 720px;
+    min-height: 720px;
   }
   @media (min-width: 1680px) {
     margin: 0 auto 32px auto;

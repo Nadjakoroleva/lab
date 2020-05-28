@@ -12,6 +12,7 @@ import VideoSrc3 from '../assets/video3.mp4';
 import VideoSrc4 from '../assets/video4.mp4';
 import VideoSrc5 from '../assets/video5.mp4';
 import VideoSrc6 from '../assets/video6.mp4';
+import CardPic from '../components/cardPic';
 import '../components/fonts.css';
 
 const Container = styled.div`
@@ -151,7 +152,7 @@ const IndexPage = () => {
         </Desc>
       </Container>
       <CardContainer>
-        <CardBg videoSrc={VideoSrc4} />
+        <CardPic />
         <CardBg videoSrc={VideoSrc2} />
         <CardBg videoSrc={VideoSrc} />
         <HorizontalCard
