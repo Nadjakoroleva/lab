@@ -492,15 +492,24 @@ const Volume = styled.div`
   }
 `;
 const Line = styled.div``;
-const MuteText = styled.p`
+const MuteText = styled.div`
   color: #f3f3f3;
-  margin-top: -2px;
-  font-family: 'Apercu Mono';
+  margin-top: 2px;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+  line-height: 18px;
+  text-transform: uppercase;
+  font-family: 'Arrival Mono';
   display: flex;
 `;
 
-const Unmute = styled.p`
-  font-family: 'Apercu Mono';
+const Unmute = styled.div`
+  color: #f3f3f3;
+  font-family: 'Arrival Mono';
+  letter-spacing: 0.06em;
+  font-size: 11px;
+  line-height: 18px;
+  text-transform: uppercase;
   opacity: ${({ isMuted }) => (isMuted ? 1 : 0)};
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
 `;
