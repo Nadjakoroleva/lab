@@ -14,6 +14,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 28px;
+  border-radius: 2px;
 `;
 
 const Text = styled.div`

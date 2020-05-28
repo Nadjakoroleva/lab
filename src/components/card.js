@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import Mute from './mute';
 
 const CardContainer = styled.div`
   height: 580px;
@@ -21,6 +22,9 @@ const CardContainer = styled.div`
     margin-right: 32px;
     margin-bottom: 32px;
     margin-top: 0;
+  }
+  &:hover {
+    box-shadow: 0px 0px 44px rgba(0, 0, 0, 0.95);
   }
 `;
 
@@ -106,7 +110,7 @@ const Card = ({ src, srcSet }) => {
           <Date>15&nbsp;min&nbsp;ago</Date>
         </TagContainer>
         <Frame>
-          <Img src={src} srcSet={srcSet} />
+          <Mute />
         </Frame>
         <Title>
           Blurred image for uploading blurred image Hello from the outside At

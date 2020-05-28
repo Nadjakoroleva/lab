@@ -26,11 +26,13 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-text-size-adjust: 100%;
     touch-action: manipulation;
     over-flow: hidden;
+    background-color: #0f1011;
   }
   body {
     font-family: 'Arrival';
     margin: 0;
     overflow: hidden;
+    background-color: #0f1011;
   }
   main {
     h1,h3,h4,h5,h6 {
@@ -265,7 +267,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
     color: white;
-    background-color: #23262C;
+    background-color: #0f1011;
     font-family: Arrival;
     font-weight: light;
     word-wrap: break-word;

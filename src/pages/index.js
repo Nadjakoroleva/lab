@@ -6,10 +6,17 @@ import Tag from '../components/tag';
 import HorizontalCard from '../components/card';
 import CardBg from '../components/cardBg';
 import FullWidthCard from '../components/fullWidthCard';
+import VideoSrc from '../assets/video1.mp4';
+import VideoSrc2 from '../assets/video2.mp4';
+import VideoSrc3 from '../assets/video3.mp4';
+import VideoSrc4 from '../assets/video4.mp4';
+import VideoSrc5 from '../assets/video5.mp4';
+import VideoSrc6 from '../assets/video6.mp4';
 import '../components/fonts.css';
 
 const Container = styled.div`
   color: #f3f3f3;
+  background-color: #0f1011;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 20px;
@@ -18,10 +25,12 @@ const Container = styled.div`
   @media (min-width: 1024px) {
     padding-left: 48px;
     padding-right: 48px;
+    padding-top: 48px;
   }
   @media (min-width: 1280px) {
     padding-left: 64px;
     padding-right: 64px;
+    padding-top: 64px;
   }
 `;
 const Nav = styled.div`
@@ -39,6 +48,9 @@ const TagContainer = styled.div`
   }
   @media (min-width: 1024px) {
     width: 45%;
+  }
+  @media (min-width: 1380px) {
+    padding-top: 0;
   }
 `;
 
@@ -73,7 +85,9 @@ const H2 = styled.h2`
 
 const CardContainer = styled.div`
   display: grid;
+  background-color: #0f1011;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(395px, 1fr));
   padding-left: 20px;
   margin-right: 20px;
   margin-bottom: 20px;
@@ -81,20 +95,24 @@ const CardContainer = styled.div`
   margin: 0 auto;
   @media (min-width: 480px) {
     grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(515px, 1fr));
   }
   @media (min-width: 768px) {
     padding-left: 24px;
     grid-template-columns: repeat(auto-fit, minmax(642px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(720px, 1fr));
   }
   @media (min-width: 1024px) {
     padding-left: 24px;
     grid-template-columns: repeat(auto-fit, minmax(476px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(629px, 1fr));
   }
   @media (min-width: 1280px) {
     padding-left: 32px;
   }
-  @media (min-width: 1320px) {
+  @media (min-width: 1380px) {
     grid-template-columns: repeat(auto-fit, minmax(642px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(720px, 1fr));
   }
 `;
 
@@ -133,63 +151,23 @@ const IndexPage = () => {
         </Desc>
       </Container>
       <CardContainer>
-        <HorizontalCard
-          src={
-            'https://images.ctfassets.net/r0lccig03c53/W4fdiBa5wG9IZh1H30mYM/3e5f83b93049061dcf3671ff1ab0bd4e/__________________________2020-05-18____12.26_1.jpg'
-          }
-          srcSet={
-            'https://images.ctfassets.net/r0lccig03c53/57CZhkXTxJGtrw5zbIK3a/501f0767616ed77c03f507279f096b4a/1x2x_1.jpg 2x'
-          }
-        />
-        <HorizontalCard
-          src={
-            'https://images.ctfassets.net/r0lccig03c53/6WacoMsTi8ggCOVuUq6W5w/70483a7d57f6d3303039b2ec114b90c0/2-1x.png'
-          }
-          srcSet={
-            'https://images.ctfassets.net/r0lccig03c53/1GfuJRaGy6BqZiuMORhgtb/0a16be7c7152dfd2fc85ce6b8b084c19/2-2x.png 2x'
-          }
-        />
-        <CardBg />
+        <CardBg videoSrc={VideoSrc4} />
+        <CardBg videoSrc={VideoSrc2} />
+        <CardBg videoSrc={VideoSrc} />
         <HorizontalCard
           src={
             'https://images.ctfassets.net/r0lccig03c53/6JGYDfr4uVgoqa5p3Wdfvd/4df7326398669bd3de7b8119bbe27a38/__________________________2020-05-26____17.31_1.svg'
           }
         />
       </CardContainer>
-      <FullWidthCard
-        src={
-          'https://images.ctfassets.net/r0lccig03c53/21MO0tZlDPebyNDfSFeFeP/306b60ab02f0c0e360273ad4f7d75298/4x1x.jpg'
-        }
-        srcSet={
-          'https://images.ctfassets.net/r0lccig03c53/3htYRjgQqCHI62sL0EX0no/cb78249f3eea66b19c370cae2e97720f/4x2x.jpg 2x'
-        }
-      />
+
+      <FullWidthCard videoSrc={VideoSrc6} />
+
       <CardContainer>
-        <HorizontalCard
-          src={
-            'https://images.ctfassets.net/r0lccig03c53/1VdUWGLywceAMoqGnRwyr2/dac93f22766294259ea7090a6b15b4dd/5x2x.jpg'
-          }
-          srcSet={
-            'https://images.ctfassets.net/r0lccig03c53/baqlIiqdELBWOVnn73Gwh/6838b289970ee318e2387c290ccfdb01/5x2x.png 2x'
-          }
-        />
-        <HorizontalCard
-          src={
-            'https://images.ctfassets.net/r0lccig03c53/2NN29KhY190ZeZ83ZtYjwh/c4a6195c57a15608b83c37b564a6e6ec/6x1x.png'
-          }
-          srcSet={
-            'https://images.ctfassets.net/r0lccig03c53/baqlIiqdELBWOVnn73Gwh/6838b289970ee318e2387c290ccfdb01/6x2x.png 2x'
-          }
-        />
+        <CardBg videoSrc={VideoSrc3} />
+        <CardBg videoSrc={VideoSrc5} />
       </CardContainer>
-      <FullWidthCard
-        src={
-          'https://images.ctfassets.net/r0lccig03c53/4KxRFvBRHK2e2mE88GnvIK/3dfb184915288de1858e91681daecb60/7x1x.png'
-        }
-        srcSet={
-          'https://images.ctfassets.net/r0lccig03c53/40prqUyZTKFwRKePezv2AN/663f17b99fe487e5dc12523ddddbda98/7x2x.png 2x'
-        }
-      />
+
       <Footer />
     </>
   );

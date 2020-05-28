@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
-import VideoSrc from '../assets/video.mp4';
 
 const CardContainer = styled.div`
   height: 580px;
@@ -22,6 +21,9 @@ const CardContainer = styled.div`
     margin-right: 32px;
     margin-bottom: 32px;
     margin-top: 0;
+  }
+  &:hover {
+    box-shadow: 0px 0px 44px rgba(0, 0, 0, 0.95);
   }
 `;
 
@@ -104,7 +106,6 @@ const Bg = styled.div`
   height: 100%;
   background-size: cover;
   background-repeat-y: no-repeat;
-  // background-image: url(https://images.ctfassets.net/r0lccig03c53/45oyLMjtKjRueGm0kVS6YN/e115e1de25de8693de53a1ddc19e1b76/3x2x.png);
 `;
 
 const Video = styled.video`
@@ -126,7 +127,7 @@ const Iframe = styled.iframe`
   border: 0;
 `;
 
-const Card = ({ src, srcSet }) => {
+const Card = ({ src, srcSet, videoSrc }) => {
   const videoPlayer = useRef(null);
 
   const handleOnMouseDown = () => {
@@ -152,7 +153,7 @@ const Card = ({ src, srcSet }) => {
               loop
               autoPlay={false}
               muted={true}
-              src={VideoSrc}
+              src={videoSrc}
               onMouseOut={handleOnMouseDown}
               onMouseOver={handleOnMouseUp}
             />
