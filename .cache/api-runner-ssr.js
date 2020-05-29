@@ -3,7 +3,7 @@ var plugins = [{
       options: {"plugins":[]},
     },{
       plugin: require('/Users/nadjakoroleva/Desktop/lab/node_modules/gatsby-plugin-manifest/gatsby-ssr'),
-      options: {"plugins":[],"name":"gatsby-starter-default","short_name":"starter","start_url":"/","background_color":"#1E1F22","theme_color":"#1E1F22","display":"minimal-ui","icon":"src/images/gatsby-icon.png"},
+      options: {"plugins":[],"name":"gatsby-starter-default","short_name":"starter","start_url":"/","background_color":"#0f1011;","theme_color":"#0f1011","display":"minimal-ui","icon":"src/images/gatsby-icon.png"},
     },{
       plugin: require('/Users/nadjakoroleva/Desktop/lab/node_modules/gatsby-plugin-styled-components/gatsby-ssr'),
       options: {"plugins":[]},

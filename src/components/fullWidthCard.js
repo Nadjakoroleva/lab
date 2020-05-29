@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
+import Animation from './firstScreenAnimation';
 
 const CardContainer = styled.div`
   min-height: 580px;
@@ -128,16 +129,7 @@ const Card = ({ src, srcSet, videoSrc }) => {
         </TagContainer>
         <Frame>
           <Bg>
-            <Video
-              ref={videoPlayer}
-              playsinline
-              loop
-              autoPlay={false}
-              muted={true}
-              src={videoSrc}
-              onMouseOut={handleOnMouseDown}
-              onMouseOver={handleOnMouseUp}
-            />
+            <Animation />
           </Bg>
         </Frame>
         <Title>
