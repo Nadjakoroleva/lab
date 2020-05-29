@@ -76,6 +76,7 @@ const Title = styled.p`
   font-size: 18px;
   line-height: 24px;
   color: #f8f8f8;
+  letter-spacing: 0.04em;
   opacity: 1;
   @media (min-width: 768px) {
     width: 50%;

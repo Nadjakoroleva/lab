@@ -78,6 +78,7 @@ const Title = styled.p`
   font-size: 18px;
   line-height: 24px;
   color: #f8f8f8;
+  letter-spacing: 0.04em;
   opacity: 1;
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   @media (min-width: 768px) {

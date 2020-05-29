@@ -78,6 +78,7 @@ const Frame = styled.div`
 const Title = styled.p`
   font-size: 18px;
   line-height: 24px;
+  letter-spacing: 0.04em;
   color: #f8f8f8;
   opacity: 1;
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);

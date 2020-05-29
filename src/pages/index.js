@@ -6,12 +6,10 @@ import Tag from '../components/tag';
 import HorizontalCard from '../components/card';
 import CardBg from '../components/cardBg';
 import FullWidthCard from '../components/fullWidthCard';
-import VideoSrc from '../assets/video1.mp4';
-import VideoSrc2 from '../assets/video2.mp4';
-import VideoSrc3 from '../assets/video3.mp4';
-import VideoSrc4 from '../assets/video4.mp4';
-import VideoSrc5 from '../assets/video5.mp4';
-import VideoSrc6 from '../assets/video6.mp4';
+import VideoSrc from '../assets/1.mp4';
+import VideoSrc2 from '../assets/2.mp4';
+import VideoSrc3 from '../assets/3.mp4';
+import VideoSrc5 from '../assets/5.mp4';
 import CardPic from '../components/cardPic';
 import '../components/fonts.css';
 
@@ -153,19 +151,16 @@ const IndexPage = () => {
       </Container>
       <CardContainer>
         <CardPic />
-        <CardBg videoSrc={VideoSrc2} />
+        <CardBg videoSrc={VideoSrc3} />
         <CardBg videoSrc={VideoSrc} />
-        <HorizontalCard
-          src={
-            'https://images.ctfassets.net/r0lccig03c53/6JGYDfr4uVgoqa5p3Wdfvd/4df7326398669bd3de7b8119bbe27a38/__________________________2020-05-26____17.31_1.svg'
-          }
-        />
+
+        <HorizontalCard />
       </CardContainer>
 
-      <FullWidthCard videoSrc={VideoSrc6} />
+      <FullWidthCard />
 
       <CardContainer>
-        <CardBg videoSrc={VideoSrc3} />
+        <CardBg videoSrc={VideoSrc2} />
         <CardBg videoSrc={VideoSrc5} />
       </CardContainer>
 
