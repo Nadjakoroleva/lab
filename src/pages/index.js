@@ -50,6 +50,7 @@ const TagContainer = styled.div`
   }
   @media (min-width: 1380px) {
     padding-top: 0;
+    width: 43%;
   }
 `;
 
