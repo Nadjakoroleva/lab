@@ -4,8 +4,8 @@ import styled, { keyframes, css } from 'styled-components';
 const Container = styled.button`
   background-color: ${({ isClicked }) =>
     isClicked ? '#f3f3f3' : 'rgba(243, 243, 243, 0.16)'};
-  transition: background-color 0.5s cubic-bezier(0.76, 0, 0.24, 1),
-    width 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  transition: background-color 0.3s cubic-bezier(0.76, 0, 0.24, 1),
+    width 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   border: none;
   padding: 4px 12px 3px 12px;
   margin-left: 4px;
@@ -27,7 +27,7 @@ const Text = styled.div`
   font-size: 11px;
   line-height: 18px;
   text-transform: uppercase;
-  transition: color 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  transition: color 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   color: ${({ isClicked }) => (isClicked ? '#23262C' : '#f3f3f3')};
 `;
 
@@ -42,7 +42,7 @@ const opacity = keyframes`
 }
 `;
 const Img = styled.img`
-  transition: opacity 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   display: ${({ isClicked }) => (isClicked ? 'block' : 'none')};
   padding-bottom: 2px;
   padding-left: 10px;
