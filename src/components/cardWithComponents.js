@@ -40,9 +40,9 @@ const Tag = styled.p`
   @media (min-width: 1280px) {
     opacity: 0;
   }
-  ${CardContainer}:hover & {
-    opacity: 1;
-  }
+  // ${CardContainer}:hover & {
+  //   opacity: 1;
+  // }
 `;
 
 const Date = styled(Tag)`
@@ -92,9 +92,9 @@ const Title = styled.p`
     opacity: 0;
     width: 70%;
   }
-  ${CardContainer}:hover & {
-    opacity: 1;
-  }
+  // ${CardContainer}:hover & {
+  //   opacity: 1;
+  // }
 `;
 
 const Img = styled.img`

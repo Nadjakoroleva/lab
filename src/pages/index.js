@@ -3,14 +3,14 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import { GlobalStyle } from '../components/globalStyle';
 import Tag from '../components/tag';
-import HorizontalCard from '../components/card';
-import CardBg from '../components/cardBg';
+import CardWithComponents from '../components/cardWithComponents';
+import CardWithVideo from '../components/cardWithVideo';
+import CardWithImage from '../components/cardWithImage';
 import FullWidthCard from '../components/fullWidthCard';
 import VideoSrc from '../assets/1.mp4';
 import VideoSrc2 from '../assets/2.mp4';
 import VideoSrc3 from '../assets/3.mp4';
 import VideoSrc5 from '../assets/5.mp4';
-import CardPic from '../components/cardPic';
 import '../components/fonts.css';
 
 const Container = styled.div`
@@ -130,39 +130,71 @@ const IndexPage = () => {
           <img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=48" />
         </Nav>
         <TagContainer>
-          <Tag name={'arrival.com'} />
-          <Tag name={'brand'} />
-          <Tag name={'connectivity'} />
-          <Tag name={'ARTEM&nbsp;TARADASH'} />
-          <Tag name={'brand'} />
-          <Tag name={'nadja&nbsp;koroleva'} />
-          <Tag name={'lena&nbsp;shesterova'} />
-          <Tag name={'connectivity'} />
+          <Tag
+            name={'arrival.com'}
+            defaultColor={'rgba(243, 243, 243, 0.16)'}
+            color={'#f3f3f3'}
+          />
+          <Tag
+            name={'brand'}
+            defaultColor={'rgba(243, 243, 243, 0.16)'}
+            color={'#f3f3f3'}
+          />
+          <Tag
+            name={'connectivity'}
+            defaultColor={'rgba(243, 243, 243, 0.16)'}
+            color={'#f3f3f3'}
+          />
+          <Tag
+            name={'ARTEM&nbsp;TARADASH'}
+            defaultColor={'rgba(243, 243, 243, 0.16)'}
+            color={'#f3f3f3'}
+          />
+          <Tag
+            name={'brand'}
+            defaultColor={'rgba(243, 243, 243, 0.16)'}
+            color={'#f3f3f3'}
+          />
+          <Tag
+            name={'nadja&nbsp;koroleva'}
+            defaultColor={'rgba(243, 243, 243, 0.16)'}
+            color={'#f3f3f3'}
+          />
+          <Tag
+            name={'lena&nbsp;shesterova'}
+            defaultColor={'rgba(243, 243, 243, 0.16)'}
+            color={'#f3f3f3'}
+          />
+          <Tag
+            name={'connectivity'}
+            defaultColor={'rgba(243, 243, 243, 0.16)'}
+            color={'#f3f3f3'}
+          />
         </TagContainer>
         <Divider />
         <Desc>
           <H2>Design Lab</H2>
           <H2>
-            Jessica Vance, a Prototype Engineer at Arrival, began life in a
-            small village in County Donegal, Ireland but knew she was destined
+            Jessica Vance, kfkfk a Prototype Engineer at Arrival, began life in
+            a small village in County Donegal, Ireland but knew she was destined
             for bigger things. Now she is striving to make the planet a better
             place, leaving a legacy for future generations.
           </H2>
         </Desc>
       </Container>
       <CardContainer>
-        <CardPic />
-        <CardBg videoSrc={VideoSrc3} />
-        <CardBg videoSrc={VideoSrc} />
+        <CardWithImage />
+        <CardWithVideo videoSrc={VideoSrc3} />
+        <CardWithVideo videoSrc={VideoSrc} />
 
-        <HorizontalCard />
+        <CardWithComponents />
       </CardContainer>
 
       <FullWidthCard />
 
       <CardContainer>
-        <CardBg videoSrc={VideoSrc2} />
-        <CardBg videoSrc={VideoSrc5} />
+        <CardWithVideo videoSrc={VideoSrc2} />
+        <CardWithVideo videoSrc={VideoSrc5} />
       </CardContainer>
 
       <Footer />

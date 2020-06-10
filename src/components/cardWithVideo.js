@@ -1,21 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 
-const blur = keyframes`
-from {
-    filter: blur(50px);
- }
- to {
-     filter: blur(0px);
- }
-`;
-
-const scale = keyframes`
-{
-    from {transform: scale(1.5)}
-    to {transform: scale(1)}
-  }`;
-
 const CardContainer = styled.div`
   min-height: 580px;
   background-color: #000000;
@@ -54,9 +39,9 @@ const Tag = styled.p`
   @media (min-width: 1280px) {
     opacity: 0;
   }
-  ${CardContainer}:hover & {
-    opacity: 1;
-  }
+  // ${CardContainer}:hover & {
+  //   opacity: 1;
+  // }
 `;
 
 const Date = styled(Tag)`
@@ -71,7 +56,6 @@ const TagContainer = styled.div`
 const Frame = styled.div`
   width: 514px;
   height: 340px;
-  overflow: hidden;
   background-color: #00000;
   margin: 0 auto;
   display: flex;
@@ -93,8 +77,8 @@ const Frame = styled.div`
 const Title = styled.p`
   font-size: 18px;
   line-height: 24px;
-  letter-spacing: 0.04em;
   color: #f8f8f8;
+  letter-spacing: 0.04em;
   opacity: 1;
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   @media (min-width: 768px) {
@@ -107,19 +91,14 @@ const Title = styled.p`
     opacity: 0;
     width: 70%;
   }
-  ${CardContainer}:hover & {
-    opacity: 1;
-  }
+  // ${CardContainer}:hover & {
+  //   opacity: 1;
+  // }
 `;
 
 const Img = styled.img`
   object-fit: contain;
   height: 100%;
-  overflow: hidden;
-  ${CardContainer}:hover & {
-    animation: ${blur} 4s cubic-bezier(0.76, 0, 0.24, 1) forwards,
-      ${scale} 4s cubic-bezier(0.76, 0, 0.24, 1) forwards;
-  }
 `;
 
 const Bg = styled.div`
@@ -130,17 +109,57 @@ const Bg = styled.div`
   background-repeat-y: no-repeat;
 `;
 
+const Video = styled.video`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+`;
+
+const Iframe = styled.iframe`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border: 0;
+`;
+
 const Card = ({ src, srcSet, videoSrc }) => {
+  const videoPlayer = useRef(null);
+
+  const handleOnMouseDown = () => {
+    videoPlayer.current.pause();
+  };
+  const handleOnMouseUp = () => {
+    videoPlayer.current.play();
+  };
+
   const handleAutoplay = () => {};
   return (
     <>
-      <CardContainer>
+      <CardContainer onClick={handleAutoplay}>
         <TagContainer>
           <Tag>Ui motion - sales master - by LENA SHESTEROVA</Tag>
           <Date>15&nbsp;min&nbsp;ago</Date>
         </TagContainer>
         <Frame>
-          <Img src="https://images.ctfassets.net/r0lccig03c53/p9ewUrhvGBNL0LJVfzDfM/a475c9306b7557a4898831dec8b31a69/Img.jpg" />
+          <Bg>
+            <Video
+              ref={videoPlayer}
+              playsinline
+              loop
+              autoPlay={false}
+              muted={true}
+              src={videoSrc}
+              onMouseOut={handleOnMouseDown}
+              onMouseOver={handleOnMouseUp}
+            />
+          </Bg>
         </Frame>
         <Title>
           Blurred image for uploading blurred image Hello from the outside At

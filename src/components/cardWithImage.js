@@ -1,7 +1,25 @@
 import React, { useEffect, useState, useRef } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
+import ExpendedCards from './expendedCard';
+
+const blur = keyframes`
+from {
+    filter: blur(50px);
+ }
+ to {
+     filter: blur(0px);
+ }
+`;
+
+const scale = keyframes`
+{
+    from {transform: scale(1.5)}
+    to {transform: scale(1)}
+  }`;
 
 const CardContainer = styled.div`
+  position: relative;
+  z-index: 1;
   min-height: 580px;
   background-color: #000000;
   padding: 28px 32px;
@@ -39,9 +57,9 @@ const Tag = styled.p`
   @media (min-width: 1280px) {
     opacity: 0;
   }
-  ${CardContainer}:hover & {
-    opacity: 1;
-  }
+  // ${CardContainer}:hover & {
+  //   opacity: 1;
+  // }
 `;
 
 const Date = styled(Tag)`
@@ -56,6 +74,7 @@ const TagContainer = styled.div`
 const Frame = styled.div`
   width: 514px;
   height: 340px;
+  overflow: hidden;
   background-color: #00000;
   margin: 0 auto;
   display: flex;
@@ -77,8 +96,8 @@ const Frame = styled.div`
 const Title = styled.p`
   font-size: 18px;
   line-height: 24px;
-  color: #f8f8f8;
   letter-spacing: 0.04em;
+  color: #f8f8f8;
   opacity: 1;
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   @media (min-width: 768px) {
@@ -91,74 +110,69 @@ const Title = styled.p`
     opacity: 0;
     width: 70%;
   }
-  ${CardContainer}:hover & {
-    opacity: 1;
-  }
+  // ${CardContainer}:hover & {
+  //   opacity: 1;
+  // }
 `;
 
 const Img = styled.img`
   object-fit: contain;
   height: 100%;
+  overflow: hidden;
+  ${CardContainer}:hover & {
+    animation: ${blur} 4s cubic-bezier(0.76, 0, 0.24, 1) forwards,
+      ${scale} 4s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  }
 `;
 
-const Bg = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-repeat-y: no-repeat;
-`;
-
-const Video = styled.video`
+const ExpendedCardsConatiner = styled.div`
+  cursor: pointer;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 8vh;
+  right: 0;
+  width: 90vw;
   height: 100%;
-  object-fit: contain;
+
+  z-index: ${({ isClicked }) => (isClicked ? `10` : ``)};
+  opacity: ${({ isClicked }) => (isClicked ? 1 : 0)};
+  transform: ${({ isClicked }) =>
+    isClicked ? `translateY(0)` : `translateY(100px)`};
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1),
+    transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
 `;
 
-const Iframe = styled.iframe`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border: 0;
-`;
+const Modal = styled.div``;
 
-const Card = ({ src, srcSet, videoSrc }) => {
-  const videoPlayer = useRef(null);
+const Card = ({}) => {
+  const [isClicked, setIsClicked] = useState(false);
 
-  const handleOnMouseDown = () => {
-    videoPlayer.current.pause();
-  };
-  const handleOnMouseUp = () => {
-    videoPlayer.current.play();
+  const handleClick = () => {
+    setIsClicked(true);
   };
 
-  const handleAutoplay = () => {};
+  const closeCards = () => {
+    setIsClicked(false);
+  };
   return (
     <>
-      <CardContainer onClick={handleAutoplay}>
+      <ExpendedCardsConatiner isClicked={isClicked} onClick={closeCards}>
+        <Modal isClicked={isClicked}>
+          <ExpendedCards />
+          <ExpendedCards />
+          <ExpendedCards />
+          <ExpendedCards />
+          <ExpendedCards />
+          <ExpendedCards />
+          <ExpendedCards />
+        </Modal>
+      </ExpendedCardsConatiner>
+      <CardContainer onClick={handleClick}>
         <TagContainer>
           <Tag>Ui motion - sales master - by LENA SHESTEROVA</Tag>
           <Date>15&nbsp;min&nbsp;ago</Date>
         </TagContainer>
         <Frame>
-          <Bg>
-            <Video
-              ref={videoPlayer}
-              playsinline
-              loop
-              autoPlay={false}
-              muted={true}
-              src={videoSrc}
-              onMouseOut={handleOnMouseDown}
-              onMouseOver={handleOnMouseUp}
-            />
-          </Bg>
+          <Img src="https://images.ctfassets.net/r0lccig03c53/p9ewUrhvGBNL0LJVfzDfM/a475c9306b7557a4898831dec8b31a69/Img.jpg" />
         </Frame>
         <Title>
           Blurred image for uploading blurred image Hello from the outside At
