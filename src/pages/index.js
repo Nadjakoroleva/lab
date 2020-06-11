@@ -143,10 +143,10 @@ const IndexPage = () => {
         <Desc>
           <H2>Design Lab</H2>
           <H2>
-            Jessica Vance, a Prototype Engineer at Arrival, began life in a
-            small village in County Donegal, Ireland but knew she was destined
-            for bigger things. Now she is striving to make the planet a better
-            place, leaving a legacy for future generations.
+            Every idea worth discussion, every pixel matters. With these
+            principles at the core, Design Lab meant to be a place to share
+            design artefacts between Arrival teams, no matter how ready to be
+            public they are.
           </H2>
         </Desc>
       </Container>
