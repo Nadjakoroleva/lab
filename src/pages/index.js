@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
 
 import { GlobalStyle } from '../components/globalStyle';
 import Tag from '../components/tag';
@@ -12,6 +12,7 @@ import VideoSrc2 from '../assets/2.mp4';
 import VideoSrc3 from '../assets/3.mp4';
 import VideoSrc5 from '../assets/5.mp4';
 import '../components/fonts.css';
+import ExpendedCards from '../components/expendedCard';
 
 const Container = styled.div`
   color: #f3f3f3;
@@ -83,7 +84,7 @@ const H2 = styled.h2`
   }
 `;
 
-const CardContainer = styled.div`
+const CardContainerMain = styled.div`
   display: grid;
   background-color: #0f1011;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -120,10 +121,177 @@ const Footer = styled.div`
   height: 150px;
 `;
 
+//card with Image
+const blur = keyframes`
+from {
+    filter: blur(50px);
+ }
+ to {
+     filter: blur(0px);
+ }
+`;
+
+const scale = keyframes`
+{
+    from {transform: scale(1.5)}
+    to {transform: scale(1)}
+  }`;
+
+const CardContainer = styled.div`
+  position: relative;
+  z-index: 1;
+  min-height: 580px;
+  background-color: #000000;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 20px;
+  @media (min-width: 768px) {
+    min-height: 629px;
+    margin-right: 24px;
+    margin-top: 24px;
+  }
+  @media (min-width: 1280px) {
+    min-height: 720px;
+    margin-right: 32px;
+    margin-bottom: 32px;
+    margin-top: 0;
+  }
+  &:hover {
+    box-shadow: 0px 0px 44px rgba(0, 0, 0, 0.95);
+  }
+`;
+
+const TagInner = styled.p`
+  font-family: 'Arrival Mono';
+  letter-spacing: 0.06em;
+  font-size: 11px;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.59);
+  opacity: 1;
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  @media (min-width: 1280px) {
+    opacity: 0;
+  }
+  // ${CardContainer}:hover & {
+  //   opacity: 1;
+  // }
+`;
+
+const Date = styled(Tag)`
+  padding-left: 28px;
+`;
+
+const TagContainerInner = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Frame = styled.div`
+  width: 514px;
+  height: 340px;
+  overflow: hidden;
+  background-color: #00000;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-itens: center;
+  @media (max-width: 1320px) {
+    width: 428px;
+    height: 437px;
+  }
+  @media (max-width: 1030px) {
+    width: 380px;
+  }
+  @media (max-width: 480px) {
+    width: 227px;
+    height: 232px;
+  }
+`;
+const Title = styled.p`
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+  color: #f8f8f8;
+  opacity: 1;
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+  @media (min-width: 1024px) {
+    width: 80%;
+  }
+  @media (min-width: 1280px) {
+    opacity: 0;
+    width: 70%;
+  }
+  // ${CardContainer}:hover & {
+  //   opacity: 1;
+  // }
+`;
+
+const Img = styled.img`
+  object-fit: contain;
+  height: 100%;
+  overflow: hidden;
+  ${CardContainer}:hover & {
+    animation: ${blur} 4s cubic-bezier(0.76, 0, 0.24, 1) forwards,
+      ${scale} 4s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  }
+`;
+
+const ExpendedCardsConatiner = styled.div`
+  cursor: pointer;
+  position: absolute;
+  top: 8vh;
+  right: 0;
+  width: 90vw;
+  height: 100%;
+
+  z-index: ${({ isClicked }) => (isClicked ? `10` : ``)};
+  opacity: ${({ isClicked }) => (isClicked ? 1 : 0)};
+  transform: ${({ isClicked }) =>
+    isClicked ? `translateY(0)` : `translateY(100px)`};
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1),
+    transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+`;
+
+const Modal = styled.div``;
+
+const Layout = styled.div`
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(35, 38, 44, 0.59);
+  width: 100%;
+  height: 100%;
+  z-index: ${({ isClicked }) => (isClicked ? `10` : ``)};
+  opacity: ${({ isClicked }) => (isClicked ? `1` : `0`)};
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+`;
+
 const IndexPage = () => {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(true);
+  };
+
+  const closeCards = () => {
+    setIsClicked(false);
+  };
   return (
     <>
       <GlobalStyle />
+      <Layout isClicked={isClicked} onClick={closeCards} />
       <Container>
         <Nav>
           <img src="https://images.ctfassets.net/r0lccig03c53/3KaYO3nazk30Esi1vvoq3Q/70b2277694b956b0abf674b99d703b3b/White.svg?h=16" />
@@ -175,20 +343,43 @@ const IndexPage = () => {
         <Desc>
           <H2>Design Lab</H2>
           <H2>
-            Jessica Vance, kfkfk a Prototype Engineer at Arrival, began life in
-            a small village in County Donegal, Ireland but knew she was destined
-            for bigger things. Now she is striving to make the planet a better
-            place, leaving a legacy for future generations.
+            Every idea worth discussion, every pixel matters. With these
+            principles at the core, Design Lab meant to be a place to share
+            design artefacts between Arrival teams, no matter how ready to be
+            public they are.
           </H2>
         </Desc>
       </Container>
-      <CardContainer>
-        <CardWithImage />
+      <CardContainerMain>
+        <ExpendedCardsConatiner isClicked={isClicked}>
+          <Modal isClicked={isClicked}>
+            <ExpendedCards />
+            <ExpendedCards />
+            <ExpendedCards />
+            <ExpendedCards />
+            <ExpendedCards />
+            <ExpendedCards />
+            <ExpendedCards />
+          </Modal>
+        </ExpendedCardsConatiner>
+        <CardContainer onClick={handleClick}>
+          <TagContainerInner>
+            <TagInner>Ui motion - sales master - by LENA SHESTEROVA</TagInner>
+            {/* <Date>15&nbsp;min&nbsp;ago</Date> */}
+          </TagContainerInner>
+          <Frame>
+            <Img src="https://images.ctfassets.net/r0lccig03c53/p9ewUrhvGBNL0LJVfzDfM/a475c9306b7557a4898831dec8b31a69/Img.jpg" />
+          </Frame>
+          <Title>
+            Blurred image for uploading blurred image Hello from the outside At
+            least I can say{' '}
+          </Title>
+        </CardContainer>
         <CardWithVideo videoSrc={VideoSrc3} />
         <CardWithVideo videoSrc={VideoSrc} />
 
         <CardWithComponents />
-      </CardContainer>
+      </CardContainerMain>
 
       <FullWidthCard />
 
