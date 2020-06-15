@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import ExpendedCards from './expendedCard';
+import { store } from './store.js';
 
 const blur = keyframes`
 from {
@@ -145,9 +146,20 @@ const Modal = styled.div``;
 
 const Card = ({}) => {
   const [isClicked, setIsClicked] = useState(false);
+  const globalState = useContext(store);
+  const { dispatch, state } = globalState;
+  // const [isCardClicked, setIsCardClicked] = useState(state);
+
+  // useEffect(() => {
+  //   dispatch({ type: 'IS_CARD_CLICKED' });
+  // }, []);
+  console.log('CardInnerGlobalState', globalState.state);
+  // console.log('isCardClicked', isCardClicked.isClicked);
 
   const handleClick = () => {
     setIsClicked(true);
+    dispatch({ type: 'IS_CARD_CLICKED' });
+    // setIsCardClicked(true);
   };
 
   const closeCards = () => {

@@ -1,4 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  useReducer,
+  useContext,
+} from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
 import { GlobalStyle } from '../components/globalStyle';
@@ -12,6 +18,8 @@ import VideoSrc2 from '../assets/2.mp4';
 import VideoSrc3 from '../assets/3.mp4';
 import VideoSrc5 from '../assets/5.mp4';
 import '../components/fonts.css';
+import { StateProvider } from '../components/store.js';
+import { store } from '../components/store.js';
 
 const Container = styled.div`
   color: #f3f3f3;
@@ -121,83 +129,91 @@ const Footer = styled.div`
 `;
 
 const IndexPage = () => {
+  const globalState = useContext(store);
+  const { dispatch, state } = globalState;
+  // const [isCardClicked, setIsCardClicked] = useState(state);
+
+  console.log('mainPage', globalState);
+
   return (
     <>
-      <GlobalStyle />
-      <Container>
-        <Nav>
-          <img src="https://images.ctfassets.net/r0lccig03c53/3KaYO3nazk30Esi1vvoq3Q/70b2277694b956b0abf674b99d703b3b/White.svg?h=16" />
-          <img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=48" />
-        </Nav>
-        <TagContainer>
-          <Tag
-            name={'arrival.com'}
-            defaultColor={'rgba(243, 243, 243, 0.16)'}
-            color={'#f3f3f3'}
-          />
-          <Tag
-            name={'brand'}
-            defaultColor={'rgba(243, 243, 243, 0.16)'}
-            color={'#f3f3f3'}
-          />
-          <Tag
-            name={'connectivity'}
-            defaultColor={'rgba(243, 243, 243, 0.16)'}
-            color={'#f3f3f3'}
-          />
-          <Tag
-            name={'ARTEM&nbsp;TARADASH'}
-            defaultColor={'rgba(243, 243, 243, 0.16)'}
-            color={'#f3f3f3'}
-          />
-          <Tag
-            name={'brand'}
-            defaultColor={'rgba(243, 243, 243, 0.16)'}
-            color={'#f3f3f3'}
-          />
-          <Tag
-            name={'nadja&nbsp;koroleva'}
-            defaultColor={'rgba(243, 243, 243, 0.16)'}
-            color={'#f3f3f3'}
-          />
-          <Tag
-            name={'lena&nbsp;shesterova'}
-            defaultColor={'rgba(243, 243, 243, 0.16)'}
-            color={'#f3f3f3'}
-          />
-          <Tag
-            name={'connectivity'}
-            defaultColor={'rgba(243, 243, 243, 0.16)'}
-            color={'#f3f3f3'}
-          />
-        </TagContainer>
-        <Divider />
-        <Desc>
-          <H2>Design Lab</H2>
-          <H2>
-            Jessica Vance, kfkfk a Prototype Engineer at Arrival, began life in
-            a small village in County Donegal, Ireland but knew she was destined
-            for bigger things. Now she is striving to make the planet a better
-            place, leaving a legacy for future generations.
-          </H2>
-        </Desc>
-      </Container>
-      <CardContainer>
-        <CardWithImage />
-        <CardWithVideo videoSrc={VideoSrc3} />
-        <CardWithVideo videoSrc={VideoSrc} />
+      <StateProvider>
+        <GlobalStyle />
+        <Container>
+          <Nav>
+            <img src="https://images.ctfassets.net/r0lccig03c53/3KaYO3nazk30Esi1vvoq3Q/70b2277694b956b0abf674b99d703b3b/White.svg?h=16" />
+            <img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=48" />
+          </Nav>
+          <TagContainer>
+            <Tag
+              name={'arrival.com'}
+              defaultColor={'rgba(243, 243, 243, 0.16)'}
+              color={'#f3f3f3'}
+            />
+            <Tag
+              name={'brand'}
+              defaultColor={'rgba(243, 243, 243, 0.16)'}
+              color={'#f3f3f3'}
+            />
+            <Tag
+              name={'connectivity'}
+              defaultColor={'rgba(243, 243, 243, 0.16)'}
+              color={'#f3f3f3'}
+            />
+            <Tag
+              name={'ARTEM&nbsp;TARADASH'}
+              defaultColor={'rgba(243, 243, 243, 0.16)'}
+              color={'#f3f3f3'}
+            />
+            <Tag
+              name={'brand'}
+              defaultColor={'rgba(243, 243, 243, 0.16)'}
+              color={'#f3f3f3'}
+            />
+            <Tag
+              name={'nadja&nbsp;koroleva'}
+              defaultColor={'rgba(243, 243, 243, 0.16)'}
+              color={'#f3f3f3'}
+            />
+            <Tag
+              name={'lena&nbsp;shesterova'}
+              defaultColor={'rgba(243, 243, 243, 0.16)'}
+              color={'#f3f3f3'}
+            />
+            <Tag
+              name={'connectivity'}
+              defaultColor={'rgba(243, 243, 243, 0.16)'}
+              color={'#f3f3f3'}
+            />
+          </TagContainer>
+          <Divider />
+          <Desc>
+            <H2>Design Lab</H2>
+            <H2>
+              Every idea worth discussion, every pixel matters. With these
+              principles at the core, Design Lab meant to be a place to share
+              design artefacts between Arrival teams, no matter how ready to be
+              public they are.
+            </H2>
+          </Desc>
+        </Container>
+        <CardContainer>
+          <CardWithImage />
+          <CardWithVideo videoSrc={VideoSrc3} />
+          <CardWithVideo videoSrc={VideoSrc} />
 
-        <CardWithComponents />
-      </CardContainer>
+          <CardWithComponents />
+        </CardContainer>
 
-      <FullWidthCard />
+        <FullWidthCard />
 
-      <CardContainer>
-        <CardWithVideo videoSrc={VideoSrc2} />
-        <CardWithVideo videoSrc={VideoSrc5} />
-      </CardContainer>
+        <CardContainer>
+          <CardWithVideo videoSrc={VideoSrc2} />
+          <CardWithVideo videoSrc={VideoSrc5} />
+        </CardContainer>
 
-      <Footer />
+        <Footer />
+      </StateProvider>
     </>
   );
 };
