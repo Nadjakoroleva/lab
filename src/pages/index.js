@@ -419,15 +419,21 @@ const IndexPage = () => {
   const [currentTopPosition, setCurrentTopPosition] = useState(0);
 
   useEffect(() => {
+    // const whereIsElement = containerElement.current;
+    // console.log(containerElement.current.offsetTop);
     const handleScroll = () => {
-      console.log(window.pageYOffset);
-      setCurrentTopPosition(window.pageYOffset + 44);
+      if (!isClicked) {
+        setCurrentTopPosition(window.pageYOffset + 100);
+      } else {
+        setCurrentTopPosition(containerElement.current.offsetTop);
+        return;
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  });
 
   return (
     <>
