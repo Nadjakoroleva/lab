@@ -274,6 +274,7 @@ const ExpendedCardsConatiner = styled.div`
 
 const Modal = styled.div`
   min-height: 100%;
+  padding-top: 146px;
 `;
 
 const Layout = styled.div`
@@ -430,12 +431,12 @@ const IndexPage = () => {
     document.getElementsByTagName('html')[0].style = '';
   };
 
-  const [currentTopPosition, setCurrentTopPosition] = useState(146);
+  const [currentTopPosition, setCurrentTopPosition] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       if (!isClicked) {
-        setCurrentTopPosition(window.pageYOffset + 146);
+        setCurrentTopPosition(window.pageYOffset);
       } else {
         setCurrentTopPosition(containerElement.current.offsetTop);
         return;
