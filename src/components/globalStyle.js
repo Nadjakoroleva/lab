@@ -27,11 +27,13 @@ export const GlobalStyle = createGlobalStyle`
     touch-action: manipulation;
     over-flow: hidden;
     background-color: #0f1011;
+    height: 100%;
   }
   body {
     font-family: 'Arrival';
     margin: 0;
-    overflow: hidden;
+    height: 100%;
+    // overflow: hidden;
     background-color: #0f1011;
   }
   main {

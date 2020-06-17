@@ -13,6 +13,11 @@ import VideoSrc3 from '../assets/3.mp4';
 import VideoSrc5 from '../assets/5.mp4';
 import '../components/fonts.css';
 import ExpendedCards from '../components/expendedCard';
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock';
 
 const Container = styled.div`
   color: #f3f3f3;
@@ -22,6 +27,8 @@ const Container = styled.div`
   padding-top: 20px;
   max-width: 1680px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
   // position: relative;
   // z-index: 1;
   @media (min-width: 1024px) {
@@ -250,11 +257,13 @@ const Img = styled.img`
 const ExpendedCardsConatiner = styled.div`
   cursor: pointer;
   position: absolute;
-  top: ${({ currentTopPosition }) => `${currentTopPosition}px`};
+  top: 0;
+  padding-top: ${({ currentTopPosition }) => `${currentTopPosition}px`};
   right: 0;
   width: 90vw;
   height: 100%;
-
+  max-height: 100vh;
+  overflow-y: auto;
   z-index: ${({ isClicked }) => (isClicked ? `10` : `-1`)};
   opacity: ${({ isClicked }) => (isClicked ? '1' : '0')};
   transform: ${({ isClicked }) =>
@@ -263,7 +272,9 @@ const ExpendedCardsConatiner = styled.div`
     transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
 `;
 
-const Modal = styled.div``;
+const Modal = styled.div`
+  min-height: 100%;
+`;
 
 const Layout = styled.div`
   cursor: pointer;
@@ -276,6 +287,7 @@ const Layout = styled.div`
   // background: red;
   width: 100%;
   height: 100%;
+  max-height: 100%;
   z-index: ${({ isClicked }) => (isClicked ? `10` : ``)};
   opacity: ${({ isClicked }) => (isClicked ? `1` : `0`)};
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
@@ -398,6 +410,7 @@ const ContainerRelative = styled.div`
 const IndexPage = () => {
   const [isClicked, setIsClicked] = useState(false);
   const videoPlayer = useRef(null);
+  const containerElement = useRef(null);
 
   const handleOnMouseDown = () => {
     videoPlayer.current.pause();
@@ -407,23 +420,22 @@ const IndexPage = () => {
   };
   const handleClick = () => {
     setIsClicked(true);
+    document.getElementsByTagName('html')[0].style.overflow = 'hidden';
+    disableBodyScroll(document.body);
   };
 
   const closeCards = () => {
     setIsClicked(false);
+    enableBodyScroll(document.body);
+    document.getElementsByTagName('html')[0].style = '';
   };
 
-  const containerElement = useRef(null);
-
-  // const [currentScrollY, setCurrentScrollY] = useState(0);
-  const [currentTopPosition, setCurrentTopPosition] = useState(0);
+  const [currentTopPosition, setCurrentTopPosition] = useState(146);
 
   useEffect(() => {
-    // const whereIsElement = containerElement.current;
-    // console.log(containerElement.current.offsetTop);
     const handleScroll = () => {
       if (!isClicked) {
-        setCurrentTopPosition(window.pageYOffset + 100);
+        setCurrentTopPosition(window.pageYOffset + 146);
       } else {
         setCurrentTopPosition(containerElement.current.offsetTop);
         return;
@@ -507,8 +519,8 @@ const IndexPage = () => {
               <ExpendedCards />
               <ExpendedCards />
               <ExpendedCards />
-              <ExpendedCards />
-              <ExpendedCards />
+              {/* <ExpendedCards />
+              <ExpendedCards /> */}
             </Modal>
           </ExpendedCardsConatiner>
           <CardContainer onClick={handleClick}>
