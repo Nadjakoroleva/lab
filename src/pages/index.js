@@ -10,6 +10,7 @@ import FullWidthCard from '../components/fullWidthCard';
 import VideoSrc from '../assets/1.mp4';
 import VideoSrc2 from '../assets/2.mp4';
 import VideoSrc3 from '../assets/3.mp4';
+import VideoSrc4 from '../assets/4.mp4';
 import VideoSrc5 from '../assets/5.mp4';
 import '../components/fonts.css';
 import ExpendedCards from '../components/expendedCard';
@@ -411,6 +412,8 @@ const ContainerRelative = styled.div`
 const IndexPage = () => {
   const [isClicked, setIsClicked] = useState(false);
   const videoPlayer = useRef(null);
+  const videoPlayer2 = useRef(null);
+  const videoPlayer4 = useRef(null);
   const containerElement = useRef(null);
 
   const handleOnMouseDown = () => {
@@ -418,6 +421,18 @@ const IndexPage = () => {
   };
   const handleOnMouseUp = () => {
     videoPlayer.current.play();
+  };
+  const handleOnMouseDown2 = () => {
+    videoPlayer2.current.pause();
+  };
+  const handleOnMouseUp2 = () => {
+    videoPlayer2.current.play();
+  };
+  const handleOnMouseDown4 = () => {
+    videoPlayer4.current.pause();
+  };
+  const handleOnMouseUp4 = () => {
+    videoPlayer4.current.play();
   };
   const handleClick = () => {
     setIsClicked(true);
@@ -517,18 +532,32 @@ const IndexPage = () => {
             isClicked={isClicked}
           >
             <Modal isClicked={isClicked}>
-              <ExpendedCards />
-              <ExpendedCards />
-              <ExpendedCards />
-              {/* <ExpendedCards />
-              <ExpendedCards /> */}
+              <ExpendedCards
+                src={
+                  'https://images.ctfassets.net/r0lccig03c53/2zrqAb5i06M7epHKaA1rW/a447cb0b98aadee007c9750a613ce19b/__________________________2020-06-22____16.34.47.png'
+                }
+              />
+              {/* <ExpendedCards /> */}
+              <ExpendedCards
+                src={
+                  'https://images.ctfassets.net/r0lccig03c53/pMW9fuPeFhKM82sRavMXK/146710e5109ecd91fb40d40573d6e188/__________________________2020-06-22____16.34.57.png'
+                }
+              />
+              <ExpendedCards
+                src={
+                  'https://images.ctfassets.net/r0lccig03c53/6qUfDJPdNUNE6vSn6nosYN/a64610a3952ea1d59252a59152671865/__________________________2020-06-22____16.35.27.png'
+                }
+              />
+              {/* <ExpendedCards /> */}
             </Modal>
           </ExpendedCardsConatiner>
-          <CardContainer onClick={handleClick}>
-            <TagContainerInner>
-              <TagInner>Ui motion - sales master - by LENA SHESTEROVA</TagInner>
-              {/* <Date>15&nbsp;min&nbsp;ago</Date> */}
-            </TagContainerInner>
+
+          {/* первая карточка с картинкой */}
+          {/* <CardContainer onClick={handleClick}>
+            <TagContainerInner> */}
+          {/* <TagInner>Ui motion - sales master - by LENA SHESTEROVA</TagInner> */}
+          {/* <Date>15&nbsp;min&nbsp;ago</Date> */}
+          {/* </TagContainerInner>
             <Frame>
               <Img src="https://images.ctfassets.net/r0lccig03c53/p9ewUrhvGBNL0LJVfzDfM/a475c9306b7557a4898831dec8b31a69/Img.jpg" />
             </Frame>
@@ -536,7 +565,34 @@ const IndexPage = () => {
               Blurred image for uploading blurred image Hello from the outside
               At least I can say{' '}
             </Title>
-          </CardContainer>
+          </CardContainer> */}
+
+          <CardContainerForCardWithVideo onClick={handleClick}>
+            <TagContainerForCardWithVideo>
+              <TagForCardWithVideo>
+                Ui motion - sales master - by LENA SHESTEROVA
+              </TagForCardWithVideo>
+              <DateForCardWithVideo>15&nbsp;min&nbsp;ago</DateForCardWithVideo>
+            </TagContainerForCardWithVideo>
+            <FrameForCardWithVideo>
+              <BgForCardWithVideo>
+                <VideoForCardWithVideo
+                  ref={videoPlayer4}
+                  playsinline
+                  loop
+                  autoPlay={false}
+                  muted={true}
+                  src={VideoSrc4}
+                  onMouseOut={handleOnMouseDown4}
+                  onMouseOver={handleOnMouseUp4}
+                />
+              </BgForCardWithVideo>
+            </FrameForCardWithVideo>
+            <TitleForCardWithVideo>
+              Blurred image for uploading blurred image Hello from the outside
+              At least I can say{' '}
+            </TitleForCardWithVideo>
+          </CardContainerForCardWithVideo>
 
           {/* карточка с видео */}
 
@@ -550,14 +606,14 @@ const IndexPage = () => {
             <FrameForCardWithVideo>
               <BgForCardWithVideo>
                 <VideoForCardWithVideo
-                  ref={videoPlayer}
+                  ref={videoPlayer2}
                   playsinline
                   loop
                   autoPlay={false}
                   muted={true}
                   src={VideoSrc3}
-                  onMouseOut={handleOnMouseDown}
-                  onMouseOver={handleOnMouseUp}
+                  onMouseOut={handleOnMouseDown2}
+                  onMouseOver={handleOnMouseUp2}
                 />
               </BgForCardWithVideo>
             </FrameForCardWithVideo>

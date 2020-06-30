@@ -58,12 +58,12 @@ const DescContainer = styled.div`
   // min-height: 100%;
 `;
 
-const ExpendedCard = () => {
+const ExpendedCard = ({ src }) => {
   return (
     <>
       <Container>
         <ImageContainer>
-          <Img src="https://images.ctfassets.net/r0lccig03c53/p9ewUrhvGBNL0LJVfzDfM/a475c9306b7557a4898831dec8b31a69/Img.jpg" />
+          <Img src={src} />
         </ImageContainer>
         <DescContainer>
           <Text>
