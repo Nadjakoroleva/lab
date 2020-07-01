@@ -65,21 +65,27 @@ const AddArtifact = styled(Link)`
 
 const GridContainer = styled.div`
   padding: 32px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(max-content, 642px));
-  grid-gap: 32px;
+  @media (min-width: 769px) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(max-content, 642px));
+    grid-gap: 32px;
+  }
 `;
 
 const Card = styled.div`
   background: blue;
   display: flex;
   flex-shrink: 0;
+  margin-bottom: 24px;
   &:before {
     content: '';
     display: block;
     height: 0;
     width: 0;
     padding-bottom: calc(642 / 642 * 100%);
+  }
+  @media (min-width: 769px) {
+    margin-bottom: 0;
   }
 `;
 
