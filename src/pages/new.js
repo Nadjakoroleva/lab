@@ -8,20 +8,53 @@ const Nav = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 48px 64px;
+  padding: 48px 20px;
+  @media (min-width: 768px) {
+    padding: 48px;
+  }
+  @media (min-width: 1024px) {
+    padding: 48px;
+  }
+`;
+
+const Logo = styled.img`
+  display: none;
+  @media (min-width: 1024px) {
+    display: block;
+  }
+`;
+
+const Asterix = styled.img`
+  display: block;
+  @media (min-width: 1024px) {
+    display: none;
+  }
 `;
 
 const TagContainer = styled.div`
   display: flex;
+  // overflow-x: scroll;
+  // @media (min-width: 768px) {
+  //   overflow-x: initial;
+  // }
 `;
 
 const Intro = styled.div`
-  padding: 75px 64px 32px 64px;
+  padding: 75px 20px 32px 20px;
   font-size: 24px;
   line-height: 32px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    padding: 75px 48px 32px 48px;
+  }
+  @media (min-width: 1024px) {
+    padding: 75px 48px 32px 48px;
+  }
 `;
 
 const Link = styled.div`
@@ -32,28 +65,75 @@ const Link = styled.div`
 `;
 
 const Text = styled.div`
-  width: 35%;
+  @media (min-width: 768px) {
+    width: 40%;
+  }
+  @media (min-width: 1024px) {
+    width: 35%;
+  }
 `;
 
 const FlexContainer = styled.div`
   display: flex;
   align-items: center;
+  padding-top: 32px;
+  @media (min-width: 768px) {
+    padding-top: 0;
+  }
 `;
 
-const Img = styled.img``;
+const Img = styled.img`
+  height: 32px;
+  width: 32px;
+`;
 
 const MainDescription = styled.div`
-  padding: 48px 64px 200px 64px;
+  padding: 48px 20px 96px 20px;
   font-size: 24px;
   line-height: 32px;
-  width: 42%;
+  width: 100%;
+  @media (min-width: 768px) {
+    padding: 48px 48px 96px 48px;
+  }
+  @media (min-width: 1024px) {
+    width: 100%;
+    padding: 48px 48px 124px 48px;
+  }
+  @media (min-width: 1280px) {
+    width: 42%;
+  }
+  @media (min-width: 1230px) {
+    width: 100%;
+    max-width: 1308px;
+  }
+  @media (min-width: 1380px) {
+    margin: 0 auto;
+    padding-left: 0;
+  }
+`;
+
+const TextInside = styled.div`
+  width: 90%;
+  @media (min-width: 1024px) {
+    width: 58%;
+  }
 `;
 
 const UploadBtn = styled.div`
   background-color: #0c62f3;
-  margin-left: 32px;
-  margin-right: 32px;
   padding: 36px 32px;
+  max-width: 1308px;
+  @media (min-width: 768px) {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  @media (min-width: 1024px) {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+  @media (min-width: 1380px) {
+    margin: 0 auto;
+  }
 `;
 const AddArtifact = styled(Link)`
   padding-top: 104px;
@@ -64,19 +144,33 @@ const AddArtifact = styled(Link)`
 `;
 
 const GridContainer = styled.div`
-  padding: 32px;
+  padding-top: 20px;
+  @media (min-width: 768px) {
+    padding-top: 16px;
+    margin-right: 16px;
+    margin-left: 16px;
+  }
   @media (min-width: 769px) {
     display: grid;
     grid-template-columns: repeat(2, minmax(max-content, 642px));
-    grid-gap: 32px;
+    grid-gap: 16px;
+    padding: 16px;
+    margin: 0;
+  }
+  @media (min-width: 1024px) {
+    grid-gap: 24px;
+    padding: 24px;
+    margin: 0;
   }
 `;
 
 const Card = styled.div`
-  background: blue;
+  background: #0c62f3;
   display: flex;
   flex-shrink: 0;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+  max-height: ${({ currentHeight }) => `${currentHeight}px`};
+
   &:before {
     content: '';
     display: block;
@@ -84,33 +178,84 @@ const Card = styled.div`
     width: 0;
     padding-bottom: calc(642 / 642 * 100%);
   }
+  @media (min-width: 768px) {
+    margin-bottom: 12px;
+    max-height: 642px;
+  }
   @media (min-width: 769px) {
+    margin-bottom: 0;
+    max-height: 100%;
+  }
+  @media (min-width: 1024px) {
     margin-bottom: 0;
   }
 `;
 
+const CardFullWidth = styled.div`
+  background: #0c62f3;
+  margin-bottom: 80px;
+  display: flex;
+  flex-shrink: 0;
+  max-height: ${({ currentHeight }) => `${currentHeight}px`};
+  max-width: 1308px;
+  &:before {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    padding-bottom: calc(642 / 642 * 100%);
+  }
+  @media (min-width: 768px) {
+    margin-right: 16px;
+    margin-left: 16px;
+    max-height: 642px;
+  }
+  @media (min-width: 1024px) {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+  @media (min-width: 1380px) {
+    margin: 0 auto;
+  }
+`;
+
 const IndexPage = () => {
+  const [currentHeight, setCurrentHeight] = useState(375);
+  useEffect(() => {
+    const updateWindowDimensions = () => {
+      const newHeightForCard = window.innerWidth;
+      setCurrentHeight(newHeightForCard * 1.25);
+      console.log(currentHeight);
+    };
+
+    window.addEventListener('resize', updateWindowDimensions);
+
+    return () => window.removeEventListener('resize', updateWindowDimensions);
+  });
+
+  const getCurrentValueOfTag = () => {
+    console.log('click');
+  };
   return (
     <>
       <GlobalStyle />
       <div style={{ backgroundColor: '#1E1F22' }}>
         <Nav>
           {' '}
-          <img src="https://images.ctfassets.net/r0lccig03c53/3KaYO3nazk30Esi1vvoq3Q/70b2277694b956b0abf674b99d703b3b/White.svg?h=16" />
+          <Logo src="https://images.ctfassets.net/r0lccig03c53/3KaYO3nazk30Esi1vvoq3Q/70b2277694b956b0abf674b99d703b3b/White.svg?h=16" />
+          <Asterix src="https://images.ctfassets.net/r0lccig03c53/1scOwQzmNMkQvbKlXIkjoa/f494150002197c5c04a1fa13ffed0cf5/White.svg?h=16" />
           <TagContainer>
-            {' '}
-            <Tag
-              name={'arrival.com'}
-              defaultColor={'rgba(243, 243, 243, 0.16)'}
-              color={'#f3f3f3'}
-            />
-            <Tag
-              name={'hmi'}
-              defaultColor={'rgba(243, 243, 243, 0.16)'}
-              color={'#f3f3f3'}
-            />
+            {['arrival.com', 'hmi'].map((item) => (
+              <Tag
+                key={item}
+                name={item}
+                defaultColor={'rgba(243, 243, 243, 0.16)'}
+                color={'#f3f3f3'}
+                onClick={getCurrentValueOfTag}
+              />
+            ))}
           </TagContainer>
-          <img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=48" />
+          <Img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
         </Nav>
 
         <Intro>
@@ -124,18 +269,22 @@ const IndexPage = () => {
           <FlexContainer>
             <Link>5&nbsp;posts</Link>
             <Img
-              style={{ paddingLeft: '24px' }}
-              src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=48"
+              style={{ marginLeft: '24px' }}
+              src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32"
             />
-            <Img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=48" />
-            <Img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=48" />
+            <Img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
+            <Img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
           </FlexContainer>
         </Intro>
       </div>
+
       <MainDescription>
-        Every idea worth discussion, every pixel matters. With these principles
-        at the core, Design Lab meant to be a place to share design artefacts
-        between Arrival teams, no matter how ready to be public they are.
+        <TextInside>
+          Every idea worth discussion, every pixel matters. With these
+          principles at the core, Design Lab meant to be a place to share design
+          artefacts between Arrival teams, no matter how ready to be public they
+          are.
+        </TextInside>
       </MainDescription>
 
       <UploadBtn>
@@ -149,11 +298,12 @@ const IndexPage = () => {
       </UploadBtn>
 
       <GridContainer>
-        <Card>hello</Card>
-        <Card>hello</Card>
-        <Card>hello</Card>
-        <Card>hello</Card>
+        <Card currentHeight={currentHeight}>hello</Card>
+        <Card currentHeight={currentHeight}>hello</Card>
+        <Card currentHeight={currentHeight}>hello</Card>
+        <Card currentHeight={currentHeight}>hello</Card>
       </GridContainer>
+      <CardFullWidth currentHeight={currentHeight}>hello</CardFullWidth>
     </>
   );
 };
