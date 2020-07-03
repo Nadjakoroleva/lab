@@ -10,7 +10,7 @@ const Nav = styled.div`
   justify-content: space-between;
   padding: 48px 20px;
   @media (min-width: 768px) {
-    padding: 48px;
+    padding: 32px;
   }
   @media (min-width: 1024px) {
     padding: 48px;
@@ -50,7 +50,7 @@ const Intro = styled.div`
   @media (min-width: 768px) {
     flex-direction: row;
     align-items: center;
-    padding: 75px 48px 32px 48px;
+    padding: 75px 32px 32px 32px;
   }
   @media (min-width: 1024px) {
     padding: 75px 48px 32px 48px;
@@ -66,7 +66,7 @@ const Link = styled.div`
 
 const Text = styled.div`
   @media (min-width: 768px) {
-    width: 40%;
+    width: 50%;
   }
   @media (min-width: 1024px) {
     width: 35%;
@@ -93,7 +93,7 @@ const MainDescription = styled.div`
   line-height: 32px;
   width: 100%;
   @media (min-width: 768px) {
-    padding: 48px 48px 96px 48px;
+    padding: 32px 32px 96px 32px;
   }
   @media (min-width: 1024px) {
     width: 100%;
@@ -121,11 +121,12 @@ const TextInside = styled.div`
 
 const UploadBtn = styled.div`
   background-color: #0c62f3;
-  padding: 36px 32px;
+  padding: 36px 20px;
   max-width: 1308px;
   @media (min-width: 768px) {
     margin-left: 16px;
     margin-right: 16px;
+    padding: 36px 32px;
   }
   @media (min-width: 1024px) {
     margin-left: 24px;
@@ -165,10 +166,14 @@ const GridContainer = styled.div`
 `;
 
 const Card = styled.div`
-  background: #0c62f3;
+  position: relative;
+  background: #161718;
   display: flex;
   flex-shrink: 0;
   margin-bottom: 20px;
+  background-image: url('https://images.ctfassets.net/r0lccig03c53/3TbgFCahXyC07hJ8aF11t7/fad5f8a6155c736e5befb1e5559d24cb/content-image-covered.jpg');
+  background-position: center;
+  background-size: cover;
   max-height: ${({ currentHeight }) => `${currentHeight}px`};
 
   &:before {
@@ -192,12 +197,16 @@ const Card = styled.div`
 `;
 
 const CardFullWidth = styled.div`
-  background: #0c62f3;
+  background: #161718;
   margin-bottom: 80px;
+  position: relative;
   display: flex;
   flex-shrink: 0;
   max-height: ${({ currentHeight }) => `${currentHeight}px`};
   max-width: 1308px;
+  background-image: url('https://images.ctfassets.net/r0lccig03c53/5Wx5srxjZuUVLnYwyyUD2D/1d621a723283f91a2a064ae0d3e39684/content-image-covered-big.jpg');
+  background-position: center;
+  background-size: cover;
   &:before {
     content: '';
     display: block;
@@ -219,8 +228,33 @@ const CardFullWidth = styled.div`
   }
 `;
 
+const TextTag = styled(Link)`
+  color: rgba(255, 255, 255, 0.59);
+  padding-top: 27px;
+  padding-left: 20px;
+  padding-right: 20px;
+  @media (min-width: 768px) {
+    padding-top: 27px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+`;
+
+const H3 = styled.div`
+  font-size: 18px;
+  line-height: 24px;
+  position: absolute;
+  bottom: 24px;
+  left: 20px;
+  width: 70%;
+  @media (min-width: 768px) {
+    bottom: 24px;
+    left: 32px;
+  }
+`;
+
 const IndexPage = () => {
-  const [currentHeight, setCurrentHeight] = useState(375);
+  const [currentHeight, setCurrentHeight] = useState(window.innerWidth * 1.25);
   useEffect(() => {
     const updateWindowDimensions = () => {
       const newHeightForCard = window.innerWidth;
@@ -298,12 +332,52 @@ const IndexPage = () => {
       </UploadBtn>
 
       <GridContainer>
-        <Card currentHeight={currentHeight}>hello</Card>
-        <Card currentHeight={currentHeight}>hello</Card>
-        <Card currentHeight={currentHeight}>hello</Card>
-        <Card currentHeight={currentHeight}>hello</Card>
+        <Card currentHeight={currentHeight}>
+          <TextTag>Tag - Tag</TextTag>
+          <H3>
+            Short title or primary message.{' '}
+            <span style={{ color: 'rgba(255,255,255,0.59)' }}>
+              Description or short secondary message
+            </span>
+          </H3>
+        </Card>
+        <Card currentHeight={currentHeight}>
+          <TextTag>Tag - Tag</TextTag>
+          <H3>
+            Short title or primary message.{' '}
+            <span style={{ color: 'rgba(255,255,255,0.59)' }}>
+              Description or short secondary message
+            </span>
+          </H3>
+        </Card>
+        <Card currentHeight={currentHeight}>
+          <TextTag>Tag - Tag</TextTag>
+          <H3>
+            Short title or primary message.{' '}
+            <span style={{ color: 'rgba(255,255,255,0.59)' }}>
+              Description or short secondary message
+            </span>
+          </H3>
+        </Card>
+        <Card currentHeight={currentHeight}>
+          <TextTag>Tag - Tag</TextTag>
+          <H3>
+            Short title or primary message.{' '}
+            <span style={{ color: 'rgba(255,255,255,0.59)' }}>
+              Description or short secondary message
+            </span>
+          </H3>
+        </Card>
       </GridContainer>
-      <CardFullWidth currentHeight={currentHeight}>hello</CardFullWidth>
+      <CardFullWidth currentHeight={currentHeight}>
+        <TextTag>Tag - Tag</TextTag>
+        <H3>
+          Short title or primary message.{' '}
+          <span style={{ color: 'rgba(255,255,255,0.59)' }}>
+            Description or short secondary message
+          </span>
+        </H3>
+      </CardFullWidth>
     </>
   );
 };
