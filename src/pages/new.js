@@ -163,6 +163,10 @@ const GridContainer = styled.div`
     padding: 24px;
     margin: 0;
   }
+  @media (min-width: 1380px) {
+    width: max-content;
+    margin: auto;
+  }
 `;
 
 const Card = styled.div`
@@ -224,7 +228,7 @@ const CardFullWidth = styled.div`
     margin-right: 24px;
   }
   @media (min-width: 1380px) {
-    margin: 0 auto;
+    margin: 0 auto 180px;
   }
 `;
 
