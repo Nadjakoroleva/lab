@@ -1,8 +1,30 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
 import Tag from '../components/tag';
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock';
+import ExpendedCards from '../components/expendedCard';
 
 import { GlobalStyle } from '../components/globalStyle';
+
+const Overlay = styled.div`
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(35, 38, 44, 0.59);
+  // background: red;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  opacity: ${({ isClicked }) => (isClicked ? `1` : `0`)};
+  z-index: ${({ isClicked }) => (isClicked ? `10` : ``)};
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+`;
 
 const Nav = styled.div`
   display: flex;
@@ -14,6 +36,9 @@ const Nav = styled.div`
   }
   @media (min-width: 1024px) {
     padding: 48px;
+  }
+  @media (min-width: 1367px) {
+    padding: 64px;
   }
 `;
 
@@ -55,9 +80,18 @@ const Intro = styled.div`
   @media (min-width: 1024px) {
     padding: 75px 48px 32px 48px;
   }
+  @media (min-width: 1367px) {
+    padding: 75px 64px 32px 64px;
+
+    margin: 0 auto;
+  }
+  @media (min-width: 1380px) {
+    padding: 75px 0 32px 0;
+    max-width: 1320px;
+  }
 `;
 
-const Link = styled.div`
+const Link = styled.span`
   font-family: 'Arrival Mono';
   font-size: 11.25px;
   line-height: 18px;
@@ -105,6 +139,9 @@ const MainDescription = styled.div`
   @media (min-width: 1230px) {
     width: 100%;
     max-width: 1308px;
+  }
+  @media (min-width: 1367px) {
+    padding: 48px 64px 124px 64px;
   }
   @media (min-width: 1380px) {
     margin: 0 auto;
@@ -170,6 +207,7 @@ const GridContainer = styled.div`
 `;
 
 const Card = styled.div`
+  cursor: pointer;
   position: relative;
   background: #161718;
   display: flex;
@@ -179,7 +217,22 @@ const Card = styled.div`
   background-position: center;
   background-size: cover;
   max-height: ${({ currentHeight }) => `${currentHeight}px`};
-
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: rgb(35, 38, 44);
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  &:hover :after {
+    opacity: 0.4;
+  }
   &:before {
     content: '';
     display: block;
@@ -187,6 +240,7 @@ const Card = styled.div`
     width: 0;
     padding-bottom: calc(642 / 642 * 100%);
   }
+
   @media (min-width: 768px) {
     margin-bottom: 12px;
     max-height: 642px;
@@ -201,6 +255,7 @@ const Card = styled.div`
 `;
 
 const CardFullWidth = styled.div`
+  cursor: pointer;
   background: #161718;
   margin-bottom: 80px;
   position: relative;
@@ -208,15 +263,33 @@ const CardFullWidth = styled.div`
   flex-shrink: 0;
   max-height: ${({ currentHeight }) => `${currentHeight}px`};
   max-width: 1308px;
-  background-image: url('https://images.ctfassets.net/r0lccig03c53/5Wx5srxjZuUVLnYwyyUD2D/1d621a723283f91a2a064ae0d3e39684/content-image-covered-big.jpg');
+  background-image: url('https://images.ctfassets.net/r0lccig03c53/4Gs0z339XUz3KYec23fYWe/de159fe20e16ff1357cb301ca352892a/content-image-covered-big.jpg');
   background-position: center;
-  background-size: cover;
+  background-size: contain;
+  background-origin: border-box;
+  background-repeat: no-repeat;
   &:before {
     content: '';
     display: block;
     height: 0;
     width: 0;
     padding-bottom: calc(642 / 642 * 100%);
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: rgb(35, 38, 44);
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  &:hover :after {
+    opacity: 0.28;
   }
   @media (min-width: 768px) {
     margin-right: 16px;
@@ -232,13 +305,32 @@ const CardFullWidth = styled.div`
   }
 `;
 
+const UpContainer = styled.div`
+  padding-top: 27px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`;
+
+const ContainerAuthor = styled.div`
+  display: flex;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  ${Card}:hover & {
+    opacity: 1;
+  }
+`;
+
+const ImgAuthor = styled(Img)`
+  margin-right: 32px;
+  margin-top: -7px;
+`;
+
 const TextTag = styled(Link)`
   color: rgba(255, 255, 255, 0.59);
-  padding-top: 27px;
   padding-left: 20px;
   padding-right: 20px;
   @media (min-width: 768px) {
-    padding-top: 27px;
     padding-left: 32px;
     padding-right: 32px;
   }
@@ -257,13 +349,66 @@ const H3 = styled.div`
   }
 `;
 
+const Relative = styled.div`
+  position: relative;
+`;
+
+const ExpendedCardsConatiner = styled.div`
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  padding-top: ${({ currentTopPosition }) => `${currentTopPosition}px`};
+  right: 0;
+  width: 90vw;
+  height: 100%;
+  max-height: 100vh;
+  overflow-y: auto;
+  z-index: ${({ isClicked }) => (isClicked ? `10` : `-1`)};
+  opacity: ${({ isClicked }) => (isClicked ? '1' : '0')};
+  transform: ${({ isClicked }) =>
+    isClicked ? `translateY(0)` : `translateY(100px)`};
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1),
+    transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+`;
+
+const Modal = styled.div`
+  min-height: 100%;
+  padding-top: 146px;
+`;
+
+const Plus = styled.img``;
+
+const PlusContainer = styled.span`
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  margin-left: 12px;
+  ${Card}:hover & {
+    opacity: 1;
+  }
+`;
+
 const IndexPage = () => {
   const [currentHeight, setCurrentHeight] = useState(window.innerWidth * 1.25);
+  const [isClicked, setIsClicked] = useState(false);
+  const [currentTopPosition, setCurrentTopPosition] = useState(0);
+  const containerElement = useRef(null);
+
+  const handleClick = () => {
+    setIsClicked(true);
+    document.getElementsByTagName('html')[0].style.overflow = 'hidden';
+    disableBodyScroll(document.body);
+  };
+
+  const closeCards = () => {
+    setIsClicked(false);
+    enableBodyScroll(document.body);
+    document.getElementsByTagName('html')[0].style = '';
+  };
+
   useEffect(() => {
     const updateWindowDimensions = () => {
       const newHeightForCard = window.innerWidth;
       setCurrentHeight(newHeightForCard * 1.25);
-      console.log(currentHeight);
     };
 
     window.addEventListener('resize', updateWindowDimensions);
@@ -271,117 +416,204 @@ const IndexPage = () => {
     return () => window.removeEventListener('resize', updateWindowDimensions);
   });
 
-  const getCurrentValueOfTag = () => {
-    console.log('click');
-  };
+  const getCurrentValueOfTag = () => {};
   return (
     <>
       <GlobalStyle />
-      <div style={{ backgroundColor: '#1E1F22' }}>
-        <Nav>
-          {' '}
-          <Logo src="https://images.ctfassets.net/r0lccig03c53/3KaYO3nazk30Esi1vvoq3Q/70b2277694b956b0abf674b99d703b3b/White.svg?h=16" />
-          <Asterix src="https://images.ctfassets.net/r0lccig03c53/1scOwQzmNMkQvbKlXIkjoa/f494150002197c5c04a1fa13ffed0cf5/White.svg?h=16" />
-          <TagContainer>
-            {['arrival.com', 'hmi'].map((item) => (
-              <Tag
-                key={item}
-                name={item}
-                defaultColor={'rgba(243, 243, 243, 0.16)'}
-                color={'#f3f3f3'}
-                onClick={getCurrentValueOfTag}
+      <Relative>
+        <Overlay isClicked={isClicked} onClick={closeCards} />
+        <div style={{ backgroundColor: '#1E1F22' }}>
+          <Nav>
+            {' '}
+            <Logo src="https://images.ctfassets.net/r0lccig03c53/3KaYO3nazk30Esi1vvoq3Q/70b2277694b956b0abf674b99d703b3b/White.svg?h=16" />
+            <Asterix src="https://images.ctfassets.net/r0lccig03c53/1scOwQzmNMkQvbKlXIkjoa/f494150002197c5c04a1fa13ffed0cf5/White.svg?h=16" />
+            <TagContainer>
+              {['arrival.com', 'hmi'].map((item) => (
+                <Tag
+                  key={item}
+                  name={item}
+                  defaultColor={'rgba(243, 243, 243, 0.16)'}
+                  color={'#f3f3f3'}
+                  onClick={getCurrentValueOfTag}
+                />
+              ))}
+            </TagContainer>
+            <Img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
+          </Nav>
+
+          <Intro>
+            <Text>
+              Design Lab.{' '}
+              <span style={{ color: 'rgb(109,110,111)' }}>
+                Selection of design artefacts curated for you by Arrival
+                designers.
+              </span>
+            </Text>
+            <FlexContainer>
+              <Link>5&nbsp;posts</Link>
+              <Img
+                style={{ marginLeft: '24px' }}
+                src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32"
               />
-            ))}
-          </TagContainer>
-          <Img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
-        </Nav>
+              <Img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
+              <Img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
+            </FlexContainer>
+          </Intro>
+        </div>
 
-        <Intro>
-          <Text>
-            Design Lab.{' '}
-            <span style={{ color: 'rgb(109,110,111)' }}>
-              Selection of design artefacts curated for you by Arrival
-              designers.
-            </span>
-          </Text>
-          <FlexContainer>
-            <Link>5&nbsp;posts</Link>
-            <Img
-              style={{ marginLeft: '24px' }}
-              src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32"
+        <MainDescription>
+          <TextInside>
+            Every idea worth discussion, every pixel matters. With these
+            principles at the core, Design Lab meant to be a place to share
+            design artefacts between Arrival teams, no matter how ready to be
+            public they are.
+          </TextInside>
+        </MainDescription>
+
+        <ExpendedCardsConatiner
+          currentTopPosition={currentTopPosition}
+          ref={containerElement}
+          isClicked={isClicked}
+        >
+          <Modal isClicked={isClicked}>
+            <ExpendedCards
+              src={
+                'https://images.ctfassets.net/r0lccig03c53/3TbgFCahXyC07hJ8aF11t7/fad5f8a6155c736e5befb1e5559d24cb/content-image-covered.jpg'
+              }
             />
-            <Img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
-            <Img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
-          </FlexContainer>
-        </Intro>
-      </div>
 
-      <MainDescription>
-        <TextInside>
-          Every idea worth discussion, every pixel matters. With these
-          principles at the core, Design Lab meant to be a place to share design
-          artefacts between Arrival teams, no matter how ready to be public they
-          are.
-        </TextInside>
-      </MainDescription>
+            <ExpendedCards
+              src={
+                'https://images.ctfassets.net/r0lccig03c53/3TbgFCahXyC07hJ8aF11t7/fad5f8a6155c736e5befb1e5559d24cb/content-image-covered.jpg'
+              }
+            />
+            <ExpendedCards
+              src={
+                'https://images.ctfassets.net/r0lccig03c53/3TbgFCahXyC07hJ8aF11t7/fad5f8a6155c736e5befb1e5559d24cb/content-image-covered.jpg'
+              }
+            />
+          </Modal>
+        </ExpendedCardsConatiner>
 
-      <UploadBtn>
-        <Link style={{ color: 'rgba(255,255,255,0.59)' }}>
-          upload your latest designs
-        </Link>
-        <AddArtifact>
-          add artifact
-          <img src="https://images.ctfassets.net/r0lccig03c53/5IGT0AjIzRRUpw1GFqMoG8/a37edd10fd1932b5f157758b5d8ebf3a/Union.svg?h=16" />
-        </AddArtifact>
-      </UploadBtn>
+        <UploadBtn>
+          <Link style={{ color: 'rgba(255,255,255,0.59)' }}>
+            upload your latest designs
+          </Link>
+          <AddArtifact>
+            add artifact
+            <img src="https://images.ctfassets.net/r0lccig03c53/5IGT0AjIzRRUpw1GFqMoG8/a37edd10fd1932b5f157758b5d8ebf3a/Union.svg?h=16" />
+          </AddArtifact>
+        </UploadBtn>
 
-      <GridContainer>
-        <Card currentHeight={currentHeight}>
-          <TextTag>Tag - Tag</TextTag>
+        <GridContainer>
+          <Card
+            isClicked={isClicked}
+            currentHeight={currentHeight}
+            onClick={handleClick}
+          >
+            <UpContainer>
+              <TextTag>Tag - Tag</TextTag>
+              <ContainerAuthor>
+                <TextTag>12:22</TextTag>
+                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
+              </ContainerAuthor>{' '}
+            </UpContainer>
+            <H3>
+              Short title or primary message.{' '}
+              <span style={{ color: 'rgba(255,255,255,0.59)' }}>
+                Description or short secondary message.
+              </span>
+              <PlusContainer>
+                <Plus src="https://images.ctfassets.net/r0lccig03c53/qUVYo5MOqLcqBFWgbUix7/fea482e2a30a634ee8da1a66bbd812bd/Union.svg" />
+              </PlusContainer>
+            </H3>
+          </Card>
+          <Card
+            isClicked={isClicked}
+            currentHeight={currentHeight}
+            onClick={handleClick}
+          >
+            <UpContainer>
+              <TextTag>Tag - Tag</TextTag>
+              <ContainerAuthor>
+                <TextTag>12:22</TextTag>
+                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
+              </ContainerAuthor>{' '}
+            </UpContainer>
+            <H3>
+              Short title or primary message.{' '}
+              <span style={{ color: 'rgba(255,255,255,0.59)' }}>
+                Description or short secondary message.
+              </span>
+              <PlusContainer>
+                <Plus src="https://images.ctfassets.net/r0lccig03c53/qUVYo5MOqLcqBFWgbUix7/fea482e2a30a634ee8da1a66bbd812bd/Union.svg" />
+              </PlusContainer>
+            </H3>
+          </Card>
+          <Card
+            isClicked={isClicked}
+            currentHeight={currentHeight}
+            onClick={handleClick}
+          >
+            <UpContainer>
+              <TextTag>Tag - Tag</TextTag>
+              <ContainerAuthor>
+                <TextTag>12:22</TextTag>
+                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
+              </ContainerAuthor>{' '}
+            </UpContainer>
+            <H3>
+              Short title or primary message.{' '}
+              <span style={{ color: 'rgba(255,255,255,0.59)' }}>
+                Description or short secondary message.
+              </span>
+              <PlusContainer>
+                <Plus src="https://images.ctfassets.net/r0lccig03c53/qUVYo5MOqLcqBFWgbUix7/fea482e2a30a634ee8da1a66bbd812bd/Union.svg" />
+              </PlusContainer>
+            </H3>
+          </Card>
+          <Card
+            isClicked={isClicked}
+            currentHeight={currentHeight}
+            onClick={handleClick}
+          >
+            <UpContainer>
+              <TextTag>Tag - Tag</TextTag>
+              <ContainerAuthor>
+                <TextTag>12:22</TextTag>
+                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
+              </ContainerAuthor>{' '}
+            </UpContainer>
+            <H3>
+              Short title or primary message.{' '}
+              <span style={{ color: 'rgba(255,255,255,0.59)' }}>
+                Description or short secondary message.
+              </span>
+              <PlusContainer>
+                <Plus src="https://images.ctfassets.net/r0lccig03c53/qUVYo5MOqLcqBFWgbUix7/fea482e2a30a634ee8da1a66bbd812bd/Union.svg" />
+              </PlusContainer>
+            </H3>
+          </Card>
+        </GridContainer>
+        <CardFullWidth currentHeight={currentHeight}>
+          <UpContainer>
+            <TextTag>Tag - Tag</TextTag>
+            <ContainerAuthor>
+              <TextTag>12:22</TextTag>
+              <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
+            </ContainerAuthor>{' '}
+          </UpContainer>
           <H3>
             Short title or primary message.{' '}
             <span style={{ color: 'rgba(255,255,255,0.59)' }}>
               Description or short secondary message
-            </span>
+            </span>{' '}
+            <PlusContainer>
+              <Plus src="https://images.ctfassets.net/r0lccig03c53/qUVYo5MOqLcqBFWgbUix7/fea482e2a30a634ee8da1a66bbd812bd/Union.svg" />
+            </PlusContainer>
           </H3>
-        </Card>
-        <Card currentHeight={currentHeight}>
-          <TextTag>Tag - Tag</TextTag>
-          <H3>
-            Short title or primary message.{' '}
-            <span style={{ color: 'rgba(255,255,255,0.59)' }}>
-              Description or short secondary message
-            </span>
-          </H3>
-        </Card>
-        <Card currentHeight={currentHeight}>
-          <TextTag>Tag - Tag</TextTag>
-          <H3>
-            Short title or primary message.{' '}
-            <span style={{ color: 'rgba(255,255,255,0.59)' }}>
-              Description or short secondary message
-            </span>
-          </H3>
-        </Card>
-        <Card currentHeight={currentHeight}>
-          <TextTag>Tag - Tag</TextTag>
-          <H3>
-            Short title or primary message.{' '}
-            <span style={{ color: 'rgba(255,255,255,0.59)' }}>
-              Description or short secondary message
-            </span>
-          </H3>
-        </Card>
-      </GridContainer>
-      <CardFullWidth currentHeight={currentHeight}>
-        <TextTag>Tag - Tag</TextTag>
-        <H3>
-          Short title or primary message.{' '}
-          <span style={{ color: 'rgba(255,255,255,0.59)' }}>
-            Description or short secondary message
-          </span>
-        </H3>
-      </CardFullWidth>
+        </CardFullWidth>
+      </Relative>
     </>
   );
 };
