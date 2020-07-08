@@ -9,7 +9,6 @@ const Container = styled.button`
   border: none;
   padding: 4px 12px 3px 12px;
   margin-left: 4px;
-  margin-top: 4px;
   cursor: pointer;
   display: flex;
   align-items: center;

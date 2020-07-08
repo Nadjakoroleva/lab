@@ -24,7 +24,7 @@ const Overlay = styled.div`
   height: ${({ isClicked }) => (isClicked ? `100%` : ``)};
   max-height: ${({ isClicked }) => (isClicked ? `100%` : ``)};
   opacity: ${({ isClicked }) => (isClicked ? `1` : `0`)};
-  z-index: ${({ isClicked }) => (isClicked ? `10` : ``)};
+  // z-index: ${({ isClicked }) => (isClicked ? `10` : ``)};
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
 `;
 
@@ -32,18 +32,18 @@ const Nav = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 48px 20px;
+  padding: 56px 20px 56px 20px;
   @media (min-width: 768px) {
-    padding: 32px;
-  }
-  @media (min-width: 1024px) {
     padding: 48px;
   }
-  @media (min-width: 1367px) {
-    padding: 64px;
+  @media (min-width: 1024px) {
+    padding: 56px 48px 48px 48px;
+  }
+  @media (min-width: 1365px) {
+    padding: 56px 64px 64px 64px;
   }
   @media (min-width: 1380px) {
-    padding: 64px 0 64px 0;
+    padding: 56px 32px 64px 32px;
     max-width: 1320px;
     margin: 0 auto;
   }
@@ -82,18 +82,18 @@ const Intro = styled.div`
   @media (min-width: 768px) {
     flex-direction: row;
     align-items: center;
-    padding: 75px 32px 32px 32px;
+    padding: 75px 48px 32px 48px;
   }
   @media (min-width: 1024px) {
     padding: 75px 48px 32px 48px;
   }
-  @media (min-width: 1367px) {
+  @media (min-width: 1365px) {
     padding: 75px 64px 32px 64px;
 
     margin: 0 auto;
   }
   @media (min-width: 1380px) {
-    padding: 75px 0 32px 0;
+    padding: 75px 32px 32px 32px;
     max-width: 1320px;
   }
 `;
@@ -134,7 +134,7 @@ const MainDescription = styled.div`
   line-height: 32px;
   width: 100%;
   @media (min-width: 768px) {
-    padding: 32px 32px 96px 32px;
+    padding: 32px 48px 96px 48px;
   }
   @media (min-width: 1024px) {
     width: 100%;
@@ -147,12 +147,12 @@ const MainDescription = styled.div`
     width: 100%;
     max-width: 1308px;
   }
-  @media (min-width: 1367px) {
+  @media (min-width: 1365px) {
     padding: 48px 64px 124px 64px;
   }
   @media (min-width: 1380px) {
     margin: 0 auto;
-    padding-left: 0;
+    padding-left: 32px;
   }
 `;
 
@@ -173,8 +173,8 @@ const UploadBtn = styled.div`
     padding: 36px 32px;
   }
   @media (min-width: 1024px) {
-    margin-left: 24px;
-    margin-right: 24px;
+    margin-left: 16px;
+    margin-right: 16px;
   }
   @media (min-width: 1380px) {
     margin: 0 auto;
@@ -203,8 +203,8 @@ const GridContainer = styled.div`
     margin: 0;
   }
   @media (min-width: 1024px) {
-    grid-gap: 24px;
-    padding: 24px;
+    grid-gap: 16px;
+    padding: 16px;
     margin: 0;
   }
   @media (min-width: 1380px) {
@@ -224,8 +224,10 @@ const Card = styled.div`
   background-position: center;
   background-size: cover;
   max-height: ${({ currentHeight }) => `${currentHeight}px`};
+  z-index: 1;
   &:after {
     content: '';
+    z-index: -1;
     cursor: pointer;
     position: absolute;
     top: 0;
@@ -276,6 +278,7 @@ const CardFullWidth = styled.div`
   background-size: contain;
   background-origin: border-box;
   background-repeat: no-repeat;
+  z-index: -1;
   &:before {
     content: '';
     display: block;
@@ -369,7 +372,7 @@ const ExpendedCardsConatiner = styled.div`
   height: 100%;
   max-height: 100vh;
   overflow-y: auto;
-  z-index: ${({ isClicked }) => (isClicked ? `10` : `-1`)};
+  // z-index: ${({ isClicked }) => (isClicked ? `10` : `-1`)};
   opacity: ${({ isClicked }) => (isClicked ? '1' : '0')};
   transform: ${({ isClicked }) =>
     isClicked ? `translateY(0)` : `translateY(100px)`};
