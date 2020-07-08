@@ -8,7 +8,7 @@ const Container = styled.div`
   height: 150vh;
   margin-bottom: 80px;
   @media (min-width: 768px) {
-    height: 100vh;
+    height: 110vh;
   }
 `;
 
@@ -38,10 +38,13 @@ const TagContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  height: 50%;
+  height: 60%;
   background: #0f1011;
   display: flex;
-  padding: 32px;
+  padding: 0 32px;
+  @media (min-width: 1380px) {
+    height: 70%;
+  }
 `;
 
 const Text = styled.p`
@@ -61,9 +64,12 @@ const Text = styled.p`
 const DescContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 50%;
+  height: 40%;
   color: #0f1011;
   padding: 48px 48px 24px 48px;
+  @media (min-width: 1380px) {
+    height: 30%;
+  }
 `;
 
 const Author = styled.div`
