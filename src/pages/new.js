@@ -410,7 +410,7 @@ const PlusContainer = styled.span`
 `;
 
 const IndexPage = () => {
-  const [currentHeight, setCurrentHeight] = useState(window.innerWidth * 1.25);
+  const [currentHeight, setCurrentHeight] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
   const [currentTopPosition, setCurrentTopPosition] = useState(0);
   const containerElement = useRef(null);
