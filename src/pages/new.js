@@ -224,10 +224,8 @@ const Card = styled.div`
   background-position: center;
   background-size: cover;
   max-height: ${({ currentHeight }) => `${currentHeight}px`};
-  z-index: 1;
   &:after {
     content: '';
-    z-index: -1;
     cursor: pointer;
     position: absolute;
     top: 0;
@@ -372,12 +370,13 @@ const ExpendedCardsConatiner = styled.div`
   height: 100%;
   max-height: 100vh;
   overflow-y: auto;
-  // z-index: ${({ isClicked }) => (isClicked ? `10` : `-1`)};
+  z-index: ${({ isClicked }) => (isClicked ? `10` : `-1`)};
   opacity: ${({ isClicked }) => (isClicked ? '1' : '0')};
   transform: ${({ isClicked }) =>
     isClicked ? `translateY(0)` : `translateY(100px)`};
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1),
-    transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+    transform 0.3s cubic-bezier(0.76, 0, 0.24, 1),
+    all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   @media (min-width: 768px) {
     width: 90vw;
   }
