@@ -17,8 +17,9 @@ const Overlay = styled.div`
   top: 0;
   bottom: 0;
   right: 0;
-  background: rgba(35, 38, 44, 0.59);
   // background: red;
+  background: rgba(35, 38, 44, 0.59);
+
   width: ${({ isClicked }) => (isClicked ? `100%` : ``)};
   height: ${({ isClicked }) => (isClicked ? `100%` : ``)};
   max-height: ${({ isClicked }) => (isClicked ? `100%` : ``)};
