@@ -5,8 +5,11 @@ import Tag from './tag';
 const Container = styled.div`
   background: white;
   width: 100%;
-  height: 90vh;
-  margin-bottom: 50px;
+  height: 150vh;
+  margin-bottom: 80px;
+  @media (min-width: 768px) {
+    height: 100vh;
+  }
 `;
 
 const Img = styled.img`
@@ -17,10 +20,9 @@ const Img = styled.img`
 `;
 
 const TagContainer = styled.div`
-  padding-top: 64px;
+  // padding-top: 64px;
   display: flex;
   flex-wrap: wrap;
-  padding-bottom: 48px;
   background: white;
   flex: 0 0 auto;
   @media (min-width: 768px) {
@@ -32,7 +34,6 @@ const TagContainer = styled.div`
   @media (min-width: 1380px) {
     padding-top: 0;
     width: 41%;
-    padding-left: 48px;
   }
 `;
 
@@ -40,22 +41,46 @@ const ImageContainer = styled.div`
   height: 50%;
   background: #0f1011;
   display: flex;
-  padding: 96px;
+  padding: 32px;
 `;
 
 const Text = styled.p`
   color: #0f1011;
-  padding: 48px;
+  flex: 1 0 auto;
   font-size: 24px;
   line-height: 32px;
-  width: 55%;
-  flex: 1 0 auto;
+
+  @media (min-width: 768px) {
+    width: 80%;
+  }
+  @media (min-width: 1380px) {
+    width: 60%;
+  }
 `;
 
 const DescContainer = styled.div`
   display: flex;
   flex-direction: column;
-  // min-height: 100%;
+  height: 50%;
+  color: #0f1011;
+  padding: 48px 48px 24px 48px;
+`;
+
+const Author = styled.div`
+  font-family: 'Arrival Mono';
+  font-size: 11.25px;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: #85878a;
+  padding-bottom: 32px;
+  display: flex;
+  align-items: center;
+`;
+
+const Avatar = styled.img`
+  height: 32px;
+  width: 32px;
+  margin-right: 20px;
 `;
 
 const ExpendedCard = ({ src }) => {
@@ -67,53 +92,37 @@ const ExpendedCard = ({ src }) => {
         </ImageContainer>
         <DescContainer>
           <Text>
-            Jessica Vance, a Prototype Engineer at Arrival, began life in a
-            small village in County Donegal, Ireland but knew she was destined
-            for bigger things. Now she is striving to make the planet a better
-            place, leaving a legacy for future generations.
+            It is simple but powerful. It didn’t have the same level of
+            interactivity as the WorldWideWeb browser, but the fact that it
+            could be run on any machine meant that the web was now accessible to
+            everyone.
           </Text>
-          <TagContainer>
-            <Tag
-              name={'arrival.com'}
-              defaultColor={'rgba(35,38,44,0.06)'}
-              color={'#23262C'}
-            />
-            <Tag
-              name={'brand'}
-              defaultColor={'rgba(35,38,44,0.06)'}
-              color={'#23262C'}
-            />
-            <Tag
-              name={'connectivity'}
-              defaultColor={'rgba(35,38,44,0.06)'}
-              color={'#23262C'}
-            />
-            <Tag
-              name={'ARTEM&nbsp;TARADASH'}
-              defaultColor={'rgba(35,38,44,0.06)'}
-              color={'#23262C'}
-            />
-            <Tag
-              name={'brand'}
-              defaultColor={'rgba(35,38,44,0.06)'}
-              color={'#23262C'}
-            />
-            <Tag
-              name={'nadja&nbsp;koroleva'}
-              defaultColor={'rgba(35,38,44,0.06)'}
-              color={'#23262C'}
-            />
-            <Tag
-              name={'lena&nbsp;shesterova'}
-              defaultColor={'rgba(35,38,44,0.06)'}
-              color={'#23262C'}
-            />
-            <Tag
-              name={'connectivity'}
-              defaultColor={'rgba(35,38,44,0.06)'}
-              color={'#23262C'}
-            />
-          </TagContainer>
+          <div>
+            <Author>
+              <Avatar src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
+              <div>
+                by Alexander Lovyagin - 15 min ago - london, uk - expires on
+                12.10
+              </div>
+            </Author>
+            <TagContainer>
+              <Tag
+                name={'arrival.com'}
+                defaultColor={'rgba(35,38,44,0.06)'}
+                color={'#23262C'}
+              />
+              <Tag
+                name={'brand'}
+                defaultColor={'rgba(35,38,44,0.06)'}
+                color={'#23262C'}
+              />
+              <Tag
+                name={'connectivity'}
+                defaultColor={'rgba(35,38,44,0.06)'}
+                color={'#23262C'}
+              />
+            </TagContainer>
+          </div>
         </DescContainer>
       </Container>
     </>

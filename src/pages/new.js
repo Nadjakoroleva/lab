@@ -11,16 +11,17 @@ import ExpendedCards from '../components/expendedCard';
 import { GlobalStyle } from '../components/globalStyle';
 
 const Overlay = styled.div`
-  cursor: pointer;
+  cursor: url('https://images.ctfassets.net/r0lccig03c53/5ZMYhnpYsPQl4eZsVbO3SA/58c9f97bc6c89c52a773e33927e5dc91/cursor.png'),
+    pointer;
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   background: rgba(35, 38, 44, 0.59);
   // background: red;
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
+  width: ${({ isClicked }) => (isClicked ? `100%` : ``)};
+  height: ${({ isClicked }) => (isClicked ? `100%` : ``)};
+  max-height: ${({ isClicked }) => (isClicked ? `100%` : ``)};
   opacity: ${({ isClicked }) => (isClicked ? `1` : `0`)};
   z-index: ${({ isClicked }) => (isClicked ? `10` : ``)};
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
@@ -39,6 +40,11 @@ const Nav = styled.div`
   }
   @media (min-width: 1367px) {
     padding: 64px;
+  }
+  @media (min-width: 1380px) {
+    padding: 64px 0 64px 0;
+    max-width: 1320px;
+    margin: 0 auto;
   }
 `;
 
@@ -219,6 +225,7 @@ const Card = styled.div`
   max-height: ${({ currentHeight }) => `${currentHeight}px`};
   &:after {
     content: '';
+    cursor: pointer;
     position: absolute;
     top: 0;
     left: 0;
@@ -231,7 +238,7 @@ const Card = styled.div`
     transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   }
   &:hover :after {
-    opacity: 0.4;
+    opacity: 0.28;
   }
   &:before {
     content: '';
@@ -354,12 +361,10 @@ const Relative = styled.div`
 `;
 
 const ExpendedCardsConatiner = styled.div`
-  cursor: pointer;
   position: absolute;
   top: 0;
-  padding-top: ${({ currentTopPosition }) => `${currentTopPosition}px`};
   right: 0;
-  width: 90vw;
+  width: 100%;
   height: 100%;
   max-height: 100vh;
   overflow-y: auto;
@@ -369,19 +374,35 @@ const ExpendedCardsConatiner = styled.div`
     isClicked ? `translateY(0)` : `translateY(100px)`};
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1),
     transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  @media (min-width: 768px) {
+    width: 90vw;
+  }
+  @media (min-width: 1440px) {
+    // width: 60vw;
+  }
 `;
 
 const Modal = styled.div`
   min-height: 100%;
-  padding-top: 146px;
+  margin-top: 0;
+  @media (min-width: 768px) {
+    margin-top: 80px;
+  }
 `;
 
-const Plus = styled.img``;
+const Plus = styled.img`
+  background-color: rgb(35, 38, 44);
+  border-radius: 50%;
+  padding: 6.5px;
+  position: relative;
+  top: 5px;
+`;
 
 const PlusContainer = styled.span`
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   margin-left: 12px;
+
   ${Card}:hover & {
     opacity: 1;
   }
