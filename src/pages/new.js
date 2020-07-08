@@ -416,14 +416,14 @@ const IndexPage = () => {
 
   const handleClick = () => {
     setIsClicked(true);
-    document.getElementsByTagName('html')[0].style.overflow = 'hidden';
+    document.getElementsByTagName('body')[0].style.overflow = 'hidden';
     disableBodyScroll(document.body);
   };
 
   const closeCards = () => {
     setIsClicked(false);
     enableBodyScroll(document.body);
-    document.getElementsByTagName('html')[0].style = '';
+    document.getElementsByTagName('body')[0].style = '';
   };
 
   useEffect(() => {
