@@ -24,8 +24,9 @@ const Overlay = styled.div`
   height: ${({ isClicked }) => (isClicked ? `100%` : ``)};
   max-height: ${({ isClicked }) => (isClicked ? `100%` : ``)};
   opacity: ${({ isClicked }) => (isClicked ? `1` : `0`)};
-  // z-index: ${({ isClicked }) => (isClicked ? `10` : ``)};
-  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  z-index: ${({ isClicked }) => (isClicked ? `10` : ``)};
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1),
+    all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
 `;
 
 const Nav = styled.div`
@@ -89,7 +90,6 @@ const Intro = styled.div`
   }
   @media (min-width: 1365px) {
     padding: 75px 64px 32px 64px;
-
     margin: 0 auto;
   }
   @media (min-width: 1380px) {
@@ -220,7 +220,7 @@ const Card = styled.div`
   display: flex;
   flex-shrink: 0;
   margin-bottom: 20px;
-  background-image: url('https://images.ctfassets.net/r0lccig03c53/3TbgFCahXyC07hJ8aF11t7/fad5f8a6155c736e5befb1e5559d24cb/content-image-covered.jpg');
+  background-image: ${({ background }) => `url(${background})`};
   background-position: center;
   background-size: cover;
   max-height: ${({ currentHeight }) => `${currentHeight}px`};
@@ -462,7 +462,7 @@ const IndexPage = () => {
                 />
               ))}
             </TagContainer>
-            <Img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
+            <Img src="https://images.ctfassets.net/r0lccig03c53/2dQwP9vJi6krMhiqe4jB4k/d1639bedee751fad4931a6acd55af5d5/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
           </Nav>
 
           <Intro>
@@ -477,10 +477,10 @@ const IndexPage = () => {
               <Link>5&nbsp;posts</Link>
               <Img
                 style={{ marginLeft: '24px' }}
-                src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32"
+                src="https://images.ctfassets.net/r0lccig03c53/2dQwP9vJi6krMhiqe4jB4k/d1639bedee751fad4931a6acd55af5d5/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32"
               />
-              <Img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
-              <Img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
+              <Img src="https://images.ctfassets.net/r0lccig03c53/2QJ3wqKYIZOucZDB684Fv1/323623dd80f42aa8efb4d4136e9928da/artem-tarasov.png?h=32" />
+              <Img src="https://images.ctfassets.net/r0lccig03c53/22trzxbCuNJ1He0xKOhzyg/f6e14c85d4aa48bb03ea8e72b2f79b38/2020-06-25_15.36_1.png?h=32" />
             </FlexContainer>
           </Intro>
         </div>
@@ -502,7 +502,7 @@ const IndexPage = () => {
           <Modal isClicked={isClicked}>
             <ExpendedCards
               src={
-                'https://images.ctfassets.net/r0lccig03c53/3TbgFCahXyC07hJ8aF11t7/fad5f8a6155c736e5befb1e5559d24cb/content-image-covered.jpg'
+                'https://images.ctfassets.net/r0lccig03c53/1o6hSgdqHYzMS3SHp3CgUZ/59fe9942ed1c3088e4197a6fb26d3de7/videoplayer.jpg'
               }
             />
 
@@ -513,7 +513,7 @@ const IndexPage = () => {
             />
             <ExpendedCards
               src={
-                'https://images.ctfassets.net/r0lccig03c53/3TbgFCahXyC07hJ8aF11t7/fad5f8a6155c736e5befb1e5559d24cb/content-image-covered.jpg'
+                'https://images.ctfassets.net/r0lccig03c53/4KWBX7d1YaIT0ArXjehhCj/1fffc433da7a13a274578979b41272b7/image_164.jpg'
               }
             />
           </Modal>
@@ -534,12 +534,15 @@ const IndexPage = () => {
             isClicked={isClicked}
             currentHeight={currentHeight}
             onClick={handleClick}
+            background={
+              'https://images.ctfassets.net/r0lccig03c53/6OkOAulJLBwtRJNHLbukfq/b29c73c98f8a4d247dce159190d4ea48/content-image-covered.png'
+            }
           >
             <UpContainer>
               <TextTag>Tag - Tag</TextTag>
               <ContainerAuthor>
                 <TextTag>12:22</TextTag>
-                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
+                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/22trzxbCuNJ1He0xKOhzyg/f6e14c85d4aa48bb03ea8e72b2f79b38/2020-06-25_15.36_1.png?h=32" />
               </ContainerAuthor>{' '}
             </UpContainer>
             <H3>
@@ -556,12 +559,15 @@ const IndexPage = () => {
             isClicked={isClicked}
             currentHeight={currentHeight}
             onClick={handleClick}
+            background={
+              'https://images.ctfassets.net/r0lccig03c53/3TbgFCahXyC07hJ8aF11t7/fad5f8a6155c736e5befb1e5559d24cb/content-image-covered.jpg'
+            }
           >
             <UpContainer>
               <TextTag>Tag - Tag</TextTag>
               <ContainerAuthor>
                 <TextTag>12:22</TextTag>
-                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
+                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/22trzxbCuNJ1He0xKOhzyg/f6e14c85d4aa48bb03ea8e72b2f79b38/2020-06-25_15.36_1.png?h=32" />
               </ContainerAuthor>{' '}
             </UpContainer>
             <H3>
@@ -578,12 +584,15 @@ const IndexPage = () => {
             isClicked={isClicked}
             currentHeight={currentHeight}
             onClick={handleClick}
+            background={
+              'https://images.ctfassets.net/r0lccig03c53/4KWBX7d1YaIT0ArXjehhCj/1fffc433da7a13a274578979b41272b7/image_164.jpg'
+            }
           >
             <UpContainer>
               <TextTag>Tag - Tag</TextTag>
               <ContainerAuthor>
                 <TextTag>12:22</TextTag>
-                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
+                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/22trzxbCuNJ1He0xKOhzyg/f6e14c85d4aa48bb03ea8e72b2f79b38/2020-06-25_15.36_1.png?h=32" />
               </ContainerAuthor>{' '}
             </UpContainer>
             <H3>
@@ -600,12 +609,15 @@ const IndexPage = () => {
             isClicked={isClicked}
             currentHeight={currentHeight}
             onClick={handleClick}
+            background={
+              'https://images.ctfassets.net/r0lccig03c53/1cZz1aRTtLj4RLMNeerpy6/d29c1100b5c69a5a28700bde8a88e244/content-image-covered.jpg'
+            }
           >
             <UpContainer>
               <TextTag>Tag - Tag</TextTag>
               <ContainerAuthor>
                 <TextTag>12:22</TextTag>
-                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
+                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/22trzxbCuNJ1He0xKOhzyg/f6e14c85d4aa48bb03ea8e72b2f79b38/2020-06-25_15.36_1.png?h=32" />
               </ContainerAuthor>{' '}
             </UpContainer>
             <H3>
