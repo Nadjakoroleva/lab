@@ -36,7 +36,7 @@ const TagContainer = styled.div`
 
 const ImageContainer = styled.div`
   height: 60%;
-  background: #000000;
+  background: ${({ bgForImageContainer }) => `${bgForImageContainer}`};
   display: flex;
   @media (min-width: 1380px) {
     height: 70%;
@@ -103,7 +103,7 @@ const Avatar = styled.img`
   margin-right: 20px;
 `;
 
-const ExpendedCard = ({ src }) => {
+const ExpendedCard = ({ src, bgForImageContainer }) => {
   const [currentHeightOfImage, setCurrentHeightOfImage] = useState('100%');
   const image = useRef(null);
   useEffect(() => {
@@ -112,7 +112,7 @@ const ExpendedCard = ({ src }) => {
   return (
     <>
       <Container>
-        <ImageContainer>
+        <ImageContainer bgForImageContainer={bgForImageContainer}>
           <Img
             ref={image}
             currentHeightOfImage={currentHeightOfImage}

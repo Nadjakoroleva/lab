@@ -7,6 +7,7 @@ import {
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock';
 import ExpendedCards from '../components/expendedCard';
+import Mute from '../components/mute';
 
 import { GlobalStyle } from '../components/globalStyle';
 
@@ -262,21 +263,23 @@ const Card = styled.div`
   }
 `;
 
+const CardWithComponent = styled(Card)``;
+
 const CardFullWidth = styled.div`
   cursor: pointer;
-  background: #161718;
+  background: #1e1f22;
   margin-bottom: 80px;
   position: relative;
   display: flex;
   flex-shrink: 0;
   max-height: ${({ currentHeight }) => `${currentHeight}px`};
   max-width: 1308px;
-  background-image: url('https://images.ctfassets.net/r0lccig03c53/4Gs0z339XUz3KYec23fYWe/de159fe20e16ff1357cb301ca352892a/content-image-covered-big.jpg');
+  background-image: url('https://images.ctfassets.net/r0lccig03c53/1RZM81T4FHQhTdhVTY6LGi/fa2ad855f28ea9597d5f8608b706c877/content-image-covered-big.jpg');
   background-position: center;
   background-size: contain;
   background-origin: border-box;
   background-repeat: no-repeat;
-  z-index: -1;
+  // z-index: -1;
   &:before {
     content: '';
     display: block;
@@ -286,6 +289,7 @@ const CardFullWidth = styled.div`
   }
   &:after {
     content: '';
+    cursor: pointer;
     position: absolute;
     top: 0;
     left: 0;
@@ -411,8 +415,27 @@ const PlusContainer = styled.span`
   }
 `;
 
+const Component = styled.div`
+  position: absolute;
+  width: 100%;
+  top: 45%;
+  transform: scale(1.5);
+  @media (min-width: 768px) {
+    transform: scale(2.5);
+  }
+  @media (min-width: 1280px) {
+    transform: scale(3.5);
+  }
+`;
+
+const H3ForFullWidthCard = styled(H3)`
+  @media (min-width: 1280px) {
+    width: 35%;
+  }
+`;
+
 const IndexPage = () => {
-  const [currentHeight, setCurrentHeight] = useState(0);
+  const [currentHeight, setCurrentHeight] = useState(480);
   const [isClicked, setIsClicked] = useState(false);
   const [currentTopPosition, setCurrentTopPosition] = useState(0);
   const containerElement = useRef(null);
@@ -501,8 +524,9 @@ const IndexPage = () => {
         >
           <Modal isClicked={isClicked}>
             <ExpendedCards
+              bgForImageContainer={'#23262C'}
               src={
-                'https://images.ctfassets.net/r0lccig03c53/1o6hSgdqHYzMS3SHp3CgUZ/59fe9942ed1c3088e4197a6fb26d3de7/videoplayer.jpg'
+                'https://images.ctfassets.net/r0lccig03c53/2y4CubxVw5ZDXzbmxHeVup/a0a688db936de2e8abef63953c6122e9/Group_219196428.png'
               }
             />
 
@@ -510,12 +534,14 @@ const IndexPage = () => {
               src={
                 'https://images.ctfassets.net/r0lccig03c53/3TbgFCahXyC07hJ8aF11t7/fad5f8a6155c736e5befb1e5559d24cb/content-image-covered.jpg'
               }
+              bgForImageContainer={'black'}
             />
-            <ExpendedCards
+            {/* <ExpendedCards
               src={
                 'https://images.ctfassets.net/r0lccig03c53/4KWBX7d1YaIT0ArXjehhCj/1fffc433da7a13a274578979b41272b7/image_164.jpg'
               }
-            />
+              bgForImageContainer={'red'}
+            /> */}
           </Modal>
         </ExpendedCardsConatiner>
 
@@ -535,7 +561,7 @@ const IndexPage = () => {
             currentHeight={currentHeight}
             onClick={handleClick}
             background={
-              'https://images.ctfassets.net/r0lccig03c53/6OkOAulJLBwtRJNHLbukfq/b29c73c98f8a4d247dce159190d4ea48/content-image-covered.png'
+              'https://images.ctfassets.net/r0lccig03c53/2y4CubxVw5ZDXzbmxHeVup/a0a688db936de2e8abef63953c6122e9/Group_219196428.png'
             }
           >
             <UpContainer>
@@ -580,13 +606,10 @@ const IndexPage = () => {
               </PlusContainer>
             </H3>
           </Card>
-          <Card
+          <CardWithComponent
             isClicked={isClicked}
             currentHeight={currentHeight}
             onClick={handleClick}
-            background={
-              'https://images.ctfassets.net/r0lccig03c53/4KWBX7d1YaIT0ArXjehhCj/1fffc433da7a13a274578979b41272b7/image_164.jpg'
-            }
           >
             <UpContainer>
               <TextTag>Tag - Tag</TextTag>
@@ -595,6 +618,9 @@ const IndexPage = () => {
                 <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/22trzxbCuNJ1He0xKOhzyg/f6e14c85d4aa48bb03ea8e72b2f79b38/2020-06-25_15.36_1.png?h=32" />
               </ContainerAuthor>{' '}
             </UpContainer>
+            <Component>
+              <Mute />
+            </Component>
             <H3>
               Short title or primary message.{' '}
               <span style={{ color: 'rgba(255,255,255,0.59)' }}>
@@ -604,7 +630,7 @@ const IndexPage = () => {
                 <Plus src="https://images.ctfassets.net/r0lccig03c53/qUVYo5MOqLcqBFWgbUix7/fea482e2a30a634ee8da1a66bbd812bd/Union.svg" />
               </PlusContainer>
             </H3>
-          </Card>
+          </CardWithComponent>
           <Card
             isClicked={isClicked}
             currentHeight={currentHeight}
@@ -639,7 +665,7 @@ const IndexPage = () => {
               <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
             </ContainerAuthor>{' '}
           </UpContainer>
-          <H3>
+          <H3ForFullWidthCard>
             Short title or primary message.{' '}
             <span style={{ color: 'rgba(255,255,255,0.59)' }}>
               Description or short secondary message
@@ -647,7 +673,7 @@ const IndexPage = () => {
             <PlusContainer>
               <Plus src="https://images.ctfassets.net/r0lccig03c53/qUVYo5MOqLcqBFWgbUix7/fea482e2a30a634ee8da1a66bbd812bd/Union.svg" />
             </PlusContainer>
-          </H3>
+          </H3ForFullWidthCard>
         </CardFullWidth>
       </Relative>
     </>
