@@ -528,6 +528,7 @@ const IndexPage = () => {
               src={
                 'https://images.ctfassets.net/r0lccig03c53/2y4CubxVw5ZDXzbmxHeVup/a0a688db936de2e8abef63953c6122e9/Group_219196428.png'
               }
+              objectFitProp={'contain'}
             />
 
             <ExpendedCards
@@ -535,13 +536,15 @@ const IndexPage = () => {
                 'https://images.ctfassets.net/r0lccig03c53/3TbgFCahXyC07hJ8aF11t7/fad5f8a6155c736e5befb1e5559d24cb/content-image-covered.jpg'
               }
               bgForImageContainer={'black'}
+              objectFitProp={'contain'}
             />
-            {/* <ExpendedCards
+            <ExpendedCards
               src={
-                'https://images.ctfassets.net/r0lccig03c53/4KWBX7d1YaIT0ArXjehhCj/1fffc433da7a13a274578979b41272b7/image_164.jpg'
+                'https://images.ctfassets.net/r0lccig03c53/1PY2A3gKsfQENpvDdCTgTz/47360646fcb582518f17ec2b542cb43a/image_167.jpg'
               }
-              bgForImageContainer={'red'}
-            /> */}
+              bgForImageContainer={'black'}
+              objectFitProp={'cover'}
+            />
           </Modal>
         </ExpendedCardsConatiner>
 

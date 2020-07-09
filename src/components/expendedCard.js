@@ -44,7 +44,7 @@ const ImageContainer = styled.div`
 `;
 
 const Img = styled.img`
-  object-fit: contain;
+  object-fit: ${({ objectFitProp }) => `${objectFitProp}`};
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -103,7 +103,7 @@ const Avatar = styled.img`
   margin-right: 20px;
 `;
 
-const ExpendedCard = ({ src, bgForImageContainer }) => {
+const ExpendedCard = ({ src, bgForImageContainer, objectFitProp }) => {
   const [currentHeightOfImage, setCurrentHeightOfImage] = useState('100%');
   const image = useRef(null);
   useEffect(() => {
@@ -117,6 +117,7 @@ const ExpendedCard = ({ src, bgForImageContainer }) => {
             ref={image}
             currentHeightOfImage={currentHeightOfImage}
             src={src}
+            objectFitProp={objectFitProp}
           />
         </ImageContainer>
         <DescContainer>
