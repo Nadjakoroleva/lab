@@ -7,6 +7,7 @@ import {
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock';
 import ExpendedCards from '../components/expendedCard';
+import ExpendedCardWithComponent from '../components/expendedCardWithComponent';
 import Mute from '../components/mute';
 
 import { GlobalStyle } from '../components/globalStyle';
@@ -372,7 +373,7 @@ const ExpendedCardsConatiner = styled.div`
   right: 0;
   width: 100%;
   height: 100%;
-  max-height: 100vh;
+  // max-height: 100vh;
   overflow-y: auto;
   z-index: ${({ isClicked }) => (isClicked ? `10` : `-1`)};
   opacity: ${({ isClicked }) => (isClicked ? '1' : '0')};
@@ -381,7 +382,7 @@ const ExpendedCardsConatiner = styled.div`
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1),
     transform 0.3s cubic-bezier(0.76, 0, 0.24, 1),
     all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     width: 90vw;
   }
   @media (min-width: 1440px) {
@@ -537,6 +538,13 @@ const IndexPage = () => {
               }
               bgForImageContainer={'black'}
               objectFitProp={'contain'}
+            />
+            <ExpendedCardWithComponent
+              src={
+                'https://images.ctfassets.net/r0lccig03c53/1PY2A3gKsfQENpvDdCTgTz/47360646fcb582518f17ec2b542cb43a/image_167.jpg'
+              }
+              bgForImageContainer={'black'}
+              objectFitProp={'cover'}
             />
             <ExpendedCards
               src={
