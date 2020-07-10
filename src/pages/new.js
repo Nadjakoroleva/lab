@@ -139,7 +139,6 @@ const MainDescription = styled.div`
     padding: 32px 48px 96px 48px;
   }
   @media (min-width: 1024px) {
-    width: 100%;
     padding: 48px 48px 124px 48px;
   }
   @media (min-width: 1280px) {
@@ -365,13 +364,14 @@ const H3 = styled.div`
 
 const Relative = styled.div`
   position: relative;
+  max-width: 100vw;
 `;
 
 const ExpendedCardsConatiner = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   // max-height: 100vh;
   overflow-y: auto;
@@ -382,7 +382,7 @@ const ExpendedCardsConatiner = styled.div`
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1),
     transform 0.3s cubic-bezier(0.76, 0, 0.24, 1),
     all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     width: 90vw;
   }
   @media (min-width: 1440px) {
@@ -420,13 +420,13 @@ const Component = styled.div`
   position: absolute;
   width: 100%;
   top: 45%;
-  transform: scale(1.5);
-  @media (min-width: 768px) {
-    transform: scale(2.5);
-  }
-  @media (min-width: 1280px) {
-    transform: scale(3.5);
-  }
+  // transform: scale(1.5);
+  // @media (min-width: 768px) {
+  //   transform: scale(2.5);
+  // }
+  // @media (min-width: 1280px) {
+  //   transform: scale(3.5);
+  // }
 `;
 
 const H3ForFullWidthCard = styled(H3)`
@@ -436,7 +436,7 @@ const H3ForFullWidthCard = styled(H3)`
 `;
 
 const IndexPage = () => {
-  const [currentHeight, setCurrentHeight] = useState(480);
+  const [currentHeight, setCurrentHeight] = useState(650);
   const [isClicked, setIsClicked] = useState(false);
   const [currentTopPosition, setCurrentTopPosition] = useState(0);
   const containerElement = useRef(null);

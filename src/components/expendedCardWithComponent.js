@@ -96,13 +96,13 @@ const Scale = styled.div`
   display: flex;
   justufy-content: center;
   align-items: center;
-  transform: scale(1.5);
-  @media (min-width: 768px) {
-    transform: scale(2.5);
-  }
-  @media (min-width: 1280px) {
-    transform: scale(3.5);
-  }
+  // transform: scale(1.5);
+  // @media (min-width: 768px) {
+  //   transform: scale(2.5);
+  // }
+  // @media (min-width: 1280px) {
+  //   transform: scale(3.5);
+  // }
 `;
 
 const Avatar = styled.img`
