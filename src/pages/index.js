@@ -1,17 +1,24 @@
 import React, { useEffect, useState, useRef } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
 
 import { GlobalStyle } from '../components/globalStyle';
 import Tag from '../components/tag';
-import HorizontalCard from '../components/card';
-import CardBg from '../components/cardBg';
+import CardWithComponents from '../components/cardWithComponents';
+import CardWithVideo from '../components/cardWithVideo';
+import CardWithImage from '../components/cardWithImage';
 import FullWidthCard from '../components/fullWidthCard';
 import VideoSrc from '../assets/1.mp4';
 import VideoSrc2 from '../assets/2.mp4';
 import VideoSrc3 from '../assets/3.mp4';
+import VideoSrc4 from '../assets/4.mp4';
 import VideoSrc5 from '../assets/5.mp4';
-import CardPic from '../components/cardPic';
 import '../components/fonts.css';
+import ExpendedCards from '../components/expendedCard';
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock';
 
 const Container = styled.div`
   color: #f3f3f3;
@@ -21,6 +28,10 @@ const Container = styled.div`
   padding-top: 20px;
   max-width: 1680px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  // position: relative;
+  // z-index: 1;
   @media (min-width: 1024px) {
     padding-left: 48px;
     padding-right: 48px;
@@ -83,7 +94,7 @@ const H2 = styled.h2`
   }
 `;
 
-const CardContainer = styled.div`
+const CardContainerMain = styled.div`
   display: grid;
   background-color: #0f1011;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -120,52 +131,538 @@ const Footer = styled.div`
   height: 150px;
 `;
 
+//card with Image
+const blur = keyframes`
+from {
+    filter: blur(50px);
+ }
+ to {
+     filter: blur(0px);
+ }
+`;
+
+const scale = keyframes`
+{
+    from {transform: scale(1.5)}
+    to {transform: scale(1)}
+  }`;
+
+const CardContainer = styled.div`
+  position: relative;
+  z-index: 1;
+  min-height: 580px;
+  background-color: #000000;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 20px;
+  @media (min-width: 768px) {
+    min-height: 629px;
+    margin-right: 24px;
+    margin-top: 24px;
+  }
+  @media (min-width: 1280px) {
+    min-height: 720px;
+    margin-right: 32px;
+    margin-bottom: 32px;
+    margin-top: 0;
+  }
+  &:hover {
+    box-shadow: 0px 0px 44px rgba(0, 0, 0, 0.95);
+  }
+`;
+
+const TagInner = styled.p`
+  font-family: 'Arrival Mono';
+  letter-spacing: 0.06em;
+  font-size: 11px;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.59);
+  opacity: 1;
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  @media (min-width: 1280px) {
+    opacity: 0;
+  }
+  // ${CardContainer}:hover & {
+  //   opacity: 1;
+  // }
+`;
+
+const Date = styled(Tag)`
+  padding-left: 28px;
+`;
+
+const TagContainerInner = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Frame = styled.div`
+  width: 514px;
+  height: 340px;
+  overflow: hidden;
+  background-color: #00000;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-itens: center;
+  @media (max-width: 1320px) {
+    width: 428px;
+    height: 437px;
+  }
+  @media (max-width: 1030px) {
+    width: 380px;
+  }
+  @media (max-width: 480px) {
+    width: 227px;
+    height: 232px;
+  }
+`;
+const Title = styled.p`
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+  color: #f8f8f8;
+  opacity: 1;
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+  @media (min-width: 1024px) {
+    width: 80%;
+  }
+  @media (min-width: 1280px) {
+    opacity: 0;
+    width: 70%;
+  }
+  // ${CardContainer}:hover & {
+  //   opacity: 1;
+  // }
+`;
+
+const Img = styled.img`
+  object-fit: contain;
+  height: 100%;
+  overflow: hidden;
+  ${CardContainer}:hover & {
+    animation: ${blur} 4s cubic-bezier(0.76, 0, 0.24, 1) forwards,
+      ${scale} 4s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  }
+`;
+
+const ExpendedCardsConatiner = styled.div`
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  padding-top: ${({ currentTopPosition }) => `${currentTopPosition}px`};
+  right: 0;
+  width: 90vw;
+  height: 100%;
+  max-height: 100vh;
+  overflow-y: auto;
+  z-index: ${({ isClicked }) => (isClicked ? `10` : `-1`)};
+  opacity: ${({ isClicked }) => (isClicked ? '1' : '0')};
+  transform: ${({ isClicked }) =>
+    isClicked ? `translateY(0)` : `translateY(100px)`};
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1),
+    transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+`;
+
+const Modal = styled.div`
+  min-height: 100%;
+  padding-top: 146px;
+`;
+
+const Layout = styled.div`
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  // bottom: 0;
+  // left: 0;
+  right: 0;
+  background: rgba(35, 38, 44, 0.59);
+  // background: red;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  z-index: ${({ isClicked }) => (isClicked ? `10` : ``)};
+  opacity: ${({ isClicked }) => (isClicked ? `1` : `0`)};
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+`;
+
+//карточка с видео
+const CardContainerForCardWithVideo = styled.div`
+  min-height: 580px;
+  position: relative;
+  z-index: 1;
+  background-color: #000000;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 20px;
+  @media (min-width: 768px) {
+    min-height: 629px;
+    margin-right: 24px;
+    margin-top: 24px;
+  }
+  @media (min-width: 1280px) {
+    min-height: 720px;
+    margin-right: 32px;
+    margin-bottom: 32px;
+    margin-top: 0;
+  }
+  &:hover {
+    box-shadow: 0px 0px 44px rgba(0, 0, 0, 0.95);
+  }
+`;
+const TagForCardWithVideo = styled.p`
+  font-family: 'Arrival Mono';
+  letter-spacing: 0.06em;
+  font-size: 11px;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.59);
+  opacity: 1;
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  @media (min-width: 1280px) {
+    opacity: 0;
+  }
+`;
+
+const DateForCardWithVideo = styled(TagForCardWithVideo)`
+  padding-left: 28px;
+`;
+
+const TagContainerForCardWithVideo = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const FrameForCardWithVideo = styled.div`
+  width: 514px;
+  height: 340px;
+  background-color: #00000;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-itens: center;
+  @media (max-width: 1320px) {
+    width: 428px;
+    height: 437px;
+  }
+  @media (max-width: 1030px) {
+    width: 380px;
+  }
+  @media (max-width: 480px) {
+    width: 227px;
+    height: 232px;
+  }
+`;
+
+const TitleForCardWithVideo = styled.p`
+  font-size: 18px;
+  line-height: 24px;
+  color: #f8f8f8;
+  letter-spacing: 0.04em;
+  opacity: 1;
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+  @media (min-width: 1024px) {
+    width: 80%;
+  }
+  @media (min-width: 1280px) {
+    opacity: 0;
+    width: 70%;
+  }
+`;
+
+const BgForCardWithVideo = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat-y: no-repeat;
+`;
+
+const VideoForCardWithVideo = styled.video`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+`;
+
+const ContainerRelative = styled.div`
+  position: relative;
+`;
+
 const IndexPage = () => {
+  const [isClicked, setIsClicked] = useState(false);
+  const videoPlayer = useRef(null);
+  const videoPlayer2 = useRef(null);
+  const videoPlayer4 = useRef(null);
+  const containerElement = useRef(null);
+
+  const handleOnMouseDown = () => {
+    videoPlayer.current.pause();
+  };
+  const handleOnMouseUp = () => {
+    videoPlayer.current.play();
+  };
+  const handleOnMouseDown2 = () => {
+    videoPlayer2.current.pause();
+  };
+  const handleOnMouseUp2 = () => {
+    videoPlayer2.current.play();
+  };
+  const handleOnMouseDown4 = () => {
+    videoPlayer4.current.pause();
+  };
+  const handleOnMouseUp4 = () => {
+    videoPlayer4.current.play();
+  };
+  const handleClick = () => {
+    setIsClicked(true);
+    document.getElementsByTagName('html')[0].style.overflow = 'hidden';
+    disableBodyScroll(document.body);
+  };
+
+  const closeCards = () => {
+    setIsClicked(false);
+    enableBodyScroll(document.body);
+    document.getElementsByTagName('html')[0].style = '';
+  };
+
+  const [currentTopPosition, setCurrentTopPosition] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!isClicked) {
+        setCurrentTopPosition(window.pageYOffset);
+      } else {
+        setCurrentTopPosition(containerElement.current.offsetTop);
+        return;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  });
+
   return (
     <>
-      <GlobalStyle />
-      <Container>
-        <Nav>
-          <img src="https://images.ctfassets.net/r0lccig03c53/3KaYO3nazk30Esi1vvoq3Q/70b2277694b956b0abf674b99d703b3b/White.svg?h=16" />
-          <img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=48" />
-        </Nav>
-        <TagContainer>
-          <Tag name={'arrival.com'} />
-          <Tag name={'brand'} />
-          <Tag name={'connectivity'} />
-          <Tag name={'ARTEM&nbsp;TARADASH'} />
-          <Tag name={'brand'} />
-          <Tag name={'nadja&nbsp;koroleva'} />
-          <Tag name={'lena&nbsp;shesterova'} />
-          <Tag name={'connectivity'} />
-        </TagContainer>
-        <Divider />
-        <Desc>
-          <H2>Design Lab</H2>
-          <H2>
-            Jessica Vance, a Prototype Engineer at Arrival, began life in a
-            small village in County Donegal, Ireland but knew she was destined
-            for bigger things. Now she is striving to make the planet a better
-            place, leaving a legacy for future generations.
-          </H2>
-        </Desc>
-      </Container>
-      <CardContainer>
-        <CardPic />
-        <CardBg videoSrc={VideoSrc3} />
-        <CardBg videoSrc={VideoSrc} />
+      <ContainerRelative>
+        <Layout isClicked={isClicked} onClick={closeCards} />
+        <Container>
+          <Nav>
+            <img src="https://images.ctfassets.net/r0lccig03c53/3KaYO3nazk30Esi1vvoq3Q/70b2277694b956b0abf674b99d703b3b/White.svg?h=16" />
+            <img src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=48" />
+          </Nav>
+          <TagContainer>
+            <Tag
+              name={'arrival.com'}
+              defaultColor={'rgba(243, 243, 243, 0.16)'}
+              color={'#f3f3f3'}
+            />
+            <Tag
+              name={'brand'}
+              defaultColor={'rgba(243, 243, 243, 0.16)'}
+              color={'#f3f3f3'}
+            />
+            <Tag
+              name={'connectivity'}
+              defaultColor={'rgba(243, 243, 243, 0.16)'}
+              color={'#f3f3f3'}
+            />
+            <Tag
+              name={'ARTEM&nbsp;TARADASH'}
+              defaultColor={'rgba(243, 243, 243, 0.16)'}
+              color={'#f3f3f3'}
+            />
+            <Tag
+              name={'brand'}
+              defaultColor={'rgba(243, 243, 243, 0.16)'}
+              color={'#f3f3f3'}
+            />
+            <Tag
+              name={'nadja&nbsp;koroleva'}
+              defaultColor={'rgba(243, 243, 243, 0.16)'}
+              color={'#f3f3f3'}
+            />
+            <Tag
+              name={'lena&nbsp;shesterova'}
+              defaultColor={'rgba(243, 243, 243, 0.16)'}
+              color={'#f3f3f3'}
+            />
+            <Tag
+              name={'connectivity'}
+              defaultColor={'rgba(243, 243, 243, 0.16)'}
+              color={'#f3f3f3'}
+            />
+          </TagContainer>
+          <Divider />
+          <Desc>
+            <H2>Design Lab</H2>
+            <H2>
+              Every idea worth discussion, every pixel matters. With these
+              principles at the core, Design Lab meant to be a place to share
+              design artefacts between Arrival teams, no matter how ready to be
+              public they are.
+            </H2>
+          </Desc>
+        </Container>
+        <CardContainerMain>
+          <ExpendedCardsConatiner
+            currentTopPosition={currentTopPosition}
+            ref={containerElement}
+            isClicked={isClicked}
+          >
+            <Modal isClicked={isClicked}>
+              <ExpendedCards
+                src={
+                  'https://images.ctfassets.net/r0lccig03c53/2zrqAb5i06M7epHKaA1rW/a447cb0b98aadee007c9750a613ce19b/__________________________2020-06-22____16.34.47.png'
+                }
+              />
+              {/* <ExpendedCards /> */}
+              <ExpendedCards
+                src={
+                  'https://images.ctfassets.net/r0lccig03c53/pMW9fuPeFhKM82sRavMXK/146710e5109ecd91fb40d40573d6e188/__________________________2020-06-22____16.34.57.png'
+                }
+              />
+              <ExpendedCards
+                src={
+                  'https://images.ctfassets.net/r0lccig03c53/6qUfDJPdNUNE6vSn6nosYN/a64610a3952ea1d59252a59152671865/__________________________2020-06-22____16.35.27.png'
+                }
+              />
+              {/* <ExpendedCards /> */}
+            </Modal>
+          </ExpendedCardsConatiner>
 
-        <HorizontalCard />
-      </CardContainer>
+          {/* первая карточка с картинкой */}
+          {/* <CardContainer onClick={handleClick}>
+            <TagContainerInner> */}
+          {/* <TagInner>Ui motion - sales master - by LENA SHESTEROVA</TagInner> */}
+          {/* <Date>15&nbsp;min&nbsp;ago</Date> */}
+          {/* </TagContainerInner>
+            <Frame>
+              <Img src="https://images.ctfassets.net/r0lccig03c53/p9ewUrhvGBNL0LJVfzDfM/a475c9306b7557a4898831dec8b31a69/Img.jpg" />
+            </Frame>
+            <Title>
+              Blurred image for uploading blurred image Hello from the outside
+              At least I can say{' '}
+            </Title>
+          </CardContainer> */}
 
-      <FullWidthCard />
+          <CardContainerForCardWithVideo onClick={handleClick}>
+            <TagContainerForCardWithVideo>
+              <TagForCardWithVideo>
+                Ui motion - sales master - by LENA SHESTEROVA
+              </TagForCardWithVideo>
+              <DateForCardWithVideo>15&nbsp;min&nbsp;ago</DateForCardWithVideo>
+            </TagContainerForCardWithVideo>
+            <FrameForCardWithVideo>
+              <BgForCardWithVideo>
+                <VideoForCardWithVideo
+                  ref={videoPlayer4}
+                  playsinline
+                  loop
+                  autoPlay={false}
+                  muted={true}
+                  src={VideoSrc4}
+                  onMouseOut={handleOnMouseDown4}
+                  onMouseOver={handleOnMouseUp4}
+                />
+              </BgForCardWithVideo>
+            </FrameForCardWithVideo>
+            <TitleForCardWithVideo>
+              Blurred image for uploading blurred image Hello from the outside
+              At least I can say{' '}
+            </TitleForCardWithVideo>
+          </CardContainerForCardWithVideo>
 
-      <CardContainer>
-        <CardBg videoSrc={VideoSrc2} />
-        <CardBg videoSrc={VideoSrc5} />
-      </CardContainer>
+          {/* карточка с видео */}
 
-      <Footer />
+          <CardContainerForCardWithVideo onClick={handleClick}>
+            <TagContainerForCardWithVideo>
+              <TagForCardWithVideo>
+                Ui motion - sales master - by LENA SHESTEROVA
+              </TagForCardWithVideo>
+              <DateForCardWithVideo>15&nbsp;min&nbsp;ago</DateForCardWithVideo>
+            </TagContainerForCardWithVideo>
+            <FrameForCardWithVideo>
+              <BgForCardWithVideo>
+                <VideoForCardWithVideo
+                  ref={videoPlayer2}
+                  playsinline
+                  loop
+                  autoPlay={false}
+                  muted={true}
+                  src={VideoSrc3}
+                  onMouseOut={handleOnMouseDown2}
+                  onMouseOver={handleOnMouseUp2}
+                />
+              </BgForCardWithVideo>
+            </FrameForCardWithVideo>
+            <TitleForCardWithVideo>
+              Blurred image for uploading blurred image Hello from the outside
+              At least I can say{' '}
+            </TitleForCardWithVideo>
+          </CardContainerForCardWithVideo>
+
+          {/* карточка с видео */}
+          <CardContainerForCardWithVideo onClick={handleClick}>
+            <TagContainerForCardWithVideo>
+              <TagForCardWithVideo>
+                Ui motion - sales master - by LENA SHESTEROVA
+              </TagForCardWithVideo>
+              <DateForCardWithVideo>15&nbsp;min&nbsp;ago</DateForCardWithVideo>
+            </TagContainerForCardWithVideo>
+            <FrameForCardWithVideo>
+              <BgForCardWithVideo>
+                <VideoForCardWithVideo
+                  ref={videoPlayer}
+                  playsinline
+                  loop
+                  autoPlay={false}
+                  muted={true}
+                  src={VideoSrc}
+                  onMouseOut={handleOnMouseDown}
+                  onMouseOver={handleOnMouseUp}
+                />
+              </BgForCardWithVideo>
+            </FrameForCardWithVideo>
+            <TitleForCardWithVideo>
+              Blurred image for uploading blurred image Hello from the outside
+              At least I can say{' '}
+            </TitleForCardWithVideo>
+          </CardContainerForCardWithVideo>
+
+          <CardWithComponents />
+        </CardContainerMain>
+
+        <FullWidthCard />
+
+        {/* <CardContainer>
+        <CardWithVideo videoSrc={VideoSrc2} />
+        <CardWithVideo videoSrc={VideoSrc5} />
+      </CardContainer> */}
+        <GlobalStyle />
+        <Footer />
+      </ContainerRelative>
     </>
   );
 };

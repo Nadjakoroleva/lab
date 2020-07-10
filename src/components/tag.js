@@ -2,14 +2,13 @@ import React, { useEffect, useState, useRef } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 
 const Container = styled.button`
-  background-color: ${({ isClicked }) =>
-    isClicked ? '#f3f3f3' : 'rgba(243, 243, 243, 0.16)'};
+  background-color: ${({ isClicked, defaultColor }) =>
+    isClicked ? '#f3f3f3' : `${defaultColor}`};
   transition: background-color 0.3s cubic-bezier(0.76, 0, 0.24, 1),
     width 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   border: none;
   padding: 4px 12px 3px 12px;
   margin-left: 4px;
-  margin-top: 4px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -28,7 +27,7 @@ const Text = styled.div`
   line-height: 18px;
   text-transform: uppercase;
   transition: color 0.3s cubic-bezier(0.76, 0, 0.24, 1);
-  color: ${({ isClicked }) => (isClicked ? '#23262C' : '#f3f3f3')};
+  color: ${({ isClicked, color }) => (isClicked ? '#23262C' : `${color}`)};
 `;
 
 const opacity = keyframes`
@@ -54,7 +53,7 @@ const Img = styled.img`
       : ''};
 `;
 
-const Tag = ({ name }) => {
+const Tag = ({ name, defaultColor, color }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [currentWidth, setCurrentWidth] = useState('auto');
   const tagElement = useRef(null);
@@ -78,10 +77,12 @@ const Tag = ({ name }) => {
         newWidth={newWidth}
         isClicked={isClicked}
         onClick={handleClick}
+        defaultColor={defaultColor}
       >
         <Text
           isClicked={isClicked}
           dangerouslySetInnerHTML={{ __html: name }}
+          color={color}
         />
         <Img
           isClicked={isClicked}

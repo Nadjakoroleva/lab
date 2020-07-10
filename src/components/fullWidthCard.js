@@ -40,9 +40,9 @@ const Tag = styled.p`
   @media (min-width: 1280px) {
     opacity: 0;
   }
-  ${CardContainer}:hover & {
-    opacity: 1;
-  }
+  // ${CardContainer}:hover & {
+  //   opacity: 1;
+  // }
 `;
 
 const Date = styled(Tag)`
@@ -86,9 +86,9 @@ const Title = styled.p`
     width: 28%;
   }
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
-  ${CardContainer}:hover & {
-    opacity: 1;
-  }
+  // ${CardContainer}:hover & {
+  //   opacity: 1;
+  // }
 `;
 
 const Bg = styled.div`

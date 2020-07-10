@@ -85,6 +85,9 @@ const Container = styled.div`
   &:hover {
     opacity: 0.75;
   }
+  @media (min-width: 1280px) {
+    transform: scale(2.5);
+  }
 `;
 
 const Volume = styled.div`

@@ -27,11 +27,12 @@ export const GlobalStyle = createGlobalStyle`
     touch-action: manipulation;
     over-flow: hidden;
     background-color: #0f1011;
+    height: 100%;
   }
   body {
     font-family: 'Arrival';
     margin: 0;
-    overflow: hidden;
+    height: 100%;
     background-color: #0f1011;
   }
   main {
@@ -254,7 +255,6 @@ export const GlobalStyle = createGlobalStyle`
   html {
     font: 112.5%/1.45em georgia, serif;
     box-sizing: border-box;
-    overflow-y: scroll;
   }
   * {
     box-sizing: inherit;
