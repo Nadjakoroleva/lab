@@ -82,6 +82,7 @@ const Intro = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  letter-spacing: 0.02em;
   @media (min-width: 768px) {
     flex-direction: row;
     align-items: center;
@@ -95,7 +96,7 @@ const Intro = styled.div`
     margin: 0 auto;
   }
   @media (min-width: 1380px) {
-    padding: 75px 32px 32px 32px;
+    padding: 88px 32px 32px 32px;
     max-width: 1320px;
   }
 `;
@@ -104,6 +105,7 @@ const Link = styled.span`
   font-family: 'Arrival Mono';
   font-size: 11.25px;
   line-height: 18px;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
 `;
 
@@ -112,7 +114,7 @@ const Text = styled.div`
     width: 50%;
   }
   @media (min-width: 1024px) {
-    width: 35%;
+    width: 36%;
   }
 `;
 
@@ -120,8 +122,11 @@ const FlexContainer = styled.div`
   display: flex;
   align-items: center;
   padding-top: 32px;
+
   @media (min-width: 768px) {
     padding-top: 0;
+    position: relative;
+    bottom: -5px;
   }
 `;
 
@@ -211,6 +216,11 @@ const GridContainer = styled.div`
   @media (min-width: 1380px) {
     width: max-content;
     margin: auto;
+    padding: 90px 0 32px 0;
+    grid-gap: 32px;
+  }
+  @media (min-width: 1400px) {
+    margin: auto;
   }
 `;
 
@@ -239,8 +249,10 @@ const Card = styled.div`
     opacity: 0;
     transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   }
-  &:hover :after {
-    opacity: 0.28;
+  @media (min-width: 1280px) {
+    &:hover :after {
+      opacity: 0.28;
+    }
   }
   &:before {
     content: '';
@@ -287,6 +299,7 @@ const CardFullWidth = styled.div`
     width: 0;
     padding-bottom: calc(642 / 642 * 100%);
   }
+
   &:after {
     content: '';
     cursor: pointer;
@@ -301,6 +314,7 @@ const CardFullWidth = styled.div`
     opacity: 0;
     transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   }
+
   &:hover :after {
     opacity: 0.28;
   }
@@ -327,8 +341,11 @@ const UpContainer = styled.div`
 
 const ContainerAuthor = styled.div`
   display: flex;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  @media (min-width: 1280px) {
+    opacity: 0;
+  }
   ${Card}:hover & {
     opacity: 1;
   }
@@ -351,7 +368,8 @@ const TextTag = styled(Link)`
 
 const H3 = styled.div`
   font-size: 18px;
-  line-height: 24px;
+  line-height: 19px;
+  letter-spacing: 0.02em;
   position: absolute;
   bottom: 24px;
   left: 20px;
@@ -359,6 +377,12 @@ const H3 = styled.div`
   @media (min-width: 768px) {
     bottom: 24px;
     left: 32px;
+  }
+  @media (min-width: 1024px) {
+    width: 100%;
+  }
+  @media (min-width: 1280px) {
+    width: 70%;
   }
 `;
 
@@ -403,14 +427,16 @@ const Plus = styled.img`
   border-radius: 50%;
   padding: 6.5px;
   position: relative;
-  top: 5px;
+  top: 7px;
 `;
 
 const PlusContainer = styled.span`
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   margin-left: 12px;
-
+  @media (min-width: 1280px) {
+    opacity: 0;
+  }
   ${Card}:hover & {
     opacity: 1;
   }
@@ -420,13 +446,6 @@ const Component = styled.div`
   position: absolute;
   width: 100%;
   top: 45%;
-  // transform: scale(1.5);
-  // @media (min-width: 768px) {
-  //   transform: scale(2.5);
-  // }
-  // @media (min-width: 1280px) {
-  //   transform: scale(3.5);
-  // }
 `;
 
 const H3ForFullWidthCard = styled(H3)`
@@ -470,21 +489,41 @@ const IndexPage = () => {
       <GlobalStyle />
       <Relative>
         <Overlay isClicked={isClicked} onClick={closeCards} />
-        <div style={{ backgroundColor: '#1E1F22' }}>
+        <div>
           <Nav>
             {' '}
             <Logo src="https://images.ctfassets.net/r0lccig03c53/3KaYO3nazk30Esi1vvoq3Q/70b2277694b956b0abf674b99d703b3b/White.svg?h=16" />
             <Asterix src="https://images.ctfassets.net/r0lccig03c53/1scOwQzmNMkQvbKlXIkjoa/f494150002197c5c04a1fa13ffed0cf5/White.svg?h=16" />
             <TagContainer>
-              {['arrival.com', 'hmi'].map((item) => (
-                <Tag
-                  key={item}
-                  name={item}
-                  defaultColor={'rgba(243, 243, 243, 0.16)'}
-                  color={'#f3f3f3'}
-                  onClick={getCurrentValueOfTag}
-                />
-              ))}
+              {/* {['design lab', 'add&nbsp;artifact', 'arrival.com', 'hmi'].map(
+                (item) => (
+                  <Tag
+                    key={item}
+                    name={item}
+                    defaultColor={'rgba(243, 243, 243, 0.16)'}
+                    color={'#f3f3f3'}
+                    onClick={getCurrentValueOfTag}
+                  />
+                )
+              )} */}
+              <Tag
+                name={'design&nbsp;lab'}
+                defaultColor={'#f3f3f3'}
+                color={'#23262C'}
+                onClick={getCurrentValueOfTag}
+              />
+              <Tag
+                name={'add&nbsp;artifact'}
+                defaultColor={'#0C62F3'}
+                color={'#f3f3f3'}
+                onClick={getCurrentValueOfTag}
+              />
+              {/* <Tag
+                name={'arrival.com'}
+                defaultColor={'rgba(243, 243, 243, 0.16)'}
+                color={'#f3f3f3'}
+                onClick={getCurrentValueOfTag}
+              /> */}
             </TagContainer>
             <Img src="https://images.ctfassets.net/r0lccig03c53/2dQwP9vJi6krMhiqe4jB4k/d1639bedee751fad4931a6acd55af5d5/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
           </Nav>
@@ -509,14 +548,14 @@ const IndexPage = () => {
           </Intro>
         </div>
 
-        <MainDescription>
+        {/* <MainDescription>
           <TextInside>
             Every idea worth discussion, every pixel matters. With these
             principles at the core, Design Lab meant to be a place to share
             design artefacts between Arrival teams, no matter how ready to be
             public they are.
           </TextInside>
-        </MainDescription>
+        </MainDescription> */}
 
         <ExpendedCardsConatiner
           currentTopPosition={currentTopPosition}
@@ -556,7 +595,7 @@ const IndexPage = () => {
           </Modal>
         </ExpendedCardsConatiner>
 
-        <UploadBtn>
+        {/* <UploadBtn>
           <Link style={{ color: 'rgba(255,255,255,0.59)' }}>
             upload your latest designs
           </Link>
@@ -564,7 +603,7 @@ const IndexPage = () => {
             add artifact
             <img src="https://images.ctfassets.net/r0lccig03c53/5IGT0AjIzRRUpw1GFqMoG8/a37edd10fd1932b5f157758b5d8ebf3a/Union.svg?h=16" />
           </AddArtifact>
-        </UploadBtn>
+        </UploadBtn> */}
 
         <GridContainer>
           <Card
@@ -572,7 +611,7 @@ const IndexPage = () => {
             currentHeight={currentHeight}
             onClick={handleClick}
             background={
-              'https://images.ctfassets.net/r0lccig03c53/2y4CubxVw5ZDXzbmxHeVup/a0a688db936de2e8abef63953c6122e9/Group_219196428.png'
+              'https://images.ctfassets.net/r0lccig03c53/2vvkK1305M4s2ofpV4P9wC/1f5f43d07db240a33fba350cd74ab85f/content-image-covered.jpg'
             }
           >
             <UpContainer>
