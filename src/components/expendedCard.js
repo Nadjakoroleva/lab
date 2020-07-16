@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
-import Tag from './tag';
 
 const Container = styled.div`
   background: white;
@@ -112,6 +111,29 @@ const Avatar = styled.img`
   margin-right: 20px;
 `;
 
+const Tag = styled.div`
+  border: none;
+  padding: 4px 15px 3px 12px;
+  margin-left: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 28px;
+  border-radius: 2px;
+  background-color: rgba(35, 38, 44, 0.06);
+`;
+
+const TagText = styled.div`
+  font-family: 'Arrival Mono';
+  width: max-content;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+  line-height: 18px;
+  text-transform: uppercase;
+  transition: color 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+`;
+
 const ExpendedCard = ({ src, bgForImageContainer, objectFitProp }) => {
   const [currentHeightOfImage, setCurrentHeightOfImage] = useState('100%');
   const image = useRef(null);
@@ -145,6 +167,9 @@ const ExpendedCard = ({ src, bgForImageContainer, objectFitProp }) => {
               </div>
             </Author>
             <TagContainer>
+              <Tag>
+                <TagText>Arrival.com</TagText>
+              </Tag>
               {/* <Tag
                 name={'arrival.com'}
                 defaultColor={'rgba(35,38,44,0.06)'}
