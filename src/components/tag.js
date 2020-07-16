@@ -44,7 +44,7 @@ const Img = styled.img`
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   display: ${({ isClicked }) => (isClicked ? 'block' : 'none')};
   padding-bottom: 2px;
-  padding-left: 10px;
+  // padding-left: 10px;
   animation: ${({ isClicked }) =>
     isClicked
       ? css`
