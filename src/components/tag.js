@@ -54,7 +54,7 @@ const Img = styled.img`
 `;
 
 const Tag = ({ name, defaultColor, color }) => {
-  const [isClicked, setIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(true);
   const [currentWidth, setCurrentWidth] = useState('auto');
   const tagElement = useRef(null);
   const newWidth = currentWidth + 20;

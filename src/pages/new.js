@@ -84,12 +84,11 @@ const Intro = styled.div`
   align-items: flex-start;
   letter-spacing: 0.02em;
   @media (min-width: 768px) {
-    flex-direction: row;
-    align-items: center;
     padding: 75px 48px 32px 48px;
   }
   @media (min-width: 1024px) {
     padding: 75px 48px 32px 48px;
+    flex-direction: row;
   }
   @media (min-width: 1365px) {
     padding: 75px 64px 32px 64px;
@@ -111,10 +110,13 @@ const Link = styled.span`
 
 const Text = styled.div`
   @media (min-width: 768px) {
-    width: 50%;
+    width: 70%;
   }
   @media (min-width: 1024px) {
-    width: 36%;
+    width: 50%;
+  }
+  @media (min-width: 1280px) {
+    width: 40%;
   }
 `;
 
@@ -123,7 +125,7 @@ const FlexContainer = styled.div`
   align-items: center;
   padding-top: 32px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     padding-top: 0;
     position: relative;
     bottom: -5px;
@@ -198,7 +200,7 @@ const GridContainer = styled.div`
   padding-top: 20px;
   @media (min-width: 768px) {
     padding-top: 16px;
-    margin-right: 16px;
+    // margin-right: 16px;
     margin-left: 16px;
   }
   @media (min-width: 769px) {
@@ -234,7 +236,7 @@ const Card = styled.div`
   background-image: ${({ background }) => `url(${background})`};
   background-position: center;
   background-size: cover;
-  max-height: ${({ currentHeight }) => `${currentHeight}px`};
+  height: ${({ currentHeight }) => `${currentHeight}px`};
   &:after {
     content: '';
     cursor: pointer;
@@ -268,7 +270,7 @@ const Card = styled.div`
   }
   @media (min-width: 769px) {
     margin-bottom: 0;
-    max-height: 100%;
+    // max-height: 100%;
   }
   @media (min-width: 1024px) {
     margin-bottom: 0;
@@ -352,8 +354,11 @@ const ContainerAuthor = styled.div`
 `;
 
 const ImgAuthor = styled(Img)`
-  margin-right: 32px;
+  margin-right: 20px;
   margin-top: -7px;
+  @media (min-width: 768px) {
+    margin-right: 32px;
+  }
 `;
 
 const TextTag = styled(Link)`
@@ -368,7 +373,7 @@ const TextTag = styled(Link)`
 
 const H3 = styled.div`
   font-size: 18px;
-  line-height: 19px;
+  line-height: 24px;
   letter-spacing: 0.02em;
   position: absolute;
   bottom: 24px;
@@ -377,6 +382,7 @@ const H3 = styled.div`
   @media (min-width: 768px) {
     bottom: 24px;
     left: 32px;
+    width: 100%;
   }
   @media (min-width: 1024px) {
     width: 100%;
@@ -425,9 +431,9 @@ const Modal = styled.div`
 const Plus = styled.img`
   background-color: rgb(35, 38, 44);
   border-radius: 50%;
-  padding: 6.5px;
+  padding: 2.5px;
   position: relative;
-  top: 7px;
+  top: 3px;
 `;
 
 const PlusContainer = styled.span`
@@ -452,6 +458,28 @@ const H3ForFullWidthCard = styled(H3)`
   @media (min-width: 1280px) {
     width: 35%;
   }
+`;
+
+const AddTag = styled.div`
+  border: none;
+  padding: 4px 12px 3px 12px;
+  margin-left: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 28px;
+  border-radius: 2px;
+  background-color: #0c62f3;
+`;
+
+const AddTagText = styled.div`
+  font-family: 'Arrival Mono';
+  width: max-content;
+  letter-spacing: 0.07em;
+  font-size: 11px;
+  line-height: 18px;
+  text-transform: uppercase;
 `;
 
 const IndexPage = () => {
@@ -512,12 +540,15 @@ const IndexPage = () => {
                 color={'#23262C'}
                 onClick={getCurrentValueOfTag}
               />
-              <Tag
+              <AddTag>
+                <AddTagText>Add Afrtifact</AddTagText>{' '}
+              </AddTag>
+              {/* <Tag
                 name={'add&nbsp;artifact'}
                 defaultColor={'#0C62F3'}
                 color={'#f3f3f3'}
                 onClick={getCurrentValueOfTag}
-              />
+              /> */}
               {/* <Tag
                 name={'arrival.com'}
                 defaultColor={'rgba(243, 243, 243, 0.16)'}
@@ -627,7 +658,7 @@ const IndexPage = () => {
                 Description or short secondary message.
               </span>
               <PlusContainer>
-                <Plus src="https://images.ctfassets.net/r0lccig03c53/qUVYo5MOqLcqBFWgbUix7/fea482e2a30a634ee8da1a66bbd812bd/Union.svg" />
+                <Plus src="https://images.ctfassets.net/r0lccig03c53/4HOLhMCRB3Dl5MAn6En156/7c673ad0465a573e08d3aa13878129e1/Union.svg?h=18" />
               </PlusContainer>
             </H3>
           </Card>
@@ -652,7 +683,7 @@ const IndexPage = () => {
                 Description or short secondary message.
               </span>
               <PlusContainer>
-                <Plus src="https://images.ctfassets.net/r0lccig03c53/qUVYo5MOqLcqBFWgbUix7/fea482e2a30a634ee8da1a66bbd812bd/Union.svg" />
+                <Plus src="https://images.ctfassets.net/r0lccig03c53/4HOLhMCRB3Dl5MAn6En156/7c673ad0465a573e08d3aa13878129e1/Union.svg?h=18" />
               </PlusContainer>
             </H3>
           </Card>
@@ -677,7 +708,7 @@ const IndexPage = () => {
                 Description or short secondary message.
               </span>
               <PlusContainer>
-                <Plus src="https://images.ctfassets.net/r0lccig03c53/qUVYo5MOqLcqBFWgbUix7/fea482e2a30a634ee8da1a66bbd812bd/Union.svg" />
+                <Plus src="https://images.ctfassets.net/r0lccig03c53/4HOLhMCRB3Dl5MAn6En156/7c673ad0465a573e08d3aa13878129e1/Union.svg?h=18" />
               </PlusContainer>
             </H3>
           </CardWithComponent>
@@ -702,12 +733,12 @@ const IndexPage = () => {
                 Description or short secondary message.
               </span>
               <PlusContainer>
-                <Plus src="https://images.ctfassets.net/r0lccig03c53/qUVYo5MOqLcqBFWgbUix7/fea482e2a30a634ee8da1a66bbd812bd/Union.svg" />
+                <Plus src="https://images.ctfassets.net/r0lccig03c53/4HOLhMCRB3Dl5MAn6En156/7c673ad0465a573e08d3aa13878129e1/Union.svg?h=18" />
               </PlusContainer>
             </H3>
           </Card>
         </GridContainer>
-        <CardFullWidth currentHeight={currentHeight}>
+        {/* <CardFullWidth currentHeight={currentHeight}>
           <UpContainer>
             <TextTag>Tag - Tag</TextTag>
             <ContainerAuthor>
@@ -721,10 +752,10 @@ const IndexPage = () => {
               Description or short secondary message
             </span>{' '}
             <PlusContainer>
-              <Plus src="https://images.ctfassets.net/r0lccig03c53/qUVYo5MOqLcqBFWgbUix7/fea482e2a30a634ee8da1a66bbd812bd/Union.svg" />
+              <Plus src="https://images.ctfassets.net/r0lccig03c53/4HOLhMCRB3Dl5MAn6En156/7c673ad0465a573e08d3aa13878129e1/Union.svg?h=18" />
             </PlusContainer>
           </H3ForFullWidthCard>
-        </CardFullWidth>
+        </CardFullWidth> */}
       </Relative>
     </>
   );
