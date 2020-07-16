@@ -248,7 +248,7 @@ const Card = styled.div`
   background-image: ${({ background }) => `url(${background})`};
   background-position: center;
   background-size: cover;
-  max-height: ${({ currentHeight }) => `${currentHeight}px`};
+  height: ${({ currentHeight }) => `${currentHeight}px`};
   &:after {
     content: '';
     cursor: pointer;
@@ -279,6 +279,7 @@ const Card = styled.div`
   @media (min-width: 768px) {
     margin-bottom: 12px;
     max-height: 642px;
+    height: initial;
   }
   @media (min-width: 769px) {
     margin-bottom: 0;
@@ -499,7 +500,7 @@ const TextTagTime = styled(TextTag)`
 `;
 
 const IndexPage = () => {
-  const [currentHeight, setCurrentHeight] = useState(650);
+  const [currentHeight, setCurrentHeight] = useState(560);
   const [isClicked, setIsClicked] = useState(false);
   const [currentTopPosition, setCurrentTopPosition] = useState(0);
   const containerElement = useRef(null);
