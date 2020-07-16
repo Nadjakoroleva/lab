@@ -5,7 +5,7 @@ const Container = styled.div`
   background: white;
   width: 100%;
   height: 130vh;
-
+  position: relative;
   margin-bottom: 80px;
   @media (min-width: 768px) {
     height: 110vh;
@@ -24,6 +24,9 @@ const TagContainer = styled.div`
   flex: 0 0 auto;
   background-color: #f8f8f8;
   padding: 10px 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   @media (min-width: 768px) {
     padding: 24px 48px;
   }
@@ -100,8 +103,11 @@ const Author = styled.div`
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 48px;
+  position: absolute;
+  bottom: 42px;
   @media (min-width: 768px) {
     padding-left: 48px;
+    bottom: 72px;
   }
 `;
 
