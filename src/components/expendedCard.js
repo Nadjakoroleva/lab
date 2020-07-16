@@ -5,16 +5,16 @@ import Tag from './tag';
 const Container = styled.div`
   background: white;
   width: 100%;
-  height: 100vh;
+  height: 110vh;
 
   margin-bottom: 80px;
   @media (min-width: 768px) {
     height: 110vh;
-    min-height: 1500px;
+    // min-height: 1200px;
   }
-  @media (min-width: 1280px) {
-    min-height: 1500px;
-  }
+  // @media (min-width: 1280px) {
+  //   min-height: 1500px;
+  // }
 `;
 
 const TagContainer = styled.div`
@@ -35,9 +35,12 @@ const TagContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  height: 60%;
+  height: 50%;
   background: ${({ bgForImageContainer }) => `${bgForImageContainer}`};
   display: flex;
+  @media (min-width: 768px) {
+    height: 60%;
+  }
   @media (min-width: 1380px) {
     height: 70%;
   }
@@ -56,18 +59,21 @@ const Text = styled.p`
   flex: 1 0 auto;
   font-size: 24px;
   line-height: 32px;
+  letter-spacing: 0.02em;
   padding-top: 20px;
   padding-left: 20px;
+  padding-right: 20px;
   @media (min-width: 768px) {
-    width: 80%;
+    width: 90%;
     padding-top: 48px;
     padding-left: 48px;
+    padding-right: 32px;
   }
   @media (min-width: 1380px) {
     width: 60%;
   }
   @media (min-width: 1680px) {
-    width: 48%;
+    width: 55%;
   }
 `;
 
@@ -86,12 +92,15 @@ const Author = styled.div`
   font-family: 'Arrival Mono';
   font-size: 11.25px;
   line-height: 18px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #85878a;
   padding-bottom: 32px;
   display: flex;
   align-items: center;
   padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 48px;
   @media (min-width: 768px) {
     padding-left: 48px;
   }
@@ -146,11 +155,11 @@ const ExpendedCard = ({ src, bgForImageContainer, objectFitProp }) => {
                 defaultColor={'rgba(35,38,44,0.06)'}
                 color={'#23262C'}
               />
-              <Tag
+              {/* <Tag
                 name={'connectivity'}
                 defaultColor={'rgba(35,38,44,0.06)'}
                 color={'#23262C'}
-              />
+              /> */}
             </TagContainer>
           </div>
         </DescContainer>

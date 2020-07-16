@@ -104,7 +104,7 @@ const Link = styled.span`
   font-family: 'Arrival Mono';
   font-size: 11.25px;
   line-height: 18px;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
 `;
 
@@ -200,7 +200,7 @@ const GridContainer = styled.div`
   padding-top: 20px;
   @media (min-width: 768px) {
     padding-top: 16px;
-    // margin-right: 16px;
+    margin-right: 16px;
     margin-left: 16px;
   }
   @media (min-width: 769px) {
@@ -236,7 +236,7 @@ const Card = styled.div`
   background-image: ${({ background }) => `url(${background})`};
   background-position: center;
   background-size: cover;
-  height: ${({ currentHeight }) => `${currentHeight}px`};
+  max-height: ${({ currentHeight }) => `${currentHeight}px`};
   &:after {
     content: '';
     cursor: pointer;
@@ -270,7 +270,7 @@ const Card = styled.div`
   }
   @media (min-width: 769px) {
     margin-bottom: 0;
-    // max-height: 100%;
+    max-height: 100%;
   }
   @media (min-width: 1024px) {
     margin-bottom: 0;
@@ -382,10 +382,10 @@ const H3 = styled.div`
   @media (min-width: 768px) {
     bottom: 24px;
     left: 32px;
-    width: 100%;
+    // width: 100%;
   }
   @media (min-width: 1024px) {
-    width: 100%;
+    width: 90%;
   }
   @media (min-width: 1280px) {
     width: 70%;
@@ -480,6 +480,10 @@ const AddTagText = styled.div`
   font-size: 11px;
   line-height: 18px;
   text-transform: uppercase;
+`;
+
+const TextTagTime = styled(TextTag)`
+  padding-right: 24px;
 `;
 
 const IndexPage = () => {
@@ -648,7 +652,7 @@ const IndexPage = () => {
             <UpContainer>
               <TextTag>Tag - Tag</TextTag>
               <ContainerAuthor>
-                <TextTag>12:22</TextTag>
+                <TextTagTime>12:22</TextTagTime>
                 <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/22trzxbCuNJ1He0xKOhzyg/f6e14c85d4aa48bb03ea8e72b2f79b38/2020-06-25_15.36_1.png?h=32" />
               </ContainerAuthor>{' '}
             </UpContainer>
@@ -673,7 +677,7 @@ const IndexPage = () => {
             <UpContainer>
               <TextTag>Tag - Tag</TextTag>
               <ContainerAuthor>
-                <TextTag>12:22</TextTag>
+                <TextTagTime>12:22</TextTagTime>
                 <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/22trzxbCuNJ1He0xKOhzyg/f6e14c85d4aa48bb03ea8e72b2f79b38/2020-06-25_15.36_1.png?h=32" />
               </ContainerAuthor>{' '}
             </UpContainer>
@@ -695,7 +699,7 @@ const IndexPage = () => {
             <UpContainer>
               <TextTag>Tag - Tag</TextTag>
               <ContainerAuthor>
-                <TextTag>12:22</TextTag>
+                <TextTagTime>12:22</TextTagTime>
                 <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/22trzxbCuNJ1He0xKOhzyg/f6e14c85d4aa48bb03ea8e72b2f79b38/2020-06-25_15.36_1.png?h=32" />
               </ContainerAuthor>{' '}
             </UpContainer>
@@ -723,7 +727,7 @@ const IndexPage = () => {
             <UpContainer>
               <TextTag>Tag - Tag</TextTag>
               <ContainerAuthor>
-                <TextTag>12:22</TextTag>
+                <TextTagTime>12:22</TextTagTime>
                 <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/22trzxbCuNJ1He0xKOhzyg/f6e14c85d4aa48bb03ea8e72b2f79b38/2020-06-25_15.36_1.png?h=32" />
               </ContainerAuthor>{' '}
             </UpContainer>
