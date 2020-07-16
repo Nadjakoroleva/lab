@@ -18,7 +18,6 @@ const Container = styled.button`
   border-radius: 2px;
   width: ${({ isClicked, currentWidth, newWidth }) =>
     isClicked ? `${newWidth}px` : `${currentWidth}px`};
-  width: 120px;
 `;
 
 const Text = styled.div`
