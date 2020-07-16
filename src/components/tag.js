@@ -14,9 +14,11 @@ const Container = styled.button`
   align-items: center;
   justify-content: space-between;
   height: 28px;
+  width: 100px;
   border-radius: 2px;
   width: ${({ isClicked, currentWidth, newWidth }) =>
     isClicked ? `${newWidth}px` : `${currentWidth}px`};
+  width: 115px;
 `;
 
 const Text = styled.div`
