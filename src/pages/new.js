@@ -38,6 +38,7 @@ const Nav = styled.div`
   padding: 56px 20px 56px 20px;
   @media (min-width: 768px) {
     padding: 48px;
+    justify-content: flex-start;
   }
   @media (min-width: 1024px) {
     padding: 56px 48px 48px 48px;
@@ -69,9 +70,20 @@ const Asterix = styled.img`
 const TagContainer = styled.div`
   display: flex;
   // overflow-x: scroll;
-  // @media (min-width: 768px) {
-  //   overflow-x: initial;
-  // }
+  @media (min-width: 768px) {
+    margin-left: auto;
+    margin-right: 185px;
+  }
+  @media (min-width: 1024px) {
+    margin-right: 308px;
+  }
+  @media (min-width: 1380px) {
+    margin-right: 432px;
+  }
+  @media (min-width: 1380px) {
+    margin-left: auto;
+    margin-right: 476px;
+  }
 `;
 
 const Intro = styled.div`
@@ -483,7 +495,7 @@ const AddTagText = styled.div`
 `;
 
 const TextTagTime = styled(TextTag)`
-  padding-right: 24px;
+  padding-right: 24px !important;
 `;
 
 const IndexPage = () => {
@@ -571,7 +583,7 @@ const IndexPage = () => {
                 designers.
               </span>
             </Text>
-            <FlexContainer>
+            {/* <FlexContainer>
               <Link>5&nbsp;posts</Link>
               <Img
                 style={{ marginLeft: '24px' }}
@@ -579,7 +591,7 @@ const IndexPage = () => {
               />
               <Img src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
               <Img src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
-            </FlexContainer>
+            </FlexContainer> */}
           </Intro>
         </div>
 
