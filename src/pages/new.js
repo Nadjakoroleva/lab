@@ -575,10 +575,10 @@ const IndexPage = () => {
               <Link>5&nbsp;posts</Link>
               <Img
                 style={{ marginLeft: '24px' }}
-                src="https://images.ctfassets.net/r0lccig03c53/2dQwP9vJi6krMhiqe4jB4k/d1639bedee751fad4931a6acd55af5d5/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32"
+                src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32"
               />
-              <Img src="https://images.ctfassets.net/r0lccig03c53/2QJ3wqKYIZOucZDB684Fv1/323623dd80f42aa8efb4d4136e9928da/artem-tarasov.png?h=32" />
-              <Img src="https://images.ctfassets.net/r0lccig03c53/22trzxbCuNJ1He0xKOhzyg/f6e14c85d4aa48bb03ea8e72b2f79b38/2020-06-25_15.36_1.png?h=32" />
+              <Img src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
+              <Img src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
             </FlexContainer>
           </Intro>
         </div>
@@ -653,7 +653,7 @@ const IndexPage = () => {
               <TextTag>Tag - Tag</TextTag>
               <ContainerAuthor>
                 <TextTagTime>12:22</TextTagTime>
-                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/22trzxbCuNJ1He0xKOhzyg/f6e14c85d4aa48bb03ea8e72b2f79b38/2020-06-25_15.36_1.png?h=32" />
+                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
               </ContainerAuthor>{' '}
             </UpContainer>
             <H3>
@@ -678,7 +678,7 @@ const IndexPage = () => {
               <TextTag>Tag - Tag</TextTag>
               <ContainerAuthor>
                 <TextTagTime>12:22</TextTagTime>
-                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/22trzxbCuNJ1He0xKOhzyg/f6e14c85d4aa48bb03ea8e72b2f79b38/2020-06-25_15.36_1.png?h=32" />
+                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
               </ContainerAuthor>{' '}
             </UpContainer>
             <H3>
@@ -700,7 +700,7 @@ const IndexPage = () => {
               <TextTag>Tag - Tag</TextTag>
               <ContainerAuthor>
                 <TextTagTime>12:22</TextTagTime>
-                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/22trzxbCuNJ1He0xKOhzyg/f6e14c85d4aa48bb03ea8e72b2f79b38/2020-06-25_15.36_1.png?h=32" />
+                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
               </ContainerAuthor>{' '}
             </UpContainer>
             <Component>
@@ -728,7 +728,7 @@ const IndexPage = () => {
               <TextTag>Tag - Tag</TextTag>
               <ContainerAuthor>
                 <TextTagTime>12:22</TextTagTime>
-                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/22trzxbCuNJ1He0xKOhzyg/f6e14c85d4aa48bb03ea8e72b2f79b38/2020-06-25_15.36_1.png?h=32" />
+                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
               </ContainerAuthor>{' '}
             </UpContainer>
             <H3>
