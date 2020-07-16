@@ -145,7 +145,7 @@ const ExpendedCard = ({ src, bgForImageContainer, objectFitProp }) => {
               </div>
             </Author>
             <TagContainer>
-              <Tag
+              {/* <Tag
                 name={'arrival.com'}
                 defaultColor={'rgba(35,38,44,0.06)'}
                 color={'#23262C'}
@@ -154,7 +154,7 @@ const ExpendedCard = ({ src, bgForImageContainer, objectFitProp }) => {
                 name={'brand'}
                 defaultColor={'rgba(35,38,44,0.06)'}
                 color={'#23262C'}
-              />
+              /> */}
               {/* <Tag
                 name={'connectivity'}
                 defaultColor={'rgba(35,38,44,0.06)'}
