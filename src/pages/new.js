@@ -703,7 +703,7 @@ const IndexPage = () => {
               </PlusContainer>
             </H3>
           </Card>
-          <CardWithComponent
+          {/* <CardWithComponent
             isClicked={isClicked}
             currentHeight={currentHeight}
             onClick={handleClick}
@@ -727,7 +727,7 @@ const IndexPage = () => {
                 <Plus src="https://images.ctfassets.net/r0lccig03c53/4HOLhMCRB3Dl5MAn6En156/7c673ad0465a573e08d3aa13878129e1/Union.svg?h=18" />
               </PlusContainer>
             </H3>
-          </CardWithComponent>
+          </CardWithComponent> */}
           <Card
             isClicked={isClicked}
             currentHeight={currentHeight}
