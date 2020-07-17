@@ -20,8 +20,7 @@ const Overlay = styled.div`
   bottom: 0;
   right: 0;
   // background: red;
-  background: rgba(35, 38, 44, 0.59);
-
+  background: rgba(15, 16, 17, 0.88);
   width: ${({ isClicked }) => (isClicked ? `100%` : ``)};
   height: ${({ isClicked }) => (isClicked ? `100%` : ``)};
   max-height: ${({ isClicked }) => (isClicked ? `100%` : ``)};
@@ -499,8 +498,13 @@ const TextTagTime = styled(TextTag)`
   padding-right: 24px !important;
 `;
 
+const Blur = styled.div`
+  filter: ${({ isClicked }) => (isClicked ? `blur(2px)` : ``)};
+  transition: filter 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+`;
+
 const IndexPage = () => {
-  const [currentHeight, setCurrentHeight] = useState(560);
+  const [currentHeight, setCurrentHeight] = useState(642);
   const [isClicked, setIsClicked] = useState(false);
   const [currentTopPosition, setCurrentTopPosition] = useState(0);
   const containerElement = useRef(null);
@@ -534,7 +538,8 @@ const IndexPage = () => {
       <GlobalStyle />
       <Relative>
         <Overlay isClicked={isClicked} onClick={closeCards} />
-        <div>
+
+        <Blur isClicked={isClicked}>
           <Nav>
             {' '}
             <Logo src="https://images.ctfassets.net/r0lccig03c53/3KaYO3nazk30Esi1vvoq3Q/70b2277694b956b0abf674b99d703b3b/White.svg?h=16" />
@@ -594,7 +599,7 @@ const IndexPage = () => {
               <Img src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
             </FlexContainer> */}
           </Intro>
-        </div>
+        </Blur>
 
         {/* <MainDescription>
           <TextInside>
@@ -653,109 +658,110 @@ const IndexPage = () => {
           </AddArtifact>
         </UploadBtn> */}
 
-        <GridContainer>
-          <Card
-            isClicked={isClicked}
-            currentHeight={currentHeight}
-            onClick={handleClick}
-            background={
-              'https://images.ctfassets.net/r0lccig03c53/2vvkK1305M4s2ofpV4P9wC/1f5f43d07db240a33fba350cd74ab85f/content-image-covered.jpg'
-            }
-          >
-            <UpContainer>
-              <TextTag>Tag - Tag</TextTag>
-              <ContainerAuthor>
-                <TextTagTime>12:22</TextTagTime>
-                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
-              </ContainerAuthor>{' '}
-            </UpContainer>
-            <H3>
-              Short title or primary message.{' '}
-              <span style={{ color: 'rgba(255,255,255,0.59)' }}>
-                Description or short secondary message.
-              </span>
-              <PlusContainer>
-                <Plus src="https://images.ctfassets.net/r0lccig03c53/4HOLhMCRB3Dl5MAn6En156/7c673ad0465a573e08d3aa13878129e1/Union.svg?h=18" />
-              </PlusContainer>
-            </H3>
-          </Card>
-          <Card
-            isClicked={isClicked}
-            currentHeight={currentHeight}
-            onClick={handleClick}
-            background={
-              'https://images.ctfassets.net/r0lccig03c53/3TbgFCahXyC07hJ8aF11t7/fad5f8a6155c736e5befb1e5559d24cb/content-image-covered.jpg'
-            }
-          >
-            <UpContainer>
-              <TextTag>Tag - Tag</TextTag>
-              <ContainerAuthor>
-                <TextTagTime>12:22</TextTagTime>
-                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
-              </ContainerAuthor>{' '}
-            </UpContainer>
-            <H3>
-              Short title or primary message.{' '}
-              <span style={{ color: 'rgba(255,255,255,0.59)' }}>
-                Description or short secondary message.
-              </span>
-              <PlusContainer>
-                <Plus src="https://images.ctfassets.net/r0lccig03c53/4HOLhMCRB3Dl5MAn6En156/7c673ad0465a573e08d3aa13878129e1/Union.svg?h=18" />
-              </PlusContainer>
-            </H3>
-          </Card>
-          <CardWithComponent
-            isClicked={isClicked}
-            currentHeight={currentHeight}
-            onClick={handleClick}
-          >
-            <UpContainer>
-              <TextTag>Tag - Tag</TextTag>
-              <ContainerAuthor>
-                <TextTagTime>12:22</TextTagTime>
-                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
-              </ContainerAuthor>{' '}
-            </UpContainer>
-            <Component>
-              <Mute />
-            </Component>
-            <H3>
-              Short title or primary message.{' '}
-              <span style={{ color: 'rgba(255,255,255,0.59)' }}>
-                Description or short secondary message.
-              </span>
-              <PlusContainer>
-                <Plus src="https://images.ctfassets.net/r0lccig03c53/4HOLhMCRB3Dl5MAn6En156/7c673ad0465a573e08d3aa13878129e1/Union.svg?h=18" />
-              </PlusContainer>
-            </H3>
-          </CardWithComponent>
-          <Card
-            isClicked={isClicked}
-            currentHeight={currentHeight}
-            onClick={handleClick}
-            background={
-              'https://images.ctfassets.net/r0lccig03c53/1cZz1aRTtLj4RLMNeerpy6/d29c1100b5c69a5a28700bde8a88e244/content-image-covered.jpg'
-            }
-          >
-            <UpContainer>
-              <TextTag>Tag - Tag</TextTag>
-              <ContainerAuthor>
-                <TextTagTime>12:22</TextTagTime>
-                <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
-              </ContainerAuthor>{' '}
-            </UpContainer>
-            <H3>
-              Short title or primary message.{' '}
-              <span style={{ color: 'rgba(255,255,255,0.59)' }}>
-                Description or short secondary message.
-              </span>
-              <PlusContainer>
-                <Plus src="https://images.ctfassets.net/r0lccig03c53/4HOLhMCRB3Dl5MAn6En156/7c673ad0465a573e08d3aa13878129e1/Union.svg?h=18" />
-              </PlusContainer>
-            </H3>
-          </Card>
-        </GridContainer>
-        {/* <CardFullWidth currentHeight={currentHeight}>
+        <Blur isClicked={isClicked}>
+          <GridContainer>
+            <Card
+              isClicked={isClicked}
+              currentHeight={currentHeight}
+              onClick={handleClick}
+              background={
+                'https://images.ctfassets.net/r0lccig03c53/2vvkK1305M4s2ofpV4P9wC/1f5f43d07db240a33fba350cd74ab85f/content-image-covered.jpg'
+              }
+            >
+              <UpContainer>
+                <TextTag>Tag - Tag</TextTag>
+                <ContainerAuthor>
+                  <TextTagTime>12:22</TextTagTime>
+                  <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
+                </ContainerAuthor>{' '}
+              </UpContainer>
+              <H3>
+                Short title or primary message.{' '}
+                <span style={{ color: 'rgba(255,255,255,0.59)' }}>
+                  Description or short secondary message.
+                </span>
+                <PlusContainer>
+                  <Plus src="https://images.ctfassets.net/r0lccig03c53/4HOLhMCRB3Dl5MAn6En156/7c673ad0465a573e08d3aa13878129e1/Union.svg?h=18" />
+                </PlusContainer>
+              </H3>
+            </Card>
+            <Card
+              isClicked={isClicked}
+              currentHeight={currentHeight}
+              onClick={handleClick}
+              background={
+                'https://images.ctfassets.net/r0lccig03c53/3TbgFCahXyC07hJ8aF11t7/fad5f8a6155c736e5befb1e5559d24cb/content-image-covered.jpg'
+              }
+            >
+              <UpContainer>
+                <TextTag>Tag - Tag</TextTag>
+                <ContainerAuthor>
+                  <TextTagTime>12:22</TextTagTime>
+                  <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
+                </ContainerAuthor>{' '}
+              </UpContainer>
+              <H3>
+                Short title or primary message.{' '}
+                <span style={{ color: 'rgba(255,255,255,0.59)' }}>
+                  Description or short secondary message.
+                </span>
+                <PlusContainer>
+                  <Plus src="https://images.ctfassets.net/r0lccig03c53/4HOLhMCRB3Dl5MAn6En156/7c673ad0465a573e08d3aa13878129e1/Union.svg?h=18" />
+                </PlusContainer>
+              </H3>
+            </Card>
+            <CardWithComponent
+              isClicked={isClicked}
+              currentHeight={currentHeight}
+              onClick={handleClick}
+            >
+              <UpContainer>
+                <TextTag>Tag - Tag</TextTag>
+                <ContainerAuthor>
+                  <TextTagTime>12:22</TextTagTime>
+                  <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
+                </ContainerAuthor>{' '}
+              </UpContainer>
+              <Component>
+                <Mute />
+              </Component>
+              <H3>
+                Short title or primary message.{' '}
+                <span style={{ color: 'rgba(255,255,255,0.59)' }}>
+                  Description or short secondary message.
+                </span>
+                <PlusContainer>
+                  <Plus src="https://images.ctfassets.net/r0lccig03c53/4HOLhMCRB3Dl5MAn6En156/7c673ad0465a573e08d3aa13878129e1/Union.svg?h=18" />
+                </PlusContainer>
+              </H3>
+            </CardWithComponent>
+            <Card
+              isClicked={isClicked}
+              currentHeight={currentHeight}
+              onClick={handleClick}
+              background={
+                'https://images.ctfassets.net/r0lccig03c53/1cZz1aRTtLj4RLMNeerpy6/d29c1100b5c69a5a28700bde8a88e244/content-image-covered.jpg'
+              }
+            >
+              <UpContainer>
+                <TextTag>Tag - Tag</TextTag>
+                <ContainerAuthor>
+                  <TextTagTime>12:22</TextTagTime>
+                  <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
+                </ContainerAuthor>{' '}
+              </UpContainer>
+              <H3>
+                Short title or primary message.{' '}
+                <span style={{ color: 'rgba(255,255,255,0.59)' }}>
+                  Description or short secondary message.
+                </span>
+                <PlusContainer>
+                  <Plus src="https://images.ctfassets.net/r0lccig03c53/4HOLhMCRB3Dl5MAn6En156/7c673ad0465a573e08d3aa13878129e1/Union.svg?h=18" />
+                </PlusContainer>
+              </H3>
+            </Card>
+          </GridContainer>
+          {/* <CardFullWidth currentHeight={currentHeight}>
           <UpContainer>
             <TextTag>Tag - Tag</TextTag>
             <ContainerAuthor>
@@ -773,6 +779,7 @@ const IndexPage = () => {
             </PlusContainer>
           </H3ForFullWidthCard>
         </CardFullWidth> */}
+        </Blur>
       </Relative>
     </>
   );
