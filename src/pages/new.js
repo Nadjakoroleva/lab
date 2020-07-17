@@ -499,7 +499,7 @@ const TextTagTime = styled(TextTag)`
 `;
 
 const Blur = styled.div`
-  filter: ${({ isClicked }) => (isClicked ? `blur(2px)` : ``)};
+  filter: ${({ isClicked }) => (isClicked ? `blur(6px)` : ``)};
   transition: filter 0.3s cubic-bezier(0.76, 0, 0.24, 1);
 `;
 
