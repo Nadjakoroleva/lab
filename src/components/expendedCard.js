@@ -4,11 +4,12 @@ import styled, { keyframes } from 'styled-components';
 const Container = styled.div`
   background: white;
   width: 100%;
-  height: 130vh;
+  // height: 130vh;
   position: relative;
   margin-bottom: 80px;
   @media (min-width: 768px) {
-    height: 110vh;
+    // height: 110vh;
+    max-width: 1236px;
     // min-height: 1200px;
   }
   // @media (min-width: 1280px) {
@@ -24,8 +25,8 @@ const TagContainer = styled.div`
   flex: 0 0 auto;
   background-color: #f8f8f8;
   padding: 10px 20px;
-  position: absolute;
-  bottom: 0;
+  // position: absolute;
+  // bottom: 0;
   width: 100%;
   @media (min-width: 768px) {
     padding: 24px 48px;
@@ -37,14 +38,15 @@ const TagContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  height: 50%;
+  height: 70vh;
   background: ${({ bgForImageContainer }) => `${bgForImageContainer}`};
   display: flex;
+
   @media (min-width: 768px) {
-    height: 60%;
+    height: 70vh;
   }
   @media (min-width: 1380px) {
-    height: 70%;
+    height: 70vh;
   }
 `;
 
@@ -75,18 +77,18 @@ const Text = styled.p`
     width: 60%;
   }
   @media (min-width: 1680px) {
-    width: 55%;
+    width: 70%;
   }
 `;
 
 const DescContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 40%;
+  // height: 40%;
   color: #0f1011;
   // padding: 48px 48px 24px 48px;
   @media (min-width: 1380px) {
-    height: 30%;
+    // height: 30%;
   }
 `;
 
@@ -102,12 +104,16 @@ const Author = styled.div`
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 48px;
-  position: absolute;
-  bottom: 42px;
+  padding-top: 150px;
+  // position: absolute;
+  // bottom: 42px;
   @media (min-width: 768px) {
     padding-left: 48px;
     bottom: 72px;
+    padding-top: 220px;
+  }
+  @media (min-width: 1280px) {
+    padding-top: 618px;
   }
 `;
 
