@@ -428,6 +428,7 @@ const ExpendedCardsConatiner = styled.div`
     width: 90vw;
     display: flex;
     justify-content: flex-end;
+    width: max-content;
   }
   @media (min-width: 1440px) {
     // width: 60vw;
