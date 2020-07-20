@@ -9,7 +9,7 @@ const Container = styled.div`
   margin-bottom: 80px;
   @media (min-width: 768px) {
     // height: 110vh;
-    max-width: 1236px;
+    max-width: 1440px;
     // min-height: 1200px;
   }
   // @media (min-width: 1280px) {
@@ -110,10 +110,10 @@ const Author = styled.div`
   @media (min-width: 768px) {
     padding-left: 48px;
     bottom: 72px;
-    padding-top: 220px;
+    padding-top: 260px;
   }
   @media (min-width: 1280px) {
-    padding-top: 618px;
+    padding-top: 260px;
   }
 `;
 
