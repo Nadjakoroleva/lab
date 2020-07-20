@@ -425,9 +425,11 @@ const ExpendedCardsConatiner = styled.div`
     transform 0.3s cubic-bezier(0.76, 0, 0.24, 1),
     all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   @media (min-width: 768px) {
-    // width: 90vw;
+    width: 90vw;
     display: flex;
     justify-content: flex-end;
+  }
+  @media (min-width: 1680px) {
     width: max-content;
   }
   @media (min-width: 1920px) {
