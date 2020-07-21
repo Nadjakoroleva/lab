@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import styled, { createGlobalStyle, keyframes } from 'styled-components';
+import styled, { createGlobalStyle, keyframes, css } from 'styled-components';
 import Tag from '../components/tag';
 import {
   disableBodyScroll,
@@ -12,6 +12,26 @@ import Mute from '../components/mute';
 
 import { GlobalStyle } from '../components/globalStyle';
 
+const appear = keyframes`
+0% {
+  opacity: 0;
+}
+
+100% {
+  opacity: 1;
+}
+`;
+
+const disappear = keyframes`
+0% {
+  opacity: 1;
+}
+
+100% {
+  opacity: 0;
+}
+`;
+
 const Overlay = styled.div`
   cursor: url('https://images.ctfassets.net/r0lccig03c53/75Bw6haGzhv1x6BMzSCRQh/5ef6473aa959664ade42056fe7d8626f/cursor_1.svg'),
     pointer;
@@ -23,14 +43,17 @@ const Overlay = styled.div`
   width: ${({ isClicked }) => (isClicked ? `100%` : ``)};
   height: ${({ isClicked }) => (isClicked ? `100%` : ``)};
   max-height: ${({ isClicked }) => (isClicked ? `100%` : ``)};
-  opacity: ${({ isClicked }) => (isClicked ? `1` : `0`)};
-  z-index: ${({ isClicked }) => (isClicked ? `10` : ``)};
-  transition: ${({ isClicked }) =>
+  opacity: 0;
+  z-index: ${({ isClicked }) => (isClicked ? `10` : `1`)};
+  transition: all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  animation: ${({ isClicked }) =>
     isClicked
-      ? `opacity 0.2s cubic-bezier(0.76, 0, 0.24, 1),
-  all 0.2s cubic-bezier(0.76, 0, 0.24, 1);`
-      : `opacity 0.4s cubic-bezier(0.76, 0, 0.24, 1),
-  all 0.4s cubic-bezier(0.76, 0, 0.24, 1);`};
+      ? css`
+          ${appear} 200ms linear forwards
+        `
+      : css`
+          ${disappear} 400ms linear forwards
+        `};
 `;
 
 const Nav = styled.div`
