@@ -28,9 +28,9 @@ const Overlay = styled.div`
   transition: ${({ isClicked }) =>
     isClicked
       ? `opacity 0.2s cubic-bezier(0.76, 0, 0.24, 1),
-  all 0.2s cubic-bezier(0.76, 0, 0.24, 1)`
-      : `opacity 1s cubic-bezier(0.76, 0, 0.24, 1),
-  all 1s cubic-bezier(0.76, 0, 0.24, 1)`};
+  all 0.2s cubic-bezier(0.76, 0, 0.24, 1);`
+      : `opacity 0.4s cubic-bezier(0.76, 0, 0.24, 1),
+  all 0.4s cubic-bezier(0.76, 0, 0.24, 1);`};
 `;
 
 const Nav = styled.div`
@@ -307,12 +307,9 @@ const ExpendedCardsConatiner = styled.div`
   opacity: ${({ isClicked }) => (isClicked ? '1' : '0')};
   transform: ${({ isClicked }) =>
     isClicked ? `translateY(0)` : `translateY(100px)`};
-  transition: ${({ isClicked }) =>
-    isClicked
-      ? `opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1),
-  all 0.3s cubic-bezier(0.76, 0, 0.24, 1)`
-      : `opacity 0.5s cubic-bezier(0.76, 0, 0.24, 1),
-  all 0.5s cubic-bezier(0.76, 0, 0.24, 1)`};
+  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1),
+    transform 0.3s cubic-bezier(0.76, 0, 0.24, 1),
+    all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   @media (min-width: 768px) {
     width: 90vw;
     display: flex;
