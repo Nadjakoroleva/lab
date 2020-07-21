@@ -14,6 +14,7 @@ const Container = styled.button`
   align-items: center;
   justify-content: space-between;
   height: 28px;
+  width: 100px;
   border-radius: 2px;
   width: ${({ isClicked, currentWidth, newWidth }) =>
     isClicked ? `${newWidth}px` : `${currentWidth}px`};
@@ -44,7 +45,7 @@ const Img = styled.img`
   transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
   display: ${({ isClicked }) => (isClicked ? 'block' : 'none')};
   padding-bottom: 2px;
-  padding-left: 10px;
+  // padding-left: 10px;
   animation: ${({ isClicked }) =>
     isClicked
       ? css`
@@ -54,7 +55,7 @@ const Img = styled.img`
 `;
 
 const Tag = ({ name, defaultColor, color }) => {
-  const [isClicked, setIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(true);
   const [currentWidth, setCurrentWidth] = useState('auto');
   const tagElement = useRef(null);
   const newWidth = currentWidth + 20;
