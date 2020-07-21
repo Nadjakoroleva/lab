@@ -13,21 +13,24 @@ import Mute from '../components/mute';
 import { GlobalStyle } from '../components/globalStyle';
 
 const Overlay = styled.div`
-  cursor: url('https://images.ctfassets.net/r0lccig03c53/5ZMYhnpYsPQl4eZsVbO3SA/58c9f97bc6c89c52a773e33927e5dc91/cursor.png'),
+  cursor: url('https://images.ctfassets.net/r0lccig03c53/75Bw6haGzhv1x6BMzSCRQh/5ef6473aa959664ade42056fe7d8626f/cursor_1.svg'),
     pointer;
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
-  // background: red;
   background: rgba(15, 16, 17, 0.88);
   width: ${({ isClicked }) => (isClicked ? `100%` : ``)};
   height: ${({ isClicked }) => (isClicked ? `100%` : ``)};
   max-height: ${({ isClicked }) => (isClicked ? `100%` : ``)};
   opacity: ${({ isClicked }) => (isClicked ? `1` : `0`)};
   z-index: ${({ isClicked }) => (isClicked ? `10` : ``)};
-  transition: opacity 0.2s cubic-bezier(0.76, 0, 0.24, 1),
-    all 0.2s cubic-bezier(0.76, 0, 0.24, 1);
+  transition: ${({ isClicked }) =>
+    isClicked
+      ? `opacity 0.2s cubic-bezier(0.76, 0, 0.24, 1),
+  all 0.2s cubic-bezier(0.76, 0, 0.24, 1)`
+      : `opacity 1s cubic-bezier(0.76, 0, 0.24, 1),
+  all 1s cubic-bezier(0.76, 0, 0.24, 1)`};
 `;
 
 const Nav = styled.div`
@@ -68,7 +71,6 @@ const Asterix = styled.img`
 
 const TagContainer = styled.div`
   display: flex;
-  // overflow-x: scroll;
   @media (min-width: 768px) {
     margin-left: auto;
     margin-right: 185px;
@@ -146,65 +148,6 @@ const FlexContainer = styled.div`
 const Img = styled.img`
   height: 32px;
   width: 32px;
-`;
-
-const MainDescription = styled.div`
-  padding: 48px 20px 96px 20px;
-  font-size: 24px;
-  line-height: 32px;
-  width: 100%;
-  @media (min-width: 768px) {
-    padding: 32px 48px 96px 48px;
-  }
-  @media (min-width: 1024px) {
-    padding: 48px 48px 124px 48px;
-  }
-  @media (min-width: 1280px) {
-    width: 42%;
-  }
-  @media (min-width: 1230px) {
-    width: 100%;
-    max-width: 1308px;
-  }
-  @media (min-width: 1365px) {
-    padding: 48px 64px 124px 64px;
-  }
-  @media (min-width: 1380px) {
-    margin: 0 auto;
-    padding-left: 32px;
-  }
-`;
-
-const TextInside = styled.div`
-  width: 90%;
-  @media (min-width: 1024px) {
-    width: 58%;
-  }
-`;
-
-const UploadBtn = styled.div`
-  background-color: #0c62f3;
-  padding: 36px 20px;
-  max-width: 1308px;
-  @media (min-width: 768px) {
-    margin-left: 16px;
-    margin-right: 16px;
-    padding: 36px 32px;
-  }
-  @media (min-width: 1024px) {
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-  @media (min-width: 1380px) {
-    margin: 0 auto;
-  }
-`;
-const AddArtifact = styled(Link)`
-  padding-top: 104px;
-  height: 64px;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
 `;
 
 const GridContainer = styled.div`
@@ -291,61 +234,6 @@ const Card = styled.div`
 
 const CardWithComponent = styled(Card)``;
 
-const CardFullWidth = styled.div`
-  cursor: pointer;
-  background: #1e1f22;
-  margin-bottom: 80px;
-  position: relative;
-  display: flex;
-  flex-shrink: 0;
-  max-height: ${({ currentHeight }) => `${currentHeight}px`};
-  max-width: 1308px;
-  background-image: url('https://images.ctfassets.net/r0lccig03c53/1RZM81T4FHQhTdhVTY6LGi/fa2ad855f28ea9597d5f8608b706c877/content-image-covered-big.jpg');
-  background-position: center;
-  background-size: contain;
-  background-origin: border-box;
-  background-repeat: no-repeat;
-  // z-index: -1;
-  &:before {
-    content: '';
-    display: block;
-    height: 0;
-    width: 0;
-    padding-bottom: calc(642 / 642 * 100%);
-  }
-
-  &:after {
-    content: '';
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    display: block;
-    height: 100%;
-    width: 100%;
-    background: rgb(35, 38, 44);
-    opacity: 0;
-    transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
-  }
-
-  &:hover :after {
-    opacity: 0.28;
-  }
-  @media (min-width: 768px) {
-    margin-right: 16px;
-    margin-left: 16px;
-    max-height: 642px;
-  }
-  @media (min-width: 1024px) {
-    margin-left: 24px;
-    margin-right: 24px;
-  }
-  @media (min-width: 1380px) {
-    margin: 0 auto 180px;
-  }
-`;
-
 const UpContainer = styled.div`
   padding-top: 27px;
   display: flex;
@@ -394,7 +282,6 @@ const H3 = styled.div`
   @media (min-width: 768px) {
     bottom: 24px;
     left: 32px;
-    // width: 100%;
   }
   @media (min-width: 1024px) {
     width: 90%;
@@ -415,15 +302,17 @@ const ExpendedCardsConatiner = styled.div`
   right: 0;
   width: 100vw;
   height: 100%;
-  // max-height: 100vh;
   overflow-y: auto;
   z-index: ${({ isClicked }) => (isClicked ? `10` : `-1`)};
   opacity: ${({ isClicked }) => (isClicked ? '1' : '0')};
   transform: ${({ isClicked }) =>
     isClicked ? `translateY(0)` : `translateY(100px)`};
-  transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1),
-    transform 0.3s cubic-bezier(0.76, 0, 0.24, 1),
-    all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  transition: ${({ isClicked }) =>
+    isClicked
+      ? `opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1),
+  all 0.3s cubic-bezier(0.76, 0, 0.24, 1)`
+      : `opacity 0.5s cubic-bezier(0.76, 0, 0.24, 1),
+  all 0.5s cubic-bezier(0.76, 0, 0.24, 1)`};
   @media (min-width: 768px) {
     width: 90vw;
     display: flex;
@@ -473,12 +362,6 @@ const Component = styled.div`
   top: 45%;
 `;
 
-const H3ForFullWidthCard = styled(H3)`
-  @media (min-width: 1280px) {
-    width: 35%;
-  }
-`;
-
 const AddTag = styled.div`
   border: none;
   padding: 4px 12px 3px 12px;
@@ -518,14 +401,12 @@ const IndexPage = () => {
 
   const handleClick = () => {
     setIsClicked(true);
-    // document.getElementsByTagName('html')[0].style.overflow = 'hidden';
     disableBodyScroll(document.body);
   };
 
   const closeCards = () => {
     setIsClicked(false);
     enableBodyScroll(document.body);
-    // document.getElementsByTagName('html')[0].style = '';
   };
 
   useEffect(() => {
@@ -552,17 +433,6 @@ const IndexPage = () => {
             <Logo src="https://images.ctfassets.net/r0lccig03c53/3KaYO3nazk30Esi1vvoq3Q/70b2277694b956b0abf674b99d703b3b/White.svg?h=16" />
             <Asterix src="https://images.ctfassets.net/r0lccig03c53/1scOwQzmNMkQvbKlXIkjoa/f494150002197c5c04a1fa13ffed0cf5/White.svg?h=16" />
             <TagContainer>
-              {/* {['design lab', 'add&nbsp;artifact', 'arrival.com', 'hmi'].map(
-                (item) => (
-                  <Tag
-                    key={item}
-                    name={item}
-                    defaultColor={'rgba(243, 243, 243, 0.16)'}
-                    color={'#f3f3f3'}
-                    onClick={getCurrentValueOfTag}
-                  />
-                )
-              )} */}
               <Tag
                 name={'design&nbsp;lab'}
                 defaultColor={'#f3f3f3'}
@@ -572,18 +442,6 @@ const IndexPage = () => {
               <AddTag>
                 <AddTagText>Add Afrtifact</AddTagText>{' '}
               </AddTag>
-              {/* <Tag
-                name={'add&nbsp;artifact'}
-                defaultColor={'#0C62F3'}
-                color={'#f3f3f3'}
-                onClick={getCurrentValueOfTag}
-              /> */}
-              {/* <Tag
-                name={'arrival.com'}
-                defaultColor={'rgba(243, 243, 243, 0.16)'}
-                color={'#f3f3f3'}
-                onClick={getCurrentValueOfTag}
-              /> */}
             </TagContainer>
             <Img src="https://images.ctfassets.net/r0lccig03c53/2dQwP9vJi6krMhiqe4jB4k/d1639bedee751fad4931a6acd55af5d5/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
           </Nav>
@@ -596,26 +454,8 @@ const IndexPage = () => {
                 designers.
               </span>
             </Text>
-            {/* <FlexContainer>
-              <Link>5&nbsp;posts</Link>
-              <Img
-                style={{ marginLeft: '24px' }}
-                src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32"
-              />
-              <Img src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
-              <Img src="https://images.ctfassets.net/r0lccig03c53/4ihCRqEAHypAWICi2JG4JF/45787fedfaf42ead5a3e40b6edcc7537/avafhfjkhskjfhsdkjhfkjsdhfkhskfhdshfshkfhfkshdkfhskhfkshdkhfksdhfksdhfkhskdfhkshfkshfkshtar_2.png?h=32" />
-            </FlexContainer> */}
           </Intro>
         </Blur>
-
-        {/* <MainDescription>
-          <TextInside>
-            Every idea worth discussion, every pixel matters. With these
-            principles at the core, Design Lab meant to be a place to share
-            design artefacts between Arrival teams, no matter how ready to be
-            public they are.
-          </TextInside>
-        </MainDescription> */}
 
         <ExpendedCardsConatiner
           currentTopPosition={currentTopPosition}
@@ -654,16 +494,6 @@ const IndexPage = () => {
             />
           </Modal>
         </ExpendedCardsConatiner>
-
-        {/* <UploadBtn>
-          <Link style={{ color: 'rgba(255,255,255,0.59)' }}>
-            upload your latest designs
-          </Link>
-          <AddArtifact>
-            add artifact
-            <img src="https://images.ctfassets.net/r0lccig03c53/5IGT0AjIzRRUpw1GFqMoG8/a37edd10fd1932b5f157758b5d8ebf3a/Union.svg?h=16" />
-          </AddArtifact>
-        </UploadBtn> */}
 
         <Blur isClicked={isClicked}>
           <GridContainer>
@@ -768,24 +598,6 @@ const IndexPage = () => {
               </H3>
             </Card>
           </GridContainer>
-          {/* <CardFullWidth currentHeight={currentHeight}>
-          <UpContainer>
-            <TextTag>Tag - Tag</TextTag>
-            <ContainerAuthor>
-              <TextTag>12:22</TextTag>
-              <ImgAuthor src="https://images.ctfassets.net/r0lccig03c53/7ewg9PVmotCo6UVohZ2LB7/67c30a590bb8a06276079d804b6e649d/Rectangle_240644582.svg?h=32" />
-            </ContainerAuthor>{' '}
-          </UpContainer>
-          <H3ForFullWidthCard>
-            Short title or primary message.{' '}
-            <span style={{ color: 'rgba(255,255,255,0.59)' }}>
-              Description or short secondary message
-            </span>{' '}
-            <PlusContainer>
-              <Plus src="https://images.ctfassets.net/r0lccig03c53/4HOLhMCRB3Dl5MAn6En156/7c673ad0465a573e08d3aa13878129e1/Union.svg?h=18" />
-            </PlusContainer>
-          </H3ForFullWidthCard>
-        </CardFullWidth> */}
         </Blur>
       </Relative>
     </>

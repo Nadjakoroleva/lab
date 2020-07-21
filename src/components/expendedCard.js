@@ -23,7 +23,7 @@ const TagContainer = styled.div`
   flex-wrap: wrap;
   background: white;
   flex: 0 0 auto;
-  background-color: #f8f8f8;
+  // background-color: #f8f8f8;
   padding: 10px 20px;
   // position: absolute;
   // bottom: 0;
